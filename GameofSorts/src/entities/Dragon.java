@@ -158,7 +158,8 @@ public class Dragon {
 		String[] names = new String[] {"Rhaegal", "Viserion", "Drogon", "Errol", "Faranth", "Firnen", "Glaedr", 
 				"Saphira", "Slathborg", "Thorn", "Eldrax", "Balerion", "Chrysophylax", "Ancalagon", "Aithusa", 
 				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna", 
-				"Yomigami", "Charizard", "Yoshi", "", "", "", "", "", "", "", "", "", };
+				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless", 
+				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl"};
 		int num = (int) (Math.random() * 34) +1;
 		setName(names[num]);
 	}
