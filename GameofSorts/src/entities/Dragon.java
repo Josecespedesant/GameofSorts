@@ -1,5 +1,7 @@
 package entities;
 
+import java.awt.event.KeyEvent;
+
 import hitbox.HitBox;
 
 /**
@@ -18,6 +20,7 @@ public class Dragon {
 	private String range;
 	private Dragon father;
 	private HitBox dragonHitBox;
+	public int x, dx, y, dy;
 	
 	/**
 	 * Constructor for the first dragon.
@@ -35,24 +38,31 @@ public class Dragon {
 		this.resistance = resistance;
 		this.range = range;
 		this.father = null;
+		x = 1000;
+		y = 250;
 	}
 	
-	/**
-	 * Constructor of the class Dragon.
-	 * @param name
-	 * @param reloadingTime
-	 * @param age
-	 * @param resistance
-	 * @param range
-	 * @param father
-	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, Dragon father) {
-		setName();
-		this.reloadingTime = reloadingTime;
-		this.age = age;
-		this.resistance = resistance;
-		this.range = range;
-		this.father = father;
+	public void move() {
+		x = x + dx;
+		y = y + dy;
+		this.mover1();
+	}
+	
+	public void mover1() {
+		dx = -1;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	/**

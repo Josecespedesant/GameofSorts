@@ -8,15 +8,23 @@ import java.applet.Applet;
 import javax.swing.ImageIcon;
 
 public class Player {
+<<<<<<< HEAD
 	public int x, dx, y, dy, nx, nx2;
 	Image griph;
 	String[] images = {"griph","griph2","griph3"};
 	private int totalPictures = 0;
+=======
+	public int x, dx, y, dy;
+	Image peter;
+	ImageIcon i = new ImageIcon("Peter_Griffin.png");
+	ImageIcon l = new ImageIcon("Peter_Griffin_Left.png");
+>>>>>>> refs/remotes/origin/master
 	
 	public Player() {
 		griph = null;
 		x = 10;
 		y = 350;
+<<<<<<< HEAD
 		nx = 0;
 		nx2 = 1266;
 		init();
@@ -31,16 +39,14 @@ public class Player {
 				griph = image.getImage();
 			}
 		}
+=======
+	
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	public void move() {
-		//if(dx!=1) {
 		x = x + dx;
 		y = y + dy;
-		//nx2 = nx2 + dx;
-		//nx = nx + dx;
-		
-	//	}
 	}
 
 	public int getX() {
@@ -51,25 +57,12 @@ public class Player {
 		return y;
 	}
 	
-	public int getNx2() {
-		return nx2;
-	}
-	public void setNx2(int nx2) {
-		this.nx2 = nx2;
-	}
-	
-	public int getNx() {
-		return nx; 
-	}
-	public void setNx(int nx) {
-		nx = this.nx;
-	}
-	
 	public Image getImage() {
 		return griph;
 	}
 	
 	public void KeyPressed(KeyEvent e) {
+		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) { 
 			dx = -2;
@@ -87,6 +80,7 @@ public class Player {
 	}
 	
 	public void KeyReleased(KeyEvent e) {
+		//movimiento cuando una tecla se deja de presioanar
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) 
 			dx = -1;
