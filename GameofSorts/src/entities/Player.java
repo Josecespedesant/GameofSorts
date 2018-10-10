@@ -8,23 +8,16 @@ import java.applet.Applet;
 import javax.swing.ImageIcon;
 
 public class Player {
-<<<<<<< HEAD
+
 	public int x, dx, y, dy, nx, nx2;
 	Image griph;
 	String[] images = {"griph","griph2","griph3"};
 	private int totalPictures = 0;
-=======
-	public int x, dx, y, dy;
-	Image peter;
-	ImageIcon i = new ImageIcon("Peter_Griffin.png");
-	ImageIcon l = new ImageIcon("Peter_Griffin_Left.png");
->>>>>>> refs/remotes/origin/master
 	
 	public Player() {
 		griph = null;
 		x = 10;
 		y = 350;
-<<<<<<< HEAD
 		nx = 0;
 		nx2 = 1266;
 		init();
@@ -39,9 +32,6 @@ public class Player {
 				griph = image.getImage();
 			}
 		}
-=======
-	
->>>>>>> refs/remotes/origin/master
 	}
 	
 	public void move() {
