@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 public class Player {
-	public int x, dx, y, dy, nx, nx2;
+	public int x, dx, y, dy;
 	Image peter;
 	ImageIcon i = new ImageIcon("Peter_Griffin.png");
 	ImageIcon l = new ImageIcon("Peter_Griffin_Left.png");
@@ -16,18 +16,12 @@ public class Player {
 		peter = i.getImage();
 		x = 10;
 		y = 350;
-		nx = 0;
-		nx2 = 1266;
+	
 	}
 	
 	public void move() {
-		//if(dx!=1) {
 		x = x + dx;
 		y = y + dy;
-		//nx2 = nx2 + dx;
-		//nx = nx + dx;
-		
-	//	}
 	}
 	
 
@@ -39,25 +33,12 @@ public class Player {
 		return y;
 	}
 	
-	public int getNx2() {
-		return nx2;
-	}
-	public void setNx2(int nx2) {
-		this.nx2 = nx2;
-	}
-	
-	public int getNx() {
-		return nx; 
-	}
-	public void setNx(int nx) {
-		nx = this.nx;
-	}
-	
 	public Image getImage() {
 		return peter;
 	}
 	
 	public void KeyPressed(KeyEvent e) {
+		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT) { 
 			dx = -2;
@@ -74,6 +55,7 @@ public class Player {
 	}
 	
 	public void KeyReleased(KeyEvent e) {
+		//movimiento cuando una tecla se deja de presioanar
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT) 
 			dx = -1;

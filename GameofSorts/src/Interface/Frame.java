@@ -3,7 +3,6 @@ package Interface;
 import javax.swing.*;
 
 public class Frame {
-	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Game of Sorts");
 		frame.add(new Board());
