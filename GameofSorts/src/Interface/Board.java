@@ -47,6 +47,7 @@ public class Board extends JPanel implements ActionListener{
 		if (nx == -1370) {
 			nx =0;
 			nx2 = 1266;
+			
 		}
 		
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);

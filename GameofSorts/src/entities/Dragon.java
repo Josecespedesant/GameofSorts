@@ -155,12 +155,15 @@ public class Dragon {
 	 * Sets the name of the dragon randomly
 	 */
 	public void setName() {
+		
 		String[] names = new String[] {"Rhaegal", "Viserion", "Drogon", "Errol", "Faranth", "Firnen", "Glaedr", 
 				"Saphira", "Slathborg", "Thorn", "Eldrax", "Balerion", "Chrysophylax", "Ancalagon", "Aithusa", 
 				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna", 
 				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless", 
-				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl"};
-		int num = (int) (Math.random() * 34) +1;
+				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl","Hearkon", "Aatrox", "Rek'Sai", "Vel'Koz", 
+				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath", "Malp'Harido", ""};
+		
+		int num = (int) (Math.random() * names.length-1);
 		setName(names[num]);
 	}
 	
