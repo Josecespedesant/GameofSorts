@@ -21,9 +21,13 @@ public class Player {
 	String[] images = {"griph","griph2","griph3"};
 	HitBox hitbox = new HitBox(x, y, 200, 200);
 	
+<<<<<<< HEAD
 	/**
 	 * Constructor of the class Player.
 	 */
+=======
+	
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
 	public Player() {
 		griph = null;
 		x = 10;

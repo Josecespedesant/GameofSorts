@@ -18,7 +18,7 @@ public class Board extends JPanel implements ActionListener{
 
 	public Board() {
 		p = new Player();
-		d = new Dragon(1, 1, 1, "ak7");
+		d = new Dragon(1, 1, 1, "ak7",1);
 		addKeyListener(new AL());
 		setFocusable(true);
 		
