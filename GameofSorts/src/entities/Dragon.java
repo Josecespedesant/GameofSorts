@@ -1,7 +1,5 @@
 package entities;
 
-import java.awt.event.KeyEvent;
-
 import hitbox.HitBox;
 
 /**
@@ -29,7 +27,6 @@ public class Dragon {
 	 * @param age
 	 * @param resistance
 	 * @param range
-	 * @param father
 	 */
 	public Dragon(int reloadingTime, int age, int resistance, String range) {
 		setName();
@@ -42,25 +39,85 @@ public class Dragon {
 		y = 250;
 	}
 	
+	/**
+	 * Constructor for the other dragons.
+	 * @param reloadingTime
+	 * @param age
+	 * @param resistance
+	 * @param range
+	 * @param father
+	 */
+	public Dragon(int reloadingTime, int age, int resistance, String range, Dragon father) {
+		setName();
+		this.reloadingTime = reloadingTime;
+		this.age = age;
+		this.resistance = resistance;
+		this.range = range;
+		this.father = father;
+		x = 1000;
+		y = 250;
+	}
+	
+	/**
+	 * Sets the name of the dragon randomly
+	 */
+	public void setName() {
+		
+		String[] names = new String[] {"Rhaegal", "Viserion", "Drogon", "Errol", "Faranth", "Firnen", "Glaedr", 
+				"Saphira", "Slathborg", "Thorn", "Eldrax", "Balerion", "Chrysophylax", "Ancalagon", "Aithusa", 
+				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna", 
+				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless", 
+				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl","Hearkon", "Aatrox", "Rek'Sai", "Vel'Koz", 
+				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath", "Malp'Harido"};
+		
+		int num = (int) (Math.random() * names.length-1);
+		setName(names[num]);
+	}
+	
+	/**
+	 * Starts the movement of the Dragon.
+	 */
 	public void move() {
 		x = x + dx;
 		y = y + dy;
-		this.mover1();
+		this.moveLeft();
 	}
 	
-	public void mover1() {
+	/**
+	 * Moves the dragon to the left.
+	 */
+	public void moveLeft() {
 		dx = -1;
 	}
 	
+	/**
+	 * Returns de X position of the Dragon.
+	 * @return x
+	 */
 	public int getX() {
 		return x;
 	}
+	
+	/**
+	 * Returns the Y position of the Dragon.
+	 * @return y
+	 */
 	public int getY() {
 		return y;
 	}
+	
+	/**
+	 * Sets de X position of the Dragon.
+	 * @param x
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
+	
+	/**
+	 * Sets the Y position of the Dragon.
+	 * @param y
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
@@ -159,22 +216,6 @@ public class Dragon {
 	 */
 	public void setFather(Dragon father) {
 		this.father = father;
-	}
-	
-	/**
-	 * Sets the name of the dragon randomly
-	 */
-	public void setName() {
-		
-		String[] names = new String[] {"Rhaegal", "Viserion", "Drogon", "Errol", "Faranth", "Firnen", "Glaedr", 
-				"Saphira", "Slathborg", "Thorn", "Eldrax", "Balerion", "Chrysophylax", "Ancalagon", "Aithusa", 
-				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna", 
-				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless", 
-				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl","Hearkon", "Aatrox", "Rek'Sai", "Vel'Koz", 
-				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath", "Malp'Harido", ""};
-		
-		int num = (int) (Math.random() * names.length-1);
-		setName(names[num]);
 	}
 	
 	/**
