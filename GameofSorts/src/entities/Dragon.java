@@ -20,11 +20,11 @@ public class Dragon {
 	private String range;
 	private Dragon father;
 	private HitBox dragonHitBox;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	private int speed;
-=======
+//=======
 	public int x, dx, y, dy;
->>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
+//>>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
 	
 	/**
 	 * Constructor for the first dragon.
@@ -42,7 +42,7 @@ public class Dragon {
 		this.resistance = resistance;
 		this.range = range;
 		this.father = null;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		this.speed = speed;
 	}
 	
@@ -63,7 +63,7 @@ public class Dragon {
 		this.range = range;
 		this.father = father;
 		this.speed = speed;
-=======
+//=======
 		x = 1000;
 		y = 250;
 	}
@@ -89,7 +89,7 @@ public class Dragon {
 	}
 	public void setY(int y) {
 		this.y = y;
->>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
+//>>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
 	}
 	
 	public int getSpeed() {
