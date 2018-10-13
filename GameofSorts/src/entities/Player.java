@@ -14,6 +14,7 @@ public class Player {
 	String[] images = {"griph","griph2","griph3"};
 	private int totalPictures = 0;
 	
+	
 	public Player() {
 		griph = null;
 		x = 10;
