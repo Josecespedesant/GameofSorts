@@ -9,6 +9,16 @@ public class FireBall {
 	public static final int HEIGHT = 6;
 	float x, y;
 	private HitBox fireHitBox;
+	public boolean remove = false;
+	
+	public FireBall(float x, float y) {
+		this.x = x;
+		this.y = y;
+		this.fireHitBox = new HitBox(x, y, WIDTH, HEIGHT);
+	}
+	
+	
+	
 	public float getX() {
 		return x;
 	}
@@ -48,16 +58,6 @@ public class FireBall {
 		this.remove = remove;
 	}
 
-
-	public boolean remove = false;
-	
-	
-	public FireBall(float x, float y) {
-		this.x = x;
-		this.y = y;
-		this.fireHitBox = new HitBox(x, y, WIDTH, HEIGHT);
-	}
-	
 	
 
 }

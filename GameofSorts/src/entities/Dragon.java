@@ -1,5 +1,7 @@
 package entities;
 
+import java.awt.event.KeyEvent;
+
 import hitbox.HitBox;
 
 /**
@@ -18,7 +20,11 @@ public class Dragon {
 	private String range;
 	private Dragon father;
 	private HitBox dragonHitBox;
+<<<<<<< HEAD
 	private int speed;
+=======
+	public int x, dx, y, dy;
+>>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
 	
 	/**
 	 * Constructor for the first dragon.
@@ -36,6 +42,7 @@ public class Dragon {
 		this.resistance = resistance;
 		this.range = range;
 		this.father = null;
+<<<<<<< HEAD
 		this.speed = speed;
 	}
 	
@@ -56,6 +63,33 @@ public class Dragon {
 		this.range = range;
 		this.father = father;
 		this.speed = speed;
+=======
+		x = 1000;
+		y = 250;
+	}
+	
+	public void move() {
+		x = x + dx;
+		y = y + dy;
+		this.mover1();
+	}
+	
+	public void mover1() {
+		dx = -1;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setY(int y) {
+		this.y = y;
+>>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
 	}
 	
 	public int getSpeed() {
@@ -170,12 +204,15 @@ public class Dragon {
 	 * Sets the name of the dragon randomly
 	 */
 	public void setName() {
+		
 		String[] names = new String[] {"Rhaegal", "Viserion", "Drogon", "Errol", "Faranth", "Firnen", "Glaedr", 
 				"Saphira", "Slathborg", "Thorn", "Eldrax", "Balerion", "Chrysophylax", "Ancalagon", "Aithusa", 
 				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna", 
 				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless", 
-				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl"};
-		int num = (int) (Math.random() * 34) +1;
+				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl","Hearkon", "Aatrox", "Rek'Sai", "Vel'Koz", 
+				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath", "Malp'Harido", ""};
+		
+		int num = (int) (Math.random() * names.length-1);
 		setName(names[num]);
 	}
 	
