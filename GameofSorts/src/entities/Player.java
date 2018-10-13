@@ -11,6 +11,7 @@ public class Player {
 	ImageIcon i = new ImageIcon("Peter_Griffin.png");
 	ImageIcon l = new ImageIcon("Peter_Griffin_Left.png");
 	
+	
 	public Player() {
 
 		peter = i.getImage();

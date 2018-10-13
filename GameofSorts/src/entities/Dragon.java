@@ -18,6 +18,7 @@ public class Dragon {
 	private String range;
 	private Dragon father;
 	private HitBox dragonHitBox;
+	private int speed;
 	
 	/**
 	 * Constructor for the first dragon.
@@ -28,13 +29,14 @@ public class Dragon {
 	 * @param range
 	 * @param father
 	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range) {
+	public Dragon(int reloadingTime, int age, int resistance, String range, int speed) {
 		setName();
 		this.reloadingTime = reloadingTime;
 		this.age = age;
 		this.resistance = resistance;
 		this.range = range;
 		this.father = null;
+		this.speed = speed;
 	}
 	
 	/**
@@ -46,18 +48,31 @@ public class Dragon {
 	 * @param range
 	 * @param father
 	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, Dragon father) {
+	public Dragon(int reloadingTime, int age, int resistance, String range, int speed, Dragon father) {
 		setName();
 		this.reloadingTime = reloadingTime;
 		this.age = age;
 		this.resistance = resistance;
 		this.range = range;
 		this.father = father;
+		this.speed = speed;
 	}
-
+	
+	public int getSpeed() {
+		return speed;
+	}
+	
 	/**
-	 * Returns the name of the dragon.
-	 * @return name
+	 * Sets the speed of the dragon
+	 * @param speed
+	 */
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	/**
+	 * Returns the speed of the dragon.
+	 * @return speed
 	 */
 	public String getName() {
 		return name;
