@@ -25,7 +25,8 @@ public class Dragon {
 //=======
 	public int x, dx, y, dy;
 //>>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
-	
+	public static int numeroPadre;
+	public static int numeroDragon;
 	/**
 	 * Constructor for the first dragon.
 	 * @param name
