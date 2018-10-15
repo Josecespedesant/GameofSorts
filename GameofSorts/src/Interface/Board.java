@@ -63,10 +63,10 @@ public class Board extends JPanel implements ActionListener{
 		
 		//pinta los dragones (todavia no sirve)
 		for (int i=0; i<=550; i+=50) {
-			//g.fillRect(d.getX(), d.getY()+i, 25, 25);
+		g.fillRect(d.getX(), d.getY()+i, 25, 25);
 			if (d.getY()+i == 250) {
 				for (int l=0; l==2; ++l) {
-				//g.fillRect(d.getX()+100, d.getY()+i-250, 25, 25);
+				g.fillRect(d.getX()+100, d.getY()+i-250, 25, 25);
 				}
 			} if (d.getY()+i == 400) {
 				

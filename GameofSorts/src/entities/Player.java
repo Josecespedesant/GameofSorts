@@ -1,20 +1,33 @@
 package entities;
 
-import java.awt.FileDialog;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.applet.Applet;
 
 import javax.swing.ImageIcon;
 
-public class Player {
+import hitbox.HitBox;
 
+/**
+ * Declatation of the class Player
+ * @author Sing
+ *
+ */
+public class Player {
+	/**
+	 * Attributes of the class Player.
+	 */
 	public int x, dx, y, dy, nx, nx2;
 	Image griph;
 	String[] images = {"griph","griph2","griph3"};
-	private int totalPictures = 0;
+	HitBox hitbox = new HitBox(x, y, 200, 200);
 	
+<<<<<<< HEAD
+	/**
+	 * Constructor of the class Player.
+	 */
+=======
 	
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
 	public Player() {
 		griph = null;
 		x = 10;
@@ -24,6 +37,10 @@ public class Player {
 		init();
 	}
 	
+	/**
+	 * TODO
+	 * Selects the image of the player.
+	 */
 	public void init() {
 		for(int i = 0; i < 3; i++) {
 			String imageText = null;
@@ -35,41 +52,77 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Allows the movement of the player.
+	 */
 	public void move() {
 		x = x + dx;
 		y = y + dy;
+		hitbox.move(x, y);
+		
 	}
 
+	/**
+	 * Returns the X position of the player.
+	 * @return x
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * Returns the Y position of the player.
+	 * @return y
+	 */
 	public int getY() {
 		return y;
 	}
 	
+	/**
+	 * Returns the image of the player
+	 * @return griph
+	 */
 	public Image getImage() {
 		return griph;
 	}
 	
+	/**
+	 * Management of the key events when they're pressed.
+	 * @param e
+	 */
 	public void KeyPressed(KeyEvent e) {
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) { 
-			dx = -2;
+			dx = -3;
+			
+			
 			//peter = l.getImage();
 		}
 		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
-			dx = +1;
+			dx = +3;
+			
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
-			dy = -1;
+			dy = -3;
+			
 		}
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
-			dy = 1;
+			dy = 3;
+			
 		}
+		/*
+		if(key == KeyEvent.VK_SPACE) {
+			//No funciona pero se supone que es para crear las bolas de fuego
+			FireBall fire = new FireBall(x, y);
+		}
+		*/
 	}
 	
+	/**
+	 * Management of the key events when they're released.
+	 * @param e
+	 */
 	public void KeyReleased(KeyEvent e) {
 		//movimiento cuando una tecla se deja de presioanar
 		int key = e.getKeyCode();

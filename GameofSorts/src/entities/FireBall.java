@@ -1,5 +1,9 @@
 package entities;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import hitbox.HitBox;
 
 public class FireBall {
@@ -10,13 +14,26 @@ public class FireBall {
 	float x, y;
 	private HitBox fireHitBox;
 	public boolean remove = false;
+	Image fire;
 	
 	public FireBall(float x, float y) {
 		this.x = x;
 		this.y = y;
 		this.fireHitBox = new HitBox(x, y, WIDTH, HEIGHT);
+		ImageIcon image = new ImageIcon("Peter_Griffin.png");
+		fire = image.getImage();
 	}
 	
+	
+	public void move() {
+		while(x!=100) {
+			x+=1;
+		}
+	}
+	
+	public Image getImage() {
+		return fire;
+	}
 	
 	
 	public float getX() {
