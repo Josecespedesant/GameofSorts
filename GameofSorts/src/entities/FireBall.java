@@ -1,12 +1,8 @@
 package entities;
 
-<<<<<<< HEAD
 import tools.HitBox;
-
-=======
 import java.awt.*;
 import javax.swing.ImageIcon;
->>>>>>> refs/remotes/origin/master
 public class FireBall {
 	int x, y;
 	Image img;
