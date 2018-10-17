@@ -1,74 +1,116 @@
 package entities;
 
-import java.awt.FileDialog;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
-import java.applet.Applet;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class Player {
+import hitbox.HitBox;
 
+/**
+ * Declatation of the class Player
+ * @author Sing
+ *
+ */
+public class Player {
+	/**
+	 * Attributes of the class Player.
+	 */
 	public int x, dx, y, dy, nx, nx2;
-	Image griph;
-	String[] images = {"griph","griph2","griph3"};
-	private int totalPictures = 0;
+	Image img;
+	String[] images = {"griph1","griph2","griph3"};
+	HitBox hitbox = new HitBox(x, y, 200, 200);
+	static ArrayList<FireBall> fireballs;
 	
+	/**
+	 * Constructor of the class Player.
+	 */
+
 	public Player() {
-		griph = null;
 		x = 10;
 		y = 350;
 		nx = 0;
 		nx2 = 1266;
-		init();
+		fireballs = new ArrayList<>();
+		ImageIcon image = new ImageIcon("griph1.png");
+		img = image.getImage();
+	}
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,200,200);
 	}
 	
-	public void init() {
-		for(int i = 0; i < 3; i++) {
-			String imageText = null;
-			imageText = images[i]+".png";
-			ImageIcon image = new ImageIcon(imageText);
-			if(imageText != null) {
-				griph = image.getImage();
-			}
-		}
-	}
 	
+	public static ArrayList getFireballs() {
+		return fireballs;
+	}
+	public void fire() {
+		FireBall fire = new FireBall(x, y);
+		fireballs.add(fire);
+	}
+
+	/**
+	 * Allows the movement of the player.
+	 */
 	public void move() {
 		x = x + dx;
 		y = y + dy;
+		hitbox.move(x, y);
 	}
 
+	/**
+	 * Returns the X position of the player.
+	 * @return x
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * Returns the Y position of the player.
+	 * @return y
+	 */
 	public int getY() {
 		return y;
 	}
 	
+	/**
+	 * Returns the image of the player
+	 * @return griph
+	 */
 	public Image getImage() {
-		return griph;
+		return img;
 	}
 	
+	/**
+	 * Management of the key events when they're pressed.
+	 * @param e
+	 */
 	public void KeyPressed(KeyEvent e) {
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) { 
-			dx = -2;
-			//peter = l.getImage();
+			dx = -3;
 		}
 		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
-			dx = +1;
+			dx = +3;
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
-			dy = -1;
+			dy = -3;
 		}
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
-			dy = 1;
+			dy = 3;
+		}
+		if(key == KeyEvent.VK_SPACE) {
+			fire();
 		}
 	}
 	
+	/**
+	 * Management of the key events when they're released.
+	 * @param e
+	 */
 	public void KeyReleased(KeyEvent e) {
 		//movimiento cuando una tecla se deja de presioanar
 		int key = e.getKeyCode();
@@ -83,6 +125,4 @@ public class Player {
 			dy = 0;
 			dx = -1;
 	}
-
-	
 }
