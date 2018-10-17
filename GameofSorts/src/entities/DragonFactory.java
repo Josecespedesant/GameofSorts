@@ -1,10 +1,13 @@
 package entities;
 
-public abstract class DragonFactory {
+public class DragonFactory implements DragonFactoryMethod{
 
-	public static void main(String[] args) {
-		
-
+	@Override
+	public Dragon createDragon(int reloadingTime, int age, int resistance, String range, Dragon father) {
+		return new Dragon(reloadingTime,  age,  resistance,  range, father);
 	}
+	
+	
+	
 
 }

@@ -6,10 +6,11 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.imageio.stream.ImageInputStream;
 import javax.swing.*;
 
 import entities.Dragon;
+import entities.DragonFactory;
+import entities.DragonFactoryMethod;
 import entities.FireBall;
 import entities.Player;
 
@@ -36,19 +37,19 @@ public class Board extends JPanel implements ActionListener{
 		d10 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,2050, 250+300);
 
 		/* hay que hacer un metodo para no crear cada instancia a pie
-		ArrayList dragons = new ArrayList<>();
-		for (int i=0; i ==10; i++) {
-			d = new Dragon(1, 1, 1, "ak7",1,1400,284);
-			dragons.add(d);
-		}
-		*/
+  ArrayList dragons = new ArrayList<>();
+  for (int i=0; i ==10; i++) {
+   d = new Dragon(1, 1, 1, "ak7",1,1400,284);
+   dragons.add(d);
+  }
+		 */
 		addKeyListener(new AL());
 		setFocusable(true);
-		
+
 		// imagen fondo
-		ImageIcon g = new ImageIcon("GoSBG.jpeg");	
+		ImageIcon g = new ImageIcon("GoSBG.jpeg"); 
 		img = g.getImage();
-			
+
 		time = new Timer(5, this);
 		time.start();
 		nx = 0;
@@ -56,6 +57,26 @@ public class Board extends JPanel implements ActionListener{
 
 	}
 
+	/**
+	 * Creates the wave
+	 */
+	public void createWave() {
+		DragonFactoryMethod factory = new DragonFactory();
+		//Crea al dragon padre
+		Dragon drFather = factory.createDragon(1, 4000, 3, "Comandant", null);
+		//Crea los capitanes
+		Dragon d2 = factory.createDragon(2, 2000, 2, "Captain", drFather);
+		Dragon d3 = factory.createDragon(2, 2000, 2, "Captain", drFather);
+		Dragon d4 = factory.createDragon(2, 2000, 2, "Captain", drFather);
+		Dragon d5 = factory.createDragon(2, 2000, 2, "Captain", drFather);
+		//Crea los de infanteria
+		Dragon d6 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
+		Dragon d7 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
+		Dragon d8 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
+		Dragon d9 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
+		Dragon d10 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//llama a los metodos que permiten que el jugador y dragones se puedan mover. Y repinta cada Graphic
@@ -64,7 +85,7 @@ public class Board extends JPanel implements ActionListener{
 		for (int i=0; i < fireballs.size(); i++) {
 			FireBall fb = (FireBall) fireballs.get(i);
 			if(fb.getVisible()) {
-			fb.move();
+				fb.move();
 			} else {
 				fireballs.remove(i);
 			}
@@ -82,7 +103,7 @@ public class Board extends JPanel implements ActionListener{
 		d10.move();
 		repaint();
 	}
-	
+
 	public void colison() {
 		Rectangle dr = d.getBounds(); 
 		Rectangle dr1 = d2.getBounds();
@@ -93,7 +114,7 @@ public class Board extends JPanel implements ActionListener{
 			if(dr.intersects(fb1) && d.isAlive()) {
 				d.alive = false;
 				fb.visible = false;
-				
+
 			} else if (dr1.intersects(fb1) && d2.isAlive()) {
 				d2.alive = false;
 				fb.visible = false;
@@ -103,12 +124,12 @@ public class Board extends JPanel implements ActionListener{
 		if(grif.intersects(dr) || grif.intersects(dr1)) {
 			//colision entre jugador y dragon
 		}
-		
+
 	}
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		
+
 		//movimiento de la imagen del fondo
 		nx--;
 		nx2--;
@@ -120,15 +141,10 @@ public class Board extends JPanel implements ActionListener{
 			nx =0;
 			nx2 = 1266;
 		}
-		
 
-		 //pinta al grifo (peter)
-		
-
-		 //pinta al grifo
+		//pinta al grifo
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
-		
-		
+
 		//pinta dragones si es que estan vivos
 		if (d.alive)
 			g2d.drawImage(d.getImage(), d.getX(), d.getY(), null);
@@ -142,20 +158,24 @@ public class Board extends JPanel implements ActionListener{
 		g2d.drawImage(d8.getImage(), d8.getX(), d8.getY(), null);
 		g2d.drawImage(d9.getImage(), d9.getX(), d9.getY(), null);
 		g2d.drawImage(d10.getImage(), d10.getX(), d10.getY(), null);
-		
+
 		ArrayList fireballs = Player.getFireballs();
-		for (int i=0; i < fireballs.size(); i++) {
+		for (
+				int i=0; i < fireballs.size(); i++) {
 			FireBall fb = (FireBall) fireballs.get(i);
 			g2d.drawImage(fb.getImage(), fb.getX(), fb.getY(), null);
 		}
 	}
+
+	
+	
 	
 	private class AL extends KeyAdapter{
 		//llama a los metodos para que las teclas se puedan usar
 		public void keyReleased(KeyEvent e) {
 			p.KeyReleased(e);
 		}
-	
+
 		public void keyPressed(KeyEvent e) {
 			p.KeyPressed(e);
 		}
