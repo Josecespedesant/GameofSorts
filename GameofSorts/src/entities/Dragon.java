@@ -1,5 +1,10 @@
 package entities;
 
+import java.awt.Image;
+import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
+
 import hitbox.HitBox;
 
 /**
@@ -18,13 +23,13 @@ public class Dragon {
 	private String range;
 	private Dragon father;
 	private HitBox dragonHitBox;
-//<<<<<<< HEAD
 	private int speed;
-//=======
-	public int x, dx, y, dy;
-//>>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
 	public static int numeroPadre;
 	public static int numeroDragon;
+	public int x, dx, y, dy;
+	public boolean alive = true;
+	Image img;
+
 	/**
 	 * Constructor for the first dragon.
 	 * @param name
@@ -33,15 +38,19 @@ public class Dragon {
 	 * @param resistance
 	 * @param range
 	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, int speed) {
+	public Dragon(int reloadingTime, int age, int resistance, String range, int speed, int startX, int startY) {
 		setName();
 		this.reloadingTime = reloadingTime;
 		this.age = age;
 		this.resistance = resistance;
 		this.range = range;
 		this.father = null;
-//<<<<<<< HEAD
 		this.speed = speed;
+		
+		x = startX;
+		y = startY;
+		ImageIcon dg = new ImageIcon("dragon.gif");
+		img = dg.getImage();
 	}
 	
 	/**
@@ -53,7 +62,7 @@ public class Dragon {
 	 * @param range
 	 * @param father
 	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, int speed, Dragon father) {
+	public Dragon(int reloadingTime, int age, int resistance, String range, int speed, Dragon father, int startX, int startY) {
 		setName();
 		this.reloadingTime = reloadingTime;
 		this.age = age;
@@ -61,9 +70,8 @@ public class Dragon {
 		this.range = range;
 		this.father = father;
 		this.speed = speed;
-//=======
-		x = 1000;
-		y = 250;
+		x = startX;
+		y = startY;
 	}
 	
 	/**
@@ -84,6 +92,11 @@ public class Dragon {
 		x = 1000;
 		y = 250;
 	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,256,256);
+	}
+	
 	
 	/**
 	 * Sets the name of the dragon randomly
@@ -133,6 +146,9 @@ public class Dragon {
 		return y;
 	}
 	
+	public Image getImage() {
+		return img;
+	}
 	/**
 	 * Sets de X position of the Dragon.
 	 * @param x
@@ -147,7 +163,10 @@ public class Dragon {
 	 */
 	public void setY(int y) {
 		this.y = y;
-//>>>>>>> 1f198f2172f4662eb0bf6a699e3531582a4d3f28
+	}
+	
+	public boolean isAlive() {
+		return alive;
 	}
 	
 	public int getSpeed() {
