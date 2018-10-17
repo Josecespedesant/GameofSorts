@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+import javax.imageio.stream.ImageInputStream;
 import javax.swing.*;
 
 import entities.Dragon;
@@ -96,7 +97,9 @@ public class Board extends JPanel implements ActionListener{
 		}
 		
 		 //pinta al grifo (peter)
+		
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
+		
 		
 		//pinta dragones si es que estan vivos
 		if (d.alive)
