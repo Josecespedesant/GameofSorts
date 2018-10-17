@@ -2,7 +2,7 @@ package entities;
 
 import java.awt.event.KeyEvent;
 
-import hitbox.HitBox;
+import tools.HitBox;
 
 /**
  * Declaration of the class Dragon.

@@ -1,6 +1,6 @@
 package entities;
 
-import hitbox.HitBox;
+import tools.HitBox;
 
 public class FireBall {
 	

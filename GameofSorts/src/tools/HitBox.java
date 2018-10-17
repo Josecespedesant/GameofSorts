@@ -1,4 +1,4 @@
-package hitbox;
+package tools;
 
 /**
  * Declaration of the class HitBox..
