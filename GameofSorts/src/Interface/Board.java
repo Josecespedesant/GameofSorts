@@ -63,18 +63,18 @@ public class Board extends JPanel implements ActionListener{
 	public void createWave() {
 		DragonFactoryMethod factory = new DragonFactory();
 		//Crea al dragon padre
-		Dragon drFather = factory.createDragon(1, 4000, 3, "Comandant", null);
+		d = factory.createDragon(1, 4000, 3, "Comandant", null);
 		//Crea los capitanes
-		Dragon d2 = factory.createDragon(2, 2000, 2, "Captain", drFather);
-		Dragon d3 = factory.createDragon(2, 2000, 2, "Captain", drFather);
-		Dragon d4 = factory.createDragon(2, 2000, 2, "Captain", drFather);
-		Dragon d5 = factory.createDragon(2, 2000, 2, "Captain", drFather);
+		d2 = factory.createDragon(2, 2000, 2, "Captain", d);
+		d3 = factory.createDragon(2, 2000, 2, "Captain", d);
+		d4 = factory.createDragon(2, 2000, 2, "Captain", d);
+		d5 = factory.createDragon(2, 2000, 2, "Captain", d);
 		//Crea los de infanteria
-		Dragon d6 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
-		Dragon d7 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
-		Dragon d8 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
-		Dragon d9 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
-		Dragon d10 = factory.createDragon(3, 1000, 1, "Infantry", drFather);
+		d6 = factory.createDragon(3, 1000, 1, "Infantry", d);
+		d7 = factory.createDragon(3, 1000, 1, "Infantry", d);
+		d8 = factory.createDragon(3, 1000, 1, "Infantry", d);
+		d9 = factory.createDragon(3, 1000, 1, "Infantry", d);
+		d10 = factory.createDragon(3, 1000, 1, "Infantry", d);
 	}
 	
 	@Override
