@@ -25,16 +25,8 @@ public class Board extends JPanel implements ActionListener{
 	public Board() {
 		randomAge = new Random().nextInt(1000);
 		p = new Player(); //jugador
-		d = new Dragon(relodingTime, randomAge, resistance, "ak7+1", speed,1400,250); //dragones
-		d2 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,1600, 250-100);
-		d3 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,1600, 250+100);
-		d4 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,1850, 250-200);
-		d5 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,1850, 250+0);
-		d6 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,1850, 250+200);
-		d7 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,2050, 250-300);
-		d8 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,2050, 250-100);
-		d9 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,2050, 250+100);
-		d10 = new Dragon(relodingTime, randomAge, resistance, "ak7+1",speed ,2050, 250+300);
+		createWave();
+		
 
 		/* hay que hacer un metodo para no crear cada instancia a pie
   ArrayList dragons = new ArrayList<>();
@@ -54,7 +46,6 @@ public class Board extends JPanel implements ActionListener{
 		time.start();
 		nx = 0;
 		nx2 = 1266;
-
 	}
 
 	/**
@@ -63,18 +54,32 @@ public class Board extends JPanel implements ActionListener{
 	public void createWave() {
 		DragonFactoryMethod factory = new DragonFactory();
 		//Crea al dragon padre
-		d = factory.createDragon(1, 4000, 3, "Comandant", null);
+		d = factory.createDragon(1, 4000, 3, "Comandant", null, 3,1400,250);
 		//Crea los capitanes
-		d2 = factory.createDragon(2, 2000, 2, "Captain", d);
-		d3 = factory.createDragon(2, 2000, 2, "Captain", d);
-		d4 = factory.createDragon(2, 2000, 2, "Captain", d);
-		d5 = factory.createDragon(2, 2000, 2, "Captain", d);
+		d2 = factory.createDragon(2, 2000, 2, "Captain", d,3,1600, 250-100);
+		d3 = factory.createDragon(2, 2000, 2, "Captain", d,3,1600, 250+100);
+		d4 = factory.createDragon(2, 2000, 2, "Captain", d,3,1850, 250-200);
+		d5 = factory.createDragon(2, 2000, 2, "Captain", d,3,1850, 250+0);
 		//Crea los de infanteria
-		d6 = factory.createDragon(3, 1000, 1, "Infantry", d);
-		d7 = factory.createDragon(3, 1000, 1, "Infantry", d);
-		d8 = factory.createDragon(3, 1000, 1, "Infantry", d);
-		d9 = factory.createDragon(3, 1000, 1, "Infantry", d);
-		d10 = factory.createDragon(3, 1000, 1, "Infantry", d);
+		d6 = factory.createDragon(3, 1000, 1, "Infantry", d,3,1850, 250+200);
+		d7 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250-300);
+		d8 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250-100);
+		d9 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250+100);
+		d10 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250+300);
+	}
+	
+	public void moveAllTheDragons() {
+		p.move();
+		d.move();
+		d2.move();
+		d3.move();
+		d4.move();
+		d5.move();
+		d6.move();
+		d7.move();
+		d8.move();
+		d9.move();
+		d10.move();
 	}
 	
 	@Override
@@ -90,24 +95,14 @@ public class Board extends JPanel implements ActionListener{
 				fireballs.remove(i);
 			}
 		}
-		p.move();
-		d.move();
-		d2.move();
-		d3.move();
-		d4.move();
-		d5.move();
-		d6.move();
-		d7.move();
-		d8.move();
-		d9.move();
-		d10.move();
+		moveAllTheDragons();
 		repaint();
 	}
 
 	public void colison() {
 		Rectangle dr = d.getBounds(); 
 		Rectangle dr1 = d2.getBounds();
-		ArrayList fireballs = Player.getFireballs();
+		ArrayList<FireBall> fireballs = Player.getFireballs();
 		for (int i=0; i < fireballs.size(); i++) {
 			FireBall fb = (FireBall) fireballs.get(i);
 			Rectangle fb1 = fb.getBounds();

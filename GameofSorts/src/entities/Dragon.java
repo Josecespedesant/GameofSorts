@@ -31,14 +31,14 @@ public class Dragon {
 	Image img;
 
 	/**
-	 * Constructor for the first dragon.
+	 * Constructor for the dragon.
 	 * @param name
 	 * @param reloadingTime
 	 * @param age
 	 * @param resistance
 	 * @param range
 	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, int speed, int startX, int startY) {
+	public Dragon(int reloadingTime, int age, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
 		setName();
 		this.reloadingTime = reloadingTime;
 		this.age = age;
@@ -51,46 +51,6 @@ public class Dragon {
 		y = startY;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
-	}
-	
-	/**
-	 * Constructor of the class Dragon.
-	 * @param name
-	 * @param reloadingTime
-	 * @param age
-	 * @param resistance
-	 * @param range
-	 * @param father
-	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, int speed, Dragon father, int startX, int startY) {
-		setName();
-		this.reloadingTime = reloadingTime;
-		this.age = age;
-		this.resistance = resistance;
-		this.range = range;
-		this.father = father;
-		this.speed = speed;
-		x = startX;
-		y = startY;
-	}
-	
-	/**
-	 * Constructor for the other dragons.
-	 * @param reloadingTime
-	 * @param age
-	 * @param resistance
-	 * @param range
-	 * @param father
-	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, Dragon father) {
-		setName();
-		this.reloadingTime = reloadingTime;
-		this.age = age;
-		this.resistance = resistance;
-		this.range = range;
-		this.father = father;
-		x = 1000;
-		y = 250;
 	}
 	
 	public Rectangle getBounds() {
