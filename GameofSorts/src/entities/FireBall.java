@@ -1,5 +1,6 @@
 package entities;
 
+import tools.HitBox;
 import java.awt.*;
 import javax.swing.ImageIcon;
 public class FireBall {

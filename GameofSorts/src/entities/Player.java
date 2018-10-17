@@ -6,8 +6,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-
-import hitbox.HitBox;
+import tools.HitBox;
 
 /**
  * Declatation of the class Player

@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-import hitbox.HitBox;
+import tools.HitBox;
 
 /**
  * Declaration of the class Dragon.
