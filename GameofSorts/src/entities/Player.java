@@ -18,8 +18,11 @@ public class Player {
 	 * Attributes of the class Player.
 	 */
 	public int x, dx, y, dy, nx, nx2;
-	private Image img;
+
+
 	private String[] images = {"griph1","griph2","griph3"};
+
+	Image img;
 	HitBox hitbox = new HitBox(x, y, 200, 200);
 	static ArrayList<FireBall> fireballs;
 	
@@ -33,7 +36,7 @@ public class Player {
 		nx = 0;
 		nx2 = 1266;
 		fireballs = new ArrayList<>();
-		ImageIcon image = new ImageIcon("griph1.png");
+		ImageIcon image = new ImageIcon("griph.gif");
 		img = image.getImage();
 	}
 
