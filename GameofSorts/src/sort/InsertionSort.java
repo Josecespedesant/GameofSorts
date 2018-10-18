@@ -7,7 +7,8 @@ public class InsertionSort {
     {  
         for (int i=0; i<oleada.length; ++i) 
         {         
-            int j = i-1; 
+            int j = i-1;
+//            temporal
             Dragon temp;
             
 //          Si la edad de un dragon es mayor a la edad del siguiente dragon en la lista, se intercambian

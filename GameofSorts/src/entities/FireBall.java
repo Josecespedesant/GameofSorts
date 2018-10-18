@@ -1,80 +1,45 @@
 package entities;
 
-import java.awt.Image;
-
+import tools.HitBox;
+import java.awt.*;
 import javax.swing.ImageIcon;
-
-import hitbox.HitBox;
-
 public class FireBall {
+	int x, y;
+	Image img;
+	public boolean visible = true;
 	
-	public static final int SPEED = 500;
-	public static final int WIDTH = 5;
-	public static final int HEIGHT = 6;
-	float x, y;
-	private HitBox fireHitBox;
-	public boolean remove = false;
-	Image fire;
-	
-	public FireBall(float x, float y) {
-		this.x = x;
-		this.y = y;
-		this.fireHitBox = new HitBox(x, y, WIDTH, HEIGHT);
-		ImageIcon image = new ImageIcon("Peter_Griffin.png");
-		fire = image.getImage();
+	public FireBall(int startX, int startY) {
+		x = startX;
+		y = startY;
+		ImageIcon fireball = new ImageIcon("fireball.gif");
+		img = fireball.getImage();
+		visible = true;
 	}
 	
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,256,256);
+	}
 	
 	public void move() {
-		while(x!=100) {
-			x+=1;
+		x = x + 3;
+		if (x > 1280) {
+			visible = false;
 		}
 	}
-	
-	public Image getImage() {
-		return fire;
-	}
-	
-	
-	public float getX() {
+
+	public int getX() {
 		return x;
 	}
 
-
-	public void setX(float x) {
-		this.x = x;
-	}
-
-
-	public float getY() {
+	public int getY() {
 		return y;
 	}
-
-
-	public void setY(float y) {
-		this.y = y;
-	}
-
-
-	public HitBox getFireHitBox() {
-		return fireHitBox;
-	}
-
-
-	public void setFireHitBox(HitBox fireHitBox) {
-		this.fireHitBox = fireHitBox;
-	}
-
-
-	public boolean isRemove() {
-		return remove;
-	}
-
-
-	public void setRemove(boolean remove) {
-		this.remove = remove;
-	}
-
 	
-
+	public Image getImage() {
+		return img;
+	}
+	
+	public boolean getVisible() {
+		return visible;
+	}
 }

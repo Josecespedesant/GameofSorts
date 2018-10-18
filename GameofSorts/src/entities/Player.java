@@ -1,11 +1,12 @@
 package entities;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-
-import hitbox.HitBox;
+import tools.HitBox;
 
 /**
  * Declatation of the class Player
@@ -17,35 +18,47 @@ public class Player {
 	 * Attributes of the class Player.
 	 */
 	public int x, dx, y, dy, nx, nx2;
-	Image griph;
-	String[] images = {"griph","griph2","griph3"};
+
+
+	private String[] images = {"griph1","griph2","griph3"};
+
+	Image img;
 	HitBox hitbox = new HitBox(x, y, 200, 200);
+<<<<<<< HEAD
 	FireBall fire = new FireBall(x, y);
+=======
+	static ArrayList<FireBall> fireballs;
+	
+	/**
+	 * Constructor of the class Player.
+	 */
+>>>>>>> refs/remotes/origin/master
 
 	public Player() {
-		griph = null;
 		x = 10;
 		y = 350;
 		nx = 0;
 		nx2 = 1266;
-		init();
+		fireballs = new ArrayList<>();
+		ImageIcon image = new ImageIcon("griph.gif");
+		img = image.getImage();
+	}
+
+
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,200,200);
 	}
 	
-	/**
-	 * TODO
-	 * Selects the image of the player.
-	 */
-	public void init() {
-		for(int i = 0; i < 3; i++) {
-			String imageText = null;
-			imageText = images[i]+".png";
-			ImageIcon image = new ImageIcon(imageText);
-			if(imageText != null) {
-				griph = image.getImage();
-			}
-		}
+	
+	public static ArrayList getFireballs() {
+		return fireballs;
 	}
 	
+	public void fire() {
+		FireBall fire = new FireBall(x, y);
+		fireballs.add(fire);
+	}
+
 	/**
 	 * Allows the movement of the player.
 	 */
@@ -76,7 +89,7 @@ public class Player {
 	 * @return griph
 	 */
 	public Image getImage() {
-		return griph;
+		return img;
 	}
 	
 	/**
@@ -88,30 +101,34 @@ public class Player {
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) { 
 			dx = -3;
-			
-			
-			//peter = l.getImage();
 		}
 		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
 			dx = +3;
-			
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
 			dy = -3;
-			
 		}
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
 			dy = 3;
-			
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 		if(key == KeyEvent.VK_SPACE) {
+<<<<<<< HEAD
 			
 			do {
 				fire.move();
 			} while (fire.getX()!=1000);
+=======
+			fire();
+>>>>>>> refs/remotes/origin/master
 		}
+<<<<<<< HEAD
 		
+=======
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	/**
@@ -132,6 +149,4 @@ public class Player {
 			dy = 0;
 			dx = -1;
 	}
-
-	
 }
