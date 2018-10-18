@@ -20,14 +20,8 @@ public class Player {
 	Image griph;
 	String[] images = {"griph","griph2","griph3"};
 	HitBox hitbox = new HitBox(x, y, 200, 200);
-	
-<<<<<<< HEAD
-	/**
-	 * Constructor of the class Player.
-	 */
-=======
-	
->>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
+	FireBall fire = new FireBall(x, y);
+
 	public Player() {
 		griph = null;
 		x = 10;
@@ -59,7 +53,6 @@ public class Player {
 		x = x + dx;
 		y = y + dy;
 		hitbox.move(x, y);
-		
 	}
 
 	/**
@@ -111,12 +104,14 @@ public class Player {
 			dy = 3;
 			
 		}
-		/*
+
 		if(key == KeyEvent.VK_SPACE) {
-			//No funciona pero se supone que es para crear las bolas de fuego
-			FireBall fire = new FireBall(x, y);
+			
+			do {
+				fire.move();
+			} while (fire.getX()!=1000);
 		}
-		*/
+		
 	}
 	
 	/**
