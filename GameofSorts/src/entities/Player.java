@@ -19,9 +19,6 @@ public class Player {
 	 */
 	public int x, dx, y, dy, nx, nx2;
 
-
-	private String[] images = {"griph1","griph2","griph3"};
-
 	Image img;
 	HitBox hitbox = new HitBox(x, y, 200, 200);
 	static ArrayList<FireBall> fireballs;
