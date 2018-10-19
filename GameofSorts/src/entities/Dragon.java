@@ -53,6 +53,7 @@ public class Dragon {
 		y = startY;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
+		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
 	public Rectangle getBounds() {
@@ -70,7 +71,7 @@ public class Dragon {
 				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna", 
 				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless", 
 				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl","Hearkon", "Aatrox", "Rek'Sai", "Vel'Koz", 
-				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath", "Malp'Harido"};
+				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath"};
 		
 		int num = (int) (Math.random() * names.length-1);
 		setName(names[num]);
@@ -82,6 +83,7 @@ public class Dragon {
 	public void move() {
 		x = x + dx;
 		y = y + dy;
+		dragonHitBox.move(x,y);
 		this.moveLeft();
 	}
 	

@@ -24,15 +24,12 @@ public class Player {
 
 	Image img;
 	HitBox hitbox = new HitBox(x, y, 200, 200);
-<<<<<<< HEAD
 	FireBall fire = new FireBall(x, y);
-=======
 	static ArrayList<FireBall> fireballs;
 	
 	/**
 	 * Constructor of the class Player.
 	 */
->>>>>>> refs/remotes/origin/master
 
 	public Player() {
 		x = 10;
@@ -111,24 +108,9 @@ public class Player {
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
 			dy = 3;
 		}
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/master
 		if(key == KeyEvent.VK_SPACE) {
-<<<<<<< HEAD
-			
-			do {
-				fire.move();
-			} while (fire.getX()!=1000);
-=======
 			fire();
->>>>>>> refs/remotes/origin/master
 		}
-<<<<<<< HEAD
-		
-=======
->>>>>>> refs/remotes/origin/master
 	}
 	
 	/**
