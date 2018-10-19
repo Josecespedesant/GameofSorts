@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+
+import linkedlist.SimpleLinkedList;
 import tools.HitBox;
 
 /**
@@ -22,7 +24,7 @@ public class Player {
 	Image img;
 	HitBox hitbox = new HitBox(x, y, 200, 200);
 	FireBall fire = new FireBall(x, y);
-	static ArrayList<FireBall> fireballs;
+	static SimpleLinkedList fireballs;
 	
 	/**
 	 * Constructor of the class Player.
@@ -33,7 +35,7 @@ public class Player {
 		y = 350;
 		nx = 0;
 		nx2 = 1266;
-		fireballs = new ArrayList<>();
+		fireballs = new SimpleLinkedList<FireBall>();
 		ImageIcon image = new ImageIcon("griph.gif");
 		img = image.getImage();
 	}
@@ -44,13 +46,13 @@ public class Player {
 	}
 	
 	
-	public static ArrayList getFireballs() {
+	public static SimpleLinkedList getFireballs() {
 		return fireballs;
 	}
 	
 	public void fire() {
 		FireBall fire = new FireBall(x, y);
-		fireballs.add(fire);
+		fireballs.addLast(fire);
 	}
 
 	/**

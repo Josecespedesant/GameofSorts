@@ -3,6 +3,7 @@ package entities;
 import java.awt.Button;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,21 +41,21 @@ public class Dragon {
 	 * @param resistance
 	 * @param range
 	 */
-	public Dragon(int reloadingTime, int age, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
+	public Dragon(int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
 		setName();
 		this.reloadingTime = reloadingTime;
-		this.age = age;
 		this.resistance = resistance;
 		this.range = range;
-		this.father = null;
+		this.father = father;
+		setAge();
 		this.speed = speed;
-		
 		x = startX;
 		y = startY;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
-		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
+		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null)-50, img.getHeight(null)-50);
 	}
+	
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x,y,256,256);
@@ -83,7 +84,7 @@ public class Dragon {
 	public void move() {
 		x = x + dx;
 		y = y + dy;
-		dragonHitBox.move(x,y);
+		dragonHitBox.move(x);
 		this.moveLeft();
 	}
 	
@@ -186,11 +187,17 @@ public class Dragon {
 	}
 	
 	/**
-	 * Sets the age of the dragon
+	 * Sets the age of the dragon in a way two dragons doesn't have the same age.
 	 * @param age
 	 */
-	public void setAge(int age) {
-		this.age = age;
+	public void setAge() {
+		if(getFather() == null) {
+			int num = ThreadLocalRandom.current().nextInt(5000, 10000 + 1);
+			this.age = num;
+		}else {
+			int num = ThreadLocalRandom.current().nextInt(100, 4500 + 1);
+			this.age = num;
+		}
 	}
 	
 	/**

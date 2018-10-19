@@ -13,6 +13,7 @@ import entities.DragonFactory;
 import entities.DragonFactoryMethod;
 import entities.FireBall;
 import entities.Player;
+import linkedlist.SimpleLinkedList;
 
 public class Board extends JPanel implements ActionListener, MouseListener{
 	Player p;
@@ -21,14 +22,15 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	Timer time;
 	int nx, nx2;
 	int relodingTime, resistance, speed;
-	int randomAge;
-	static ArrayList<Dragon> dragonsArray;
+	static SimpleLinkedList<Dragon> dragonsArray;
+	static SimpleLinkedList<FireBall> fireballs;
+	
 	
 	public Board() {
-		randomAge = new Random().nextInt(1000);
 		p = new Player(); //jugador
 		createWave();
 		
+		fireballs = p.getFireballs();
 
 		addKeyListener(new AL());
 		setFocusable(true);
@@ -50,65 +52,68 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	public void createWave() {
 		DragonFactoryMethod factory = new DragonFactory();
 		//Crea al dragon padre
-		d = factory.createDragon(1, 4000, 3, "Comandant", null, 3,1400,250);
+		d = factory.createDragon(1, 3, "Comandant", null, 3,1400,250);
 		//Crea los capitanes
-		d2 = factory.createDragon(2, 2000, 2, "Captain", d,3,1600, 250-100);
-		d3 = factory.createDragon(2, 2000, 2, "Captain", d,3,1600, 250+100);
-		d4 = factory.createDragon(2, 2000, 2, "Captain", d,3,1850, 250-200);
-		d5 = factory.createDragon(2, 2000, 2, "Captain", d,3,1850, 250+0);
+		d2 = factory.createDragon(2, 2, "Captain", d,3,1600, 250-100);
+		d3 = factory.createDragon(2, 2, "Captain", d,3,1600, 250+100);
+		d4 = factory.createDragon(2, 2, "Captain", d,3,1850, 250-200);
+		d5 = factory.createDragon(2, 2, "Captain", d,3,1850, 250+0);
 		//Crea los de infanteria
-		d6 = factory.createDragon(3, 1000, 1, "Infantry", d,3,1850, 250+200);
-		d7 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250-300);
-		d8 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250-100);
-		d9 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250+100);
-		d10 = factory.createDragon(3, 1000, 1, "Infantry", d,3,2050, 250+300);
-		dragonsArray = new ArrayList<>();
-		dragonsArray.add(d);
-		dragonsArray.add(d2);
-		dragonsArray.add(d3);
-		dragonsArray.add(d4);
-		dragonsArray.add(d5);
-		dragonsArray.add(d6);
-		dragonsArray.add(d7);
-		dragonsArray.add(d8);
-		dragonsArray.add(d9);
-		dragonsArray.add(d10);
+		d6 = factory.createDragon(3, 1, "Infantry", d,3,1850, 250+200);
+		d7 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250-300);
+		d8 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250-100);
+		d9 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+100);
+		d10 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+300);
+		dragonsArray = new SimpleLinkedList<>();
+		dragonsArray.addLast(d);
+		dragonsArray.addLast(d2);
+		dragonsArray.addLast(d3);
+		dragonsArray.addLast(d4);
+		dragonsArray.addLast(d5);
+		dragonsArray.addLast(d6);
+		dragonsArray.addLast(d7);
+		dragonsArray.addLast(d8);
+		dragonsArray.addLast(d9);
+		dragonsArray.addLast(d10);
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//llama a los metodos que permiten que el jugador y dragones se puedan mover. Y repinta cada Graphic
 		colison();
-		ArrayList fireballs = Player.getFireballs();
-		for (int i=0; i < fireballs.size(); i++) {
-			FireBall fb = (FireBall) fireballs.get(i);
+		
+		for (int i=0; i < fireballs.getLength(); i++) {
+			FireBall fb = fireballs.get(i).getData();
 			if(fb.getVisible()) {
 				fb.move();
 			} else {
-				fireballs.remove(i);
+				fireballs.deleteByElement(fb);
 			}
 		}
 		p.move();
-		for (int i=0; i < dragonsArray.size(); i++) {
-			Dragon dragonList = (Dragon) dragonsArray.get(i);
+		for (int i=0; i < dragonsArray.getLength(); i++) {
+			Dragon dragonList = dragonsArray.get(i).getData();
 			dragonList.move();
 		}
 		repaint();
 	}
 
 	public void colison() {
-		for(int i = 0; i < dragonsArray.size(); i++) {
-			Dragon dtemp = dragonsArray.get(i);
-			ArrayList<FireBall> fireballs = Player.getFireballs();
-			for(int j=0; j < fireballs.size(); j++) {
-				FireBall ftemp = fireballs.get(j);
+		for(int i = 0; i < dragonsArray.getLength(); i++) {
+			Dragon dtemp = dragonsArray.get(i).getData();
+			for(int j=0; j < fireballs.getLength(); j++) {
+				FireBall ftemp = fireballs.get(j).getData();
 				if(dtemp.getDragonHitBox().collidesWith(ftemp.getFireHitBox())) {
 					dtemp.alive = false;
+					dragonsArray.deleteByElement(dtemp);
 					ftemp.visible = false;
-					dragonsArray.remove(dtemp);
 				}
 			}
 		}
+		
+
+	
 
 	}
 	
@@ -128,22 +133,20 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			nx2 = 1266;
 		}
 		
-		
 		//pinta al grifo
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 
 		//pinta dragones si es que estan vivos
-		for (int i=0; i < dragonsArray.size(); i++) {
-			Dragon dragonList = (Dragon) dragonsArray.get(i);
+		for (int i=0; i < dragonsArray.getLength(); i++) {
+			Dragon dragonList =  dragonsArray.get(i).getData();
 			if (dragonList.alive){
 				g2d.drawImage(dragonList.getImage(), dragonList.getX(), dragonList.getY(), null);
 			}
 		}
 		
 		//pinta las bolas de fuego del jugador
-		ArrayList fireballs = Player.getFireballs();
-		for (int i=0; i < fireballs.size(); i++) {
-			FireBall fb = (FireBall) fireballs.get(i);
+		for (int i=0; i < fireballs.getLength(); i++) {
+			FireBall fb = fireballs.get(i).getData();
 			g2d.drawImage(fb.getImage(), fb.getX(), fb.getY(), null);
 		}
 	}
@@ -161,8 +164,8 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		for (int i=0; i < dragonsArray.size(); i++) {
-			Dragon dragonList = (Dragon) dragonsArray.get(i);
+		for (int i=0; i < dragonsArray.getLength(); i++) {
+			Dragon dragonList = dragonsArray.get(i).getData();
 			if(e.getX() >= dragonList.getX() && e.getX() <= dragonList.getX()+dragonList.getImage().getWidth(null) && e.getY() >=dragonList.getY() && e.getY() <= dragonList.getY()+dragonList.getImage().getWidth(null)) {
 				System.out.println("Age:"+dragonList.getAge()+" Name:"+dragonList.getName()+" RT:"+dragonList.getReloadingTime());
 				} 

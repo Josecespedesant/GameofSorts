@@ -1,14 +1,16 @@
 package entities;
 
-import java.util.ArrayList;
+/**
+ * Applying the Factory design pattern.
+ * @author Jose Antonio Cespedes Downing
+ *
+ */
 
 public class DragonFactory implements DragonFactoryMethod{
 	
 	@Override
-	public  Dragon createDragon(int reloadingTime, int age, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
-		return new Dragon(reloadingTime,  age,  resistance,  range, father, speed, startX, startY);
+	public  Dragon createDragon(int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
+		return new Dragon(reloadingTime,  resistance,  range, father, speed, startX, startY);
 	}
-	
-	
 
 }
