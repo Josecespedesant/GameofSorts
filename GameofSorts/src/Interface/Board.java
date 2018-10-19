@@ -23,6 +23,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	int relodingTime, resistance, speed;
 	int randomAge;
 	static ArrayList<Dragon> dragonsArray;
+	
 	public Board() {
 		randomAge = new Random().nextInt(1000);
 		p = new Player(); //jugador
@@ -96,9 +97,8 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	}
 
 	public void colison() {
-		Rectangle dr = d.getBounds(); 
+	/*	Rectangle dr = d.getBounds(); 
 		Rectangle dr1 = d2.getBounds();
-		ArrayList<FireBall> fireballs = Player.getFireballs();
 		for (int i=0; i < fireballs.size(); i++) {
 			FireBall fb = (FireBall) fireballs.get(i);
 			Rectangle fb1 = fb.getBounds();
@@ -114,9 +114,23 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		Rectangle grif = p.getBounds();
 		if(grif.intersects(dr) || grif.intersects(dr1)) {
 			//colision entre jugador y dragon
+		}*/
+		
+		for(int i = 0; i < dragonsArray.size(); i++) {
+			Dragon dtemp = dragonsArray.get(i);
+			ArrayList<FireBall> fireballs = Player.getFireballs();
+			for(int j=0; j < fireballs.size(); j++) {
+				FireBall ftemp = fireballs.get(j);
+				if(dtemp.getDragonHitBox().collidesWith(ftemp.getFireHitBox())) {
+					dtemp.alive = false;
+					ftemp.visible = false;
+					dragonsArray.remove(dtemp);
+				}
+			}
 		}
 
 	}
+	
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -132,7 +146,8 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			nx =0;
 			nx2 = 1266;
 		}
-
+		
+		
 		//pinta al grifo
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 

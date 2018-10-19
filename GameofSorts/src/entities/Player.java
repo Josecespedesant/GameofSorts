@@ -21,6 +21,7 @@ public class Player {
 
 	Image img;
 	HitBox hitbox = new HitBox(x, y, 200, 200);
+	FireBall fire = new FireBall(x, y);
 	static ArrayList<FireBall> fireballs;
 	
 	/**
