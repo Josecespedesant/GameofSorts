@@ -97,25 +97,6 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	}
 
 	public void colison() {
-	/*	Rectangle dr = d.getBounds(); 
-		Rectangle dr1 = d2.getBounds();
-		for (int i=0; i < fireballs.size(); i++) {
-			FireBall fb = (FireBall) fireballs.get(i);
-			Rectangle fb1 = fb.getBounds();
-			if(dr.intersects(fb1) && d.isAlive()) {
-				d.alive = false;
-				fb.visible = false;
-
-			} else if (dr1.intersects(fb1) && d2.isAlive()) {
-				d2.alive = false;
-				fb.visible = false;
-			}
-		}
-		Rectangle grif = p.getBounds();
-		if(grif.intersects(dr) || grif.intersects(dr1)) {
-			//colision entre jugador y dragon
-		}*/
-		
 		for(int i = 0; i < dragonsArray.size(); i++) {
 			Dragon dtemp = dragonsArray.get(i);
 			ArrayList<FireBall> fireballs = Player.getFireballs();
