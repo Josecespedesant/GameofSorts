@@ -22,7 +22,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	Timer time;
 	int nx, nx2;
 	int relodingTime, resistance, speed;
-	static SimpleLinkedList<Dragon> dragonsArray;
+	static SimpleLinkedList<Dragon> dragons;
 	static SimpleLinkedList<FireBall> fireballs;
 	
 	
@@ -64,17 +64,17 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		d8 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250-100);
 		d9 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+100);
 		d10 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+300);
-		dragonsArray = new SimpleLinkedList<>();
-		dragonsArray.addLast(d);
-		dragonsArray.addLast(d2);
-		dragonsArray.addLast(d3);
-		dragonsArray.addLast(d4);
-		dragonsArray.addLast(d5);
-		dragonsArray.addLast(d6);
-		dragonsArray.addLast(d7);
-		dragonsArray.addLast(d8);
-		dragonsArray.addLast(d9);
-		dragonsArray.addLast(d10);
+		dragons = new SimpleLinkedList<>();
+		dragons.addLast(d);
+		dragons.addLast(d2);
+		dragons.addLast(d3);
+		dragons.addLast(d4);
+		dragons.addLast(d5);
+		dragons.addLast(d6);
+		dragons.addLast(d7);
+		dragons.addLast(d8);
+		dragons.addLast(d9);
+		dragons.addLast(d10);
 		
 	}
 	
@@ -92,30 +92,31 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			}
 		}
 		p.move();
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList = dragonsArray.get(i).getData();
+		for (int i=0; i < dragons.getLength(); i++) {
+			Dragon dragonList = dragons.get(i).getData();
 			dragonList.move();
 		}
 		repaint();
 	}
 
 	public void colison() {
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
+		for(int i = 0; i < dragons.getLength(); i++) {
+			Dragon dtemp = dragons.get(i).getData();
 			for(int j=0; j < fireballs.getLength(); j++) {
 				FireBall ftemp = fireballs.get(j).getData();
 				if(dtemp.getDragonHitBox().collidesWith(ftemp.getFireHitBox())) {
 					dtemp.alive = false;
-					dragonsArray.deleteByElement(dtemp);
+					dragons.deleteByElement(dtemp);
 					ftemp.visible = false;
 				}
 			}
 		}
 		
-
-	
-
+		
 	}
+	
+	
+	
 	
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -133,12 +134,16 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			nx2 = 1266;
 		}
 		
+		if (p.getX() < 0) {
+			p.dx = 0;
+		}
+		
 		//pinta al grifo
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 
 		//pinta dragones si es que estan vivos
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList =  dragonsArray.get(i).getData();
+		for (int i=0; i < dragons.getLength(); i++) {
+			Dragon dragonList =  dragons.get(i).getData();
 			if (dragonList.alive){
 				g2d.drawImage(dragonList.getImage(), dragonList.getX(), dragonList.getY(), null);
 			}
@@ -164,8 +169,8 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList = dragonsArray.get(i).getData();
+		for (int i=0; i < dragons.getLength(); i++) {
+			Dragon dragonList = dragons.get(i).getData();
 			if(e.getX() >= dragonList.getX() && e.getX() <= dragonList.getX()+dragonList.getImage().getWidth(null) && e.getY() >=dragonList.getY() && e.getY() <= dragonList.getY()+dragonList.getImage().getWidth(null)) {
 				System.out.println("Age:"+dragonList.getAge()+" Name:"+dragonList.getName()+" RT:"+dragonList.getReloadingTime());
 				} 
