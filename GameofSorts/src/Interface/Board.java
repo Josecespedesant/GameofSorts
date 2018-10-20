@@ -22,8 +22,12 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	Timer time;
 	int nx, nx2;
 	int relodingTime, resistance, speed;
+<<<<<<< HEAD
 	static String mensaje;
 	static SimpleLinkedList<Dragon> dragonsArray;
+=======
+	static SimpleLinkedList<Dragon> dragons;
+>>>>>>> d839185920ff94fb0f2d26f1c97fbfc4fbdad7cf
 	static SimpleLinkedList<FireBall> fireballs;
 	
 	
@@ -39,6 +43,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 
 		// imagen fondo
 		ImageIcon g = new ImageIcon("GoSBG.jpeg"); 
+		ImageIcon g = new ImageIcon("fondo.png"); 
 		img = g.getImage();
 
 		time = new Timer(5, this);
@@ -60,6 +65,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		d4 = factory.createDragon(2, 2, "Captain", d,3,1600, 250-100);
 		d5 = factory.createDragon(2, 2, "Captain", d,3,1600, 250+0);
 		//Crea los de infanteria
+<<<<<<< HEAD
 		d6 = factory.createDragon(3, 1, "Infantry", d,3,1600, 250+100);
 		d7 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-150);
 		d8 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-50);
@@ -80,6 +86,25 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	
 	public static SimpleLinkedList<Dragon> getdragonsArray() {
 		return dragonsArray;
+=======
+		d6 = factory.createDragon(3, 1, "Infantry", d,3,1850, 250+200);
+		d7 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250-300);
+		d8 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250-100);
+		d9 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+100);
+		d10 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+300);
+		dragons = new SimpleLinkedList<>();
+		dragons.addLast(d);
+		dragons.addLast(d2);
+		dragons.addLast(d3);
+		dragons.addLast(d4);
+		dragons.addLast(d5);
+		dragons.addLast(d6);
+		dragons.addLast(d7);
+		dragons.addLast(d8);
+		dragons.addLast(d9);
+		dragons.addLast(d10);
+		
+>>>>>>> d839185920ff94fb0f2d26f1c97fbfc4fbdad7cf
 	}
 	
 	@Override
@@ -96,27 +121,36 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			}
 		}
 		p.move();
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList = dragonsArray.get(i).getData();
+		for (int i=0; i < dragons.getLength(); i++) {
+			Dragon dragonList = dragons.get(i).getData();
 			dragonList.move();
 		}
 		repaint();
 	}
 
 	public void colison() {
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
+		for(int i = 0; i < dragons.getLength(); i++) {
+			Dragon dtemp = dragons.get(i).getData();
 			for(int j=0; j < fireballs.getLength(); j++) {
 				FireBall ftemp = fireballs.get(j).getData();
 				if(dtemp.getDragonHitBox().collidesWith(ftemp.getFireHitBox())) {
 					dtemp.alive = false;
-					dragonsArray.deleteByElement(dtemp);
+					dragons.deleteByElement(dtemp);
 					ftemp.visible = false;
 				}
 			}
+<<<<<<< HEAD
 		}	
 
+=======
+		}
+		
+		
+>>>>>>> d839185920ff94fb0f2d26f1c97fbfc4fbdad7cf
 	}
+	
+	
+	
 	
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -134,12 +168,19 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			nx2 = 1266;
 		}
 		
+		
+		
+		
+		if (p.getX() < 0) {
+			p.dx = 0;
+		}
+		
 		//pinta al grifo
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 
 		//pinta dragones si es que estan vivos
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList =  dragonsArray.get(i).getData();
+		for (int i=0; i < dragons.getLength(); i++) {
+			Dragon dragonList =  dragons.get(i).getData();
 			if (dragonList.alive){
 				g2d.drawImage(dragonList.getImage(), dragonList.getX(), dragonList.getY(), null);
 			}
@@ -169,8 +210,8 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList = dragonsArray.get(i).getData();
+		for (int i=0; i < dragons.getLength(); i++) {
+			Dragon dragonList = dragons.get(i).getData();
 			if(e.getX() >= dragonList.getX() && e.getX() <= dragonList.getX()+dragonList.getImage().getWidth(null) && e.getY() >=dragonList.getY() && e.getY() <= dragonList.getY()+dragonList.getImage().getWidth(null)) {
 				mensaje=("<html>Age: "+dragonList.getAge()+"<br/>"+
 						"Name: "+dragonList.getName()+"<br/>"+

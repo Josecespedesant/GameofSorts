@@ -22,7 +22,8 @@ public class Player {
 	public int x, dx, y, dy, nx, nx2;
 
 	Image img;
-	HitBox hitbox = new HitBox(x, y, 200, 200);
+	private HitBox hitbox = new HitBox(x, y, 100, 100);
+
 	FireBall fire = new FireBall(x, y);
 	static SimpleLinkedList fireballs;
 	
@@ -36,7 +37,7 @@ public class Player {
 		nx = 0;
 		nx2 = 1266;
 		fireballs = new SimpleLinkedList<FireBall>();
-		ImageIcon image = new ImageIcon("griph.gif");
+		ImageIcon image = new ImageIcon("griphFinal.gif");
 		img = image.getImage();
 	}
 
@@ -96,16 +97,46 @@ public class Player {
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) { 
-			dx = -3;
+			if(x<0) {
+				dx = 0;
+				x = 0;
+			} else if(x>0) {
+				dx = -3;
+			}
+			
 		}
 		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
-			dx = +3;
+			if(x<1200) {
+				dx = +3;
+			}else if(x>1200 && x<1250) {
+				dx = +2;
+			}
+			else if(x>1250) {
+				dx = 0;
+				x = 1250;
+			}
+				
+			
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
+			if(y>100) {
 			dy = -3;
+			}else if(y<100 && y>0) {
+				dy = -2;
+			}else if(y<=0) {
+				dy = 0;
+				y = 0;
+			}
 		}
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
-			dy = 3;
+			if(y<538) {
+				dy = +3;
+				}else if(y<638 && y>538) {
+					dy = +2;
+				}else if(y>=638) {
+					dy = 0;
+					y = 638;
+				}
 		}
 		if(key == KeyEvent.VK_SPACE) {
 			fire();
@@ -129,5 +160,14 @@ public class Player {
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S)
 			dy = 0;
 			dx = -1;
+	}
+	
+	public HitBox getHitbox() {
+		return hitbox;
+	}
+
+
+	public void setHitbox(HitBox hitbox) {
+		this.hitbox = hitbox;
 	}
 }

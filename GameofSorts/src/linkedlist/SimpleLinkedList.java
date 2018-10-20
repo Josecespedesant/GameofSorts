@@ -221,15 +221,4 @@ public class SimpleLinkedList<T>{
 	}
 	
 	
-	public static void main(String[] args) {
-		SimpleLinkedList<Integer> l = new SimpleLinkedList<Integer>();
-		
-		l.addFront(0);
-		l.addFront(1);
-		l.addFront(2);
-		
-		System.out.println(l.get(1).getData());
-		
-	}
-	
 }
