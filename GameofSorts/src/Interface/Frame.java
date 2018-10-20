@@ -9,6 +9,7 @@ public class Frame {
 		JFrame frame = new JFrame("Game of Sorts");
 		//frame.add(new Board());
 		//frame.add(new BoardInfo());
+		
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.getContentPane().add(new Board(), BorderLayout.CENTER);
 		frame.getContentPane().add(new BoardInfo(), BorderLayout.EAST);
