@@ -106,14 +106,14 @@ public class Player {
 			
 		}
 		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
-			if(x<1200) {
+			if(x<900) {
 				dx = +3;
-			}else if(x>1200 && x<1250) {
+			}else if(x>900 && x<1000) {
 				dx = +2;
 			}
-			else if(x>1250) {
+			else if(x>1030) {
 				dx = 0;
-				x = 1250;
+				x = 1030;
 			}
 				
 			
