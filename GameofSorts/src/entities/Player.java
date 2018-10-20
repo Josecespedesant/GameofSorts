@@ -37,7 +37,7 @@ public class Player {
 		nx = 0;
 		nx2 = 1266;
 		fireballs = new SimpleLinkedList<FireBall>();
-		ImageIcon image = new ImageIcon("griph.gif");
+		ImageIcon image = new ImageIcon("griphFinal.gif");
 		img = image.getImage();
 	}
 

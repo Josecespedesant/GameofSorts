@@ -37,7 +37,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		addMouseListener(this);
 
 		// imagen fondo
-		ImageIcon g = new ImageIcon("GoSBG.jpeg"); 
+		ImageIcon g = new ImageIcon("fondo.png"); 
 		img = g.getImage();
 
 		time = new Timer(5, this);
@@ -133,6 +133,9 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			nx =0;
 			nx2 = 1266;
 		}
+		
+		
+		
 		
 		if (p.getX() < 0) {
 			p.dx = 0;
