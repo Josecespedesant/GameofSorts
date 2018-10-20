@@ -42,11 +42,11 @@ public class FireBall {
 	}
 
 	public int getX() {
-		return x;
+		return x+10;
 	}
 
 	public int getY() {
-		return y;
+		return y+25;
 	}
 	
 	public Image getImage() {

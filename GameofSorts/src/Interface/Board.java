@@ -22,6 +22,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 	Timer time;
 	int nx, nx2;
 	int relodingTime, resistance, speed;
+	static String mensaje;
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
 	
@@ -54,16 +55,16 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		//Crea al dragon padre
 		d = factory.createDragon(1, 3, "Comandant", null, 3,1400,250);
 		//Crea los capitanes
-		d2 = factory.createDragon(2, 2, "Captain", d,3,1600, 250-100);
-		d3 = factory.createDragon(2, 2, "Captain", d,3,1600, 250+100);
-		d4 = factory.createDragon(2, 2, "Captain", d,3,1850, 250-200);
-		d5 = factory.createDragon(2, 2, "Captain", d,3,1850, 250+0);
+		d2 = factory.createDragon(2, 2, "Captain", d,3,1500, 250-50);
+		d3 = factory.createDragon(2, 2, "Captain", d,3,1500, 250+50);
+		d4 = factory.createDragon(2, 2, "Captain", d,3,1600, 250-100);
+		d5 = factory.createDragon(2, 2, "Captain", d,3,1600, 250+0);
 		//Crea los de infanteria
-		d6 = factory.createDragon(3, 1, "Infantry", d,3,1850, 250+200);
-		d7 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250-300);
-		d8 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250-100);
-		d9 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+100);
-		d10 = factory.createDragon(3, 1, "Infantry", d,3,2050, 250+300);
+		d6 = factory.createDragon(3, 1, "Infantry", d,3,1600, 250+100);
+		d7 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-150);
+		d8 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-50);
+		d9 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+50);
+		d10 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+150);
 		dragonsArray = new SimpleLinkedList<>();
 		dragonsArray.addLast(d);
 		dragonsArray.addLast(d2);
@@ -75,7 +76,10 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		dragonsArray.addLast(d8);
 		dragonsArray.addLast(d9);
 		dragonsArray.addLast(d10);
-		
+	}
+	
+	public static SimpleLinkedList<Dragon> getdragonsArray() {
+		return dragonsArray;
 	}
 	
 	@Override
@@ -110,10 +114,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 					ftemp.visible = false;
 				}
 			}
-		}
-		
-
-	
+		}	
 
 	}
 	
@@ -162,13 +163,23 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		}
 	}
 
+	public static String getMensaje() {
+		return mensaje;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		for (int i=0; i < dragonsArray.getLength(); i++) {
 			Dragon dragonList = dragonsArray.get(i).getData();
 			if(e.getX() >= dragonList.getX() && e.getX() <= dragonList.getX()+dragonList.getImage().getWidth(null) && e.getY() >=dragonList.getY() && e.getY() <= dragonList.getY()+dragonList.getImage().getWidth(null)) {
-				System.out.println("Age:"+dragonList.getAge()+" Name:"+dragonList.getName()+" RT:"+dragonList.getReloadingTime());
-				} 
+				mensaje=("<html>Age: "+dragonList.getAge()+"<br/>"+
+						"Name: "+dragonList.getName()+"<br/>"+
+						"Resistance: "+dragonList.getResistance()+"<br/>"+
+						"Speed: "+dragonList.getSpeed()+"<br/>"+
+						"Range: "+dragonList.getRange()+"<br/>"+
+						"Reloding time:"+dragonList.getReloadingTime()+"</html>");
+				BoardInfo.cambiarL();
+			} 
 		}
 	}
 
