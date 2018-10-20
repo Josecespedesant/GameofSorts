@@ -192,10 +192,10 @@ public class Dragon {
 	 */
 	public void setAge() {
 		if(getFather() == null) {
-			int num = ThreadLocalRandom.current().nextInt(5000, 10000 + 1);
+			int num = ThreadLocalRandom.current().nextInt(80, 100 + 1);
 			this.age = num;
 		}else {
-			int num = ThreadLocalRandom.current().nextInt(100, 4500 + 1);
+			int num = ThreadLocalRandom.current().nextInt(1, 60 + 1);
 			this.age = num;
 		}
 	}
