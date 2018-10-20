@@ -134,6 +134,10 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 			nx2 = 1266;
 		}
 		
+		if(p.getX() == 0) {
+			p.dx = 0;
+		}
+		
 		//pinta al grifo
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 
