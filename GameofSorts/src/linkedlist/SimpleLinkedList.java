@@ -163,6 +163,13 @@ public class SimpleLinkedList<T>{
 			}
 			while(aux.getNext()!=null) {
 				if(aux.getNext().getData()==t){
+					
+					Node<T> aux2 = new Node<T>();
+					aux2 = aux.getNext().getNext();
+					while(aux2!=null) {
+						aux2.setPosition(aux2.getPosition()-1);
+						aux2 = aux2.getNext();
+					}
 					aux.setNext(aux.getNext().getNext());
 				}
 				else {
