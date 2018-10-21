@@ -4,9 +4,26 @@ import java.awt.*;
 import java.awt.Image;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.junit.Assert;
+import org.junit.Before;
+//import org.junit.Assert;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 import entities.Dragon;
 import entities.DragonFactory;
@@ -14,20 +31,25 @@ import entities.DragonFactoryMethod;
 import entities.FireBall;
 import entities.Player;
 import linkedlist.SimpleLinkedList;
+import xml.WaveXML;
 
-public class Board extends JPanel implements ActionListener, MouseListener{
+import java.io.File;
+import java.io.IOException;
+
+
+public class Board extends JPanel implements ActionListener, MouseListener {
 	Player p;
-	Dragon d, d2, d3, d4, d5, d6, d7, d8, d9, d10;
+//	Dragon d, d2, d3, d4, d5, d6, d7, d8, d9, d10;
 	Image img;
 	Timer time;
 	int nx, nx2;
-	int relodingTime, resistance, speed;
+//	int relodingTime, resistance, speed;
 	static String mensaje;
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
 	
 	
-	public Board() {
+	public Board() throws ParserConfigurationException, TransformerException{ // ++++++++++++++++++++++++++
 		p = new Player(); //jugador
 		createWave();
 		
@@ -47,41 +69,58 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 		nx2 = 1266;
 	}
 
+	
 	/**
 	 * Creates the wave
+	 * @throws ParserConfigurationException 
+	 * @throws TransformerException 
 	 */
-	public void createWave() {
-		DragonFactoryMethod factory = new DragonFactory();
-		//Crea al dragon padre
-		d = factory.createDragon(1, 3, "Comandant", null, 3,1400,250);
-		//Crea los capitanes
-		d2 = factory.createDragon(2, 2, "Captain", d,3,1500, 250-50);
-		d3 = factory.createDragon(2, 2, "Captain", d,3,1500, 250+50);
-		d4 = factory.createDragon(2, 2, "Captain", d,3,1600, 250-100);
-		d5 = factory.createDragon(2, 2, "Captain", d,3,1600, 250+0);
-		//Crea los de infanteria
-		d6 = factory.createDragon(3, 1, "Infantry", d,3,1600, 250+100);
-		d7 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-150);
-		d8 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-50);
-		d9 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+50);
-		d10 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+150);
-		dragonsArray = new SimpleLinkedList<>();
-		dragonsArray.addLast(d);
-		dragonsArray.addLast(d2);
-		dragonsArray.addLast(d3);
-		dragonsArray.addLast(d4);
-		dragonsArray.addLast(d5);
-		dragonsArray.addLast(d6);
-		dragonsArray.addLast(d7);
-		dragonsArray.addLast(d8);
-		dragonsArray.addLast(d9);
-		dragonsArray.addLast(d10);
+	public void createWave() throws ParserConfigurationException, TransformerException{
+		
+		WaveXML oleada=new WaveXML(10);
+		
+		setDragonsArray(oleada.getdragonsArray());
+		
+//		DragonFactoryMethod factory = new DragonFactory();
+//		//Crea al dragon padre
+//		d = factory.createDragon(1, 3, "Comandant", null, 3,1400,250);
+//		//Crea los capitanes
+//		d2 = factory.createDragon(2, 2, "Captain", d,3,1500, 250-50);
+//		d3 = factory.createDragon(2, 2, "Captain", d,3,1500, 250+50);
+//		d4 = factory.createDragon(2, 2, "Captain", d,3,1600, 250-100);
+//		d5 = factory.createDragon(2, 2, "Captain", d,3,1600, 250+0);
+//		//Crea los de infanteria
+//		d6 = factory.createDragon(3, 1, "Infantry", d,3,1600, 250+100);
+//		d7 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-150);
+//		d8 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-50);
+//		d9 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+50);
+//		d10 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+150);
+		
+//		dragonsArray = new SimpleLinkedList<>();
+//		dragonsArray.addLast(d);
+//		dragonsArray.addLast(d2);
+//		dragonsArray.addLast(d3);
+//		dragonsArray.addLast(d4);
+//		dragonsArray.addLast(d5);
+//		dragonsArray.addLast(d6);
+//		dragonsArray.addLast(d7);
+//		dragonsArray.addLast(d8);
+//		dragonsArray.addLast(d9);
+//		dragonsArray.addLast(d10);
+
 	}
 	
 	public static SimpleLinkedList<Dragon> getdragonsArray() {
 		return dragonsArray;
 	}
 	
+	
+	
+	public static void setDragonsArray(SimpleLinkedList<Dragon> dragonsArray) {
+		Board.dragonsArray = dragonsArray;
+	}
+
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//llama a los metodos que permiten que el jugador y dragones se puedan mover. Y repinta cada Graphic

@@ -13,8 +13,15 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import entities.Dragon;
+import linkedlist.SimpleLinkedList;
+
 public class CreateXML {
 	public static String XMLpath = "test.xml";
+	
+	SimpleLinkedList<String> infoDragonsArray; 
+	
+	
 	public static void main(String[] args) throws TransformerException, ParserConfigurationException {
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		
