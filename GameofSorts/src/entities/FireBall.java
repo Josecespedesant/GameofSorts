@@ -12,7 +12,7 @@ public class FireBall {
 	public FireBall(int startX, int startY) {
 		x = startX;
 		y = startY;
-		ImageIcon fireball = new ImageIcon("fireball.gif");
+		ImageIcon fireball = new ImageIcon("fuego.gif");
 		img = fireball.getImage();
 		visible = true;
 

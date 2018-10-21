@@ -20,7 +20,7 @@ public class Player {
 	 * Attributes of the class Player.
 	 */
 	public int x, dx, y, dy, nx, nx2;
-
+	public int allow = 1;
 	Image img;
 	private HitBox hitbox = new HitBox(x, y, 100, 100);
 
@@ -63,6 +63,7 @@ public class Player {
 		x = x + dx;
 		y = y + dy;
 		hitbox.move(x, y);
+		allow++;
 	}
 
 	/**

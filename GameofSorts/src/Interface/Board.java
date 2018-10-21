@@ -48,10 +48,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
 	
+	private int cont;
 	
 	public Board() throws ParserConfigurationException, TransformerException{ // ++++++++++++++++++++++++++
 		p = new Player(); //jugador
 		createWave();
+		cont = 1;
 		
 		fireballs = p.getFireballs();
 
@@ -148,9 +150,15 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			for(int j=0; j < fireballs.getLength(); j++) {
 				FireBall ftemp = fireballs.get(j).getData();
 				if(dtemp.getDragonHitBox().collidesWith(ftemp.getFireHitBox())) {
-					dtemp.alive = false;
-					dragonsArray.deleteByElement(dtemp);
-					ftemp.visible = false;
+					if(dtemp.getResistance() == cont) {
+						dtemp.alive = false;
+						dragonsArray.deleteByElement(dtemp);
+						ftemp.visible = false;
+						cont = 1;
+					}else {
+						ftemp.visible = false;
+						cont++;
+					}
 				}
 			}
 		}	

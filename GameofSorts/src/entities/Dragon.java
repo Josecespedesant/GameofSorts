@@ -55,7 +55,7 @@ public class Dragon {
 		y = startY;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
-		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null)-50, img.getHeight(null)-50);
+		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
 	
