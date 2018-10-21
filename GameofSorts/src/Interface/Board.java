@@ -78,8 +78,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	 * @throws TransformerException 
 	 */
 	public void createWave() throws ParserConfigurationException, TransformerException{
-		
-		WaveXML oleada=new WaveXML(10);
+//		numero de dragones en la oleada, el parametro se ingresa con base en el nivel del juego
+//		como la primera oleada es de 10 (ya NO de 100 dragones)y se aumenta en un 20%
+//		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
+		WaveXML oleada=new WaveXML(20);
 		
 		setDragonsArray(oleada.getdragonsArray());
 		

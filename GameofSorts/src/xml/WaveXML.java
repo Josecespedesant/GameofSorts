@@ -42,15 +42,26 @@ public class WaveXML {
 				dragones[i]=factory.createDragon(1, 3, "Comandant", null, 3,1400,400);
 			}else if(i>=1 && i<5) {
 				
-				dragones[i]=factory.createDragon(2, 2, "Captain", d,3,1500+x, 320+y);
+				dragones[i]=factory.createDragon(2, 2, "Captain", d,3,1500, 320+y);
 				y+=50;
 				
-			}else if(i>=5 && i<waveSize) {
-				dragones[i]=factory.createDragon(3, 1, "Infantry", d,3,1600+x, 100+y);
-				y+=50;
+			}else if(i>=5 && i<10) {
+				dragones[i]=factory.createDragon(3, 1, "Infantry", d,3,1600+x, 0+y);
+				y+=100;
 				if(x>=6)
 					x=100;
-				
+			}else if(i>=10 && i<12) {
+				dragones[i]=factory.createDragon(3, 1, "Infantry", d,3,1700, -350+y);
+				y+=100;
+			}else if(i>=12 && i<14) {
+				dragones[i]=factory.createDragon(2, 2, "Captain", d,3,1800, -600+y);
+				y+=200;
+			}else if(i>=14 && i<17) {
+				dragones[i]=factory.createDragon(3, 1, "Infantry", d,3,1900, -1050+y);
+				y+=150;
+			}else if(i>=17 && i<20) {
+				dragones[i]=factory.createDragon(2, 2, "Captain", d,3,2000, -1600+y);
+				y+=250;
 			}
 		}
 			
