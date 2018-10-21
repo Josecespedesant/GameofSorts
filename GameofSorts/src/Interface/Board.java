@@ -232,6 +232,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						"Range: "+dragonList.getRange()+"<br/>"+
 						"Reloding time:"+dragonList.getReloadingTime()+"</html>");
 				BoardInfo.cambiarL();
+				
+			
 			} 
 		}
 	}
