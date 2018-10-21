@@ -1,12 +1,10 @@
 package entities;
 
-import java.awt.Button;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 import tools.HitBox;
 

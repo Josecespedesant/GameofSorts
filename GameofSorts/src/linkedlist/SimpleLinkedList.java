@@ -142,6 +142,7 @@ public class SimpleLinkedList<T>{
 	    }
 	    return null;
 	}
+
 	
 	/**
 	 * Method that deletes an object from the list by specifying it.
