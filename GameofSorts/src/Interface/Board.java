@@ -174,6 +174,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			if(dtemp2.getDragonHitBox().collidesWith(p.getHitbox())) {
 				System.out.println("Se peg� pa");
 				System.out.println("Se peg� pa");
+				System.out.println("Se peg� pa");
 			}
 		}
 
