@@ -92,6 +92,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 //		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
 <<<<<<< HEAD
 =======
+		WaveXML oleada=new WaveXML(10);
 >>>>>>> cdea7a8bc35a8e8bc3ce889d95f7ed2fcccbb824
 		
 		WaveXML oleada=new WaveXML(10);
@@ -171,6 +172,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		for(int i = 0; i < dragonsArray.getLength(); i++) {
 			Dragon dtemp2 = dragonsArray.get(i).getData();
 			if(dtemp2.getDragonHitBox().collidesWith(p.getHitbox())) {
+				System.out.println("Se peg� pa");
 				System.out.println("Se peg� pa");
 			}
 		}
