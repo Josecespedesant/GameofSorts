@@ -1,11 +1,5 @@
 package linkedlist;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-
-import entities.Dragon;
-
 /**
  * SimpleLinkedList class declaration.
  * @author José Antonio Céspedes Downing

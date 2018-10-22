@@ -90,6 +90,9 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 //		numero de dragones en la oleada, el parametro se ingresa con base en el nivel del juego
 //		como la primera oleada es de 10 (ya NO de 100 dragones)y se aumenta en un 20%
 //		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
+<<<<<<< HEAD
+=======
+>>>>>>> cdea7a8bc35a8e8bc3ce889d95f7ed2fcccbb824
 		
 		WaveXML oleada=new WaveXML(10);
 		setDragonsArray(oleada.getdragonsArray());
@@ -164,6 +167,13 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				}
 			}
 		}	
+		
+		for(int i = 0; i < dragonsArray.getLength(); i++) {
+			Dragon dtemp2 = dragonsArray.get(i).getData();
+			if(dtemp2.getDragonHitBox().collidesWith(p.getHitbox())) {
+				System.out.println("Se peg� pa");
+			}
+		}
 
 	}
 
