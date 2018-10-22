@@ -6,6 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import tools.HitBox;
 
 /**
@@ -49,7 +53,7 @@ public class Dragon {
 		this.speed = speed;
 		x = startX;
 		y = startY;
-		ImageIcon dg = new ImageIcon("dragon.gif");
+		ImageIcon dg = new ImageIcon("dragon2.gif");
 		img = dg.getImage();
 		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
@@ -262,4 +266,18 @@ public class Dragon {
 		this.dragonHitBox = dragonHitBox;
 	}
 	
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	public Node serializar(Document doc) {
+		Element elementoDragon = doc.createElement("Dragon");
+		elementoDragon.setAttribute("nombre", this.name);
+		elementoDragon.setAttribute("edad", Integer.toString(this.age));
+		elementoDragon.setAttribute("nombre", this.name);
+		elementoDragon.setAttribute("nombre", this.name);
+		elementoDragon.setAttribute("nombre", this.name);
+		elementoDragon.setAttribute("nombre", this.name);
+		elementoDragon.setAttribute("nombre", this.name);
+		
+		return elementoDragon;
+	}
+//	-------------------------------------------------------------
 }
