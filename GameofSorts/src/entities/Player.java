@@ -25,7 +25,7 @@ public class Player {
 	private HitBox hitbox = new HitBox(x, y, 100, 100);
 
 	FireBall fire = new FireBall(x, y);
-	static SimpleLinkedList fireballs;
+	static SimpleLinkedList<FireBall> fireballs;
 	
 	/**
 	 * Constructor of the class Player.
@@ -140,6 +140,7 @@ public class Player {
 				}
 		}
 		if(key == KeyEvent.VK_SPACE) {
+			System.out.println("FIRE");
 			fire();
 		}
 	}
