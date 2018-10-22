@@ -123,6 +123,13 @@ public class Board extends JPanel implements ActionListener, MouseListener{
 				}
 			}
 		}	
+		
+		for(int i = 0; i < dragonsArray.getLength(); i++) {
+			Dragon dtemp2 = dragonsArray.get(i).getData();
+			if(dtemp2.getDragonHitBox().collidesWith(p.getHitbox())) {
+				System.out.println("Se pegó pa");
+			}
+		}
 
 	}
 	
