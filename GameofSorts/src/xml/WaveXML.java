@@ -2,6 +2,7 @@ package xml;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -30,10 +31,12 @@ public class WaveXML {
 	private String XMLFile="DragonWave.xml";
 	static SimpleLinkedList<Dragon> dragonsArray;
 	Dragon[] dragones;
+	static LinkedList<Dragon> linkedList;
 	
 	
 	public WaveXML(int waveSize) throws ParserConfigurationException, TransformerException{
 		dragones = new Dragon[waveSize];
+		linkedList = new LinkedList();
 		DragonFactoryMethod factory = new DragonFactory();
 		int y=0;
 		int x=0;
@@ -69,6 +72,11 @@ public class WaveXML {
 		
 		dragonsArray = new SimpleLinkedList<>();
 		
+		
+		for(Dragon dragon : this.dragones) {
+			linkedList.add(dragon);
+		}
+		
 		for(Dragon dragon : this.dragones) {
 			dragonsArray.addLast(dragon);
 		}
@@ -94,21 +102,22 @@ public class WaveXML {
 		Assert.assertTrue(archivo.exists());
 	}
 	
-//	serializa lo que hay en el array llamado dragones
 	public Element serializar(Document doc) {
 		Element elementoOleada = doc.createElement("Oleada");
 		elementoOleada.setAttribute("nombre", "WAVE");
 		Element elementoDragones = doc.createElement("Dragones");
 		elementoOleada.appendChild(elementoDragones);
-		for (Dragon dragon : this.dragones) { //aqui se especifica el array a serializar
+		for (Dragon dragon : this.dragones) {
 			elementoDragones.appendChild(dragon.serializar(doc));
 		}
 		return elementoOleada;
 	}
 	
+	public static LinkedList getLista() {
+		return linkedList;
+	}
+	
 	public static SimpleLinkedList<Dragon> getdragonsArray() {
 		return dragonsArray;
 	}
-	
-	
 }

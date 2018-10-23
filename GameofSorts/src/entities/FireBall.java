@@ -19,9 +19,10 @@ public class FireBall {
 		this.fireHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
+
 	public Rectangle getBounds() {
 		return new Rectangle(x,y,75,75);
-	}	
+	}
 	
 	public void move() {
 		x = x + 3;
