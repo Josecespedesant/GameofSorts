@@ -48,6 +48,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static String mensaje;
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
+	static int number;
 
 	LinkedList linkedList;
 
@@ -57,7 +58,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		p = new Player(); //jugador
 		createWave();
 		cont = 1;
-
+		number = 12;
+		
 		fireballs = p.getFireballs();
 
 		addKeyListener(new AL());
@@ -73,11 +75,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		nx = 0;
 		nx2 = 1266;
 
-		linkedList = new LinkedList();
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
-			linkedList.add(dtemp);
-		}
+		//linkedList = new LinkedList();
 	}
 
 
@@ -92,6 +90,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		//		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
 
 		WaveXML oleada=new WaveXML(10);
+		linkedList = oleada.getLista();
 		setDragonsArray(oleada.getdragonsArray());
 	}
 
@@ -143,25 +142,26 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				FireBall ftemp = fireballs.get(j).getData();
 				Rectangle f1 = ftemp.getBounds();
 
-
-				if(linkedList.size()-1==0) {
-					WaveXML oleada=new WaveXML(12);
-					setDragonsArray(oleada.getdragonsArray());
-				}
-
-
 				if(d1.intersects(f1) && dtemp.isAlive()) {
-					if(dtemp.getResistance() == cont) {
+					//if(dtemp.getResistance() == cont) {
 						System.out.println(linkedList.size());
 						dtemp.alive = false;
 						linkedList.remove(dtemp);
 						BoardInfo.layoutActual();
 						ftemp.visible = false;
 						cont = 1;
-					}else {
-						ftemp.visible = false;
-						cont++;
+					//}else {
+					//	ftemp.visible = false;
+						//cont++;
 					}
+				//}
+				
+				if(linkedList.size()==0) {
+					
+					WaveXML oleada=new WaveXML(number);
+					linkedList = oleada.getLista();
+					setDragonsArray(oleada.getdragonsArray());
+					number = number+number * 20 / 100;
 				}
 			}
 		}	
