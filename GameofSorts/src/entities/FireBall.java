@@ -21,7 +21,7 @@ public class FireBall {
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x,y,75,75);
-	}
+	}	
 	
 	public void move() {
 		x = x + 3;
