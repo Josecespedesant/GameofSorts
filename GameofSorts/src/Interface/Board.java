@@ -49,7 +49,14 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
 	
+<<<<<<< HEAD
 	LinkedList<Dragon> linkedList;
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
+>>>>>>> 5ebe3eb32b1bd20ce0c03c996c0ffdeab85e0840
 	
 	private int cont;
 	private int w;
@@ -154,6 +161,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 					createWave();
 				} 
 
+<<<<<<< HEAD
 				if(d1.intersects(f1) && dtemp.isAlive()) { 
 					if(dtemp.getResistance() == cont) { 
 						System.out.println(linkedList.size()); 
@@ -163,6 +171,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						ftemp.visible = false; 
 						cont = 1; 
 					}else { 
+=======
+<<<<<<< HEAD
+=======
+						BoardInfo.layoutActual();
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
+>>>>>>> 5ebe3eb32b1bd20ce0c03c996c0ffdeab85e0840
 						ftemp.visible = false;
 						cont++;
 					}
@@ -195,6 +209,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 
 		//pinta dragones si es que estan vivos
+<<<<<<< HEAD
+=======
 		LinkedList linkedList = new LinkedList();
 		for(int i = 0; i < dragonsArray.getLength(); i++) {
 			Dragon dtemp = dragonsArray.get(i).getData();
@@ -202,6 +218,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			if (dtemp.alive){
 			g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
 			}
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
 		}
 		/*
 		for (int i=0; i < dragonsArray.getLength(); i++) {
