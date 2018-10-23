@@ -33,26 +33,6 @@ public class Frame {
   
  }
  
-
-//	public static void main(String[] args)  {
-//		frame = new JFrame("Game of Sorts");
-//		
-//		frame.getContentPane().setLayout(new BorderLayout());
-//		frame.getContentPane().add(new BoardInicio(), BorderLayout.CENTER);
-//		frame.setSize(1366, 768);
-//		frame.setVisible(true);
-//	}
-	
-//	public static void Start() throws Exception {
-//		frame.dispose();
-//		
-//		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-//		frame = new JFrame("Game of Sorts");
-//		frame.getContentPane().add(new Board(), BorderLayout.CENTER);
-//		frame.getContentPane().add(new BoardInfo(), BorderLayout.EAST);
-//		frame.setSize(1366, 768);
-//		frame.setVisible(true);		
-//	}
 	
 }
 
