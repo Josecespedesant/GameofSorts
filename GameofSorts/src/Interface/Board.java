@@ -48,6 +48,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
 	
+
+	
 	private int cont;
 	
 	public Board() throws ParserConfigurationException, TransformerException{ // ++++++++++++++++++++++++++
@@ -153,7 +155,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				FireBall ftemp = fireballs.get(j).getData();
 				if(dtemp.getDragonHitBox().collidesWith(ftemp.getFireHitBox())) {
 					if(dtemp.getResistance() == cont) {
-						dtemp.alive = false;
 						dragonsArray.deleteByElement(dtemp);
 						ftemp.visible = false;
 						cont = 1;
@@ -200,9 +201,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		//pinta dragones si es que estan vivos
 		for (int i=0; i < dragonsArray.getLength(); i++) {
 			Dragon dragonList =  dragonsArray.get(i).getData();
-			if (dragonList.alive){
-				g2d.drawImage(dragonList.getImage(), dragonList.getX(), dragonList.getY(), null);
-			}
+			g2d.drawImage(dragonList.getImage(), dragonList.getX(), dragonList.getY(), null);
+			
 		}
 		
 		//pinta las bolas de fuego del jugador
