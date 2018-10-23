@@ -267,17 +267,31 @@ public class Dragon {
 	}
 	
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	metodo para serializar los datos del dragon y convertirlo a xml
 	public Node serializar(Document doc) {
 		Element elementoDragon = doc.createElement("Dragon");
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("edad", Integer.toString(this.age));
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
+		elementoDragon.setAttribute("Nombre", this.name);
+		elementoDragon.setAttribute("Edad", Integer.toString(this.age));
+		elementoDragon.setAttribute("Resistencia", Integer.toString(this.resistance));
+		elementoDragon.setAttribute("Rango", this.range);
+		elementoDragon.setAttribute("Velocidad", Integer.toString(this.speed));
+		
+		
+//		hay un error al cargar estos datos
+//		elementoDragon.setAttribute("Padre", this.father.getName());
+//		elementoDragon.setAttribute("Posicion X", Integer.toString(this.x));
+//		elementoDragon.setAttribute("Posicion Y", Integer.toString(this.y));
+//		elementoDragon.setAttribute("Tiempo de recarga", Integer.toString(this.reloadingTime));
 		
 		return elementoDragon;
+	}
+	
+//	Instancia los dragones apartir de un xml
+	public static Dragon instanciarDesdeXML(Node elementoDragon) {
+		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Tiempo de recarga")),Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),null,Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")),Integer.parseInt(((Element) elementoDragon).getAttribute("Posicion X")),Integer.parseInt(((Element) elementoDragon).getAttribute("Posicion Y")));
+		nuevoDragon.name = ((Element)elementoDragon).getAttribute("nombre");
+		return nuevoDragon;
+//		int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY
 	}
 //	-------------------------------------------------------------
 }

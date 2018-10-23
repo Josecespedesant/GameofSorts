@@ -93,12 +93,13 @@ public class WaveXML {
 		Assert.assertTrue(archivo.exists());
 	}
 	
+//	serializa lo que hay en el array llamado dragones
 	public Element serializar(Document doc) {
 		Element elementoOleada = doc.createElement("Oleada");
 		elementoOleada.setAttribute("nombre", "WAVE");
 		Element elementoDragones = doc.createElement("Dragones");
 		elementoOleada.appendChild(elementoDragones);
-		for (Dragon dragon : this.dragones) {
+		for (Dragon dragon : this.dragones) { //aqui se especifica el array a serializar
 			elementoDragones.appendChild(dragon.serializar(doc));
 		}
 		return elementoOleada;
@@ -107,4 +108,6 @@ public class WaveXML {
 	public static SimpleLinkedList<Dragon> getdragonsArray() {
 		return dragonsArray;
 	}
+	
+	
 }
