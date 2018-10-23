@@ -1,9 +1,7 @@
 package entities;
 
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
@@ -21,11 +19,11 @@ public class Player {
 	 */
 	public int x, dx, y, dy, nx, nx2;
 	public int allow = 1;
-	Image img;
-	private HitBox hitbox = new HitBox(x, y, 100, 100);
+	Image img ;
+	private HitBox hitbox;
 
 	FireBall fire = new FireBall(x, y);
-	static SimpleLinkedList fireballs;
+	static SimpleLinkedList<FireBall> fireballs;
 	
 	/**
 	 * Constructor of the class Player.
@@ -39,15 +37,10 @@ public class Player {
 		fireballs = new SimpleLinkedList<FireBall>();
 		ImageIcon image = new ImageIcon("griphFinal.gif");
 		img = image.getImage();
-	}
-
-
-	public Rectangle getBounds() {
-		return new Rectangle(x,y,200,200);
+		hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
 	}
 	
-	
-	public static SimpleLinkedList getFireballs() {
+	public static SimpleLinkedList<FireBall> getFireballs() {
 		return fireballs;
 	}
 	
@@ -140,6 +133,7 @@ public class Player {
 				}
 		}
 		if(key == KeyEvent.VK_SPACE) {
+			System.out.println("FIRE");
 			fire();
 		}
 	}

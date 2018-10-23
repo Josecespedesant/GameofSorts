@@ -1,11 +1,5 @@
 package linkedlist;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-
-import entities.Dragon;
-
 /**
  * SimpleLinkedList class declaration.
  * @author José Antonio Céspedes Downing
@@ -156,8 +150,8 @@ public class SimpleLinkedList<T>{
 	 */
 	public void deleteByElement(T t) {
 		Node<T> aux = new Node<T>();
-		
 		aux = first;
+		
 		if(isEmpty()) {
 			first = null;
 		}
@@ -165,19 +159,15 @@ public class SimpleLinkedList<T>{
 			deleteFront();
 		}
 		else {
-			if(aux.getNext() == null) {
-				aux = aux.getNext();
-			}
 			while(aux.getNext()!=null) {
 				if(aux.getNext().getData()==t){
-					
 					Node<T> aux2 = new Node<T>();
-					aux2 = aux.getNext().getNext();
+					aux.setNext(aux.getNext().getNext());
+					aux2 = aux.getNext();
 					while(aux2!=null) {
 						aux2.setPosition(aux2.getPosition()-1);
 						aux2 = aux2.getNext();
 					}
-					aux.setNext(aux.getNext().getNext());
 				}
 				else {
 					aux = aux.getNext();
@@ -233,8 +223,6 @@ public class SimpleLinkedList<T>{
 			}aux = aux.getNext();
 		}return ans;
 	}
-	
-	
 	
 
 	

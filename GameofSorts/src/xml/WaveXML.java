@@ -40,6 +40,7 @@ public class WaveXML {
 		for(int i=0;i<waveSize;i++) {
 			if(i<1) {
 				dragones[i]=factory.createDragon(1, 3, "Comandant", null, 3,1400,400);
+				d = dragones[i];
 			}else if(i>=1 && i<5) {
 				
 				dragones[i]=factory.createDragon(2, 2, "Captain", d,3,1500, 320+y);

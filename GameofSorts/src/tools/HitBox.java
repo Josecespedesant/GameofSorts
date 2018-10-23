@@ -41,7 +41,6 @@ public class HitBox {
 	 */
 	public void move (float x) {
 		this.x = x;
-		this.y = 50f;
 	}
 	
 	/**

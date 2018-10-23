@@ -20,7 +20,7 @@ public class FireBall {
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,256,256);
+		return new Rectangle(x,y,75,75);
 	}
 	
 	public void move() {
