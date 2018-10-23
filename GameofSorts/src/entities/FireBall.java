@@ -19,6 +19,13 @@ public class FireBall {
 		this.fireHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
+<<<<<<< HEAD
+=======
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,75,75);
+	}
+	
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
 	public void move() {
 		x = x + 3;
 		if (x > 1280) {

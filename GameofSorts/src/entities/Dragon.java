@@ -60,7 +60,7 @@ public class Dragon {
 	
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,256,256);
+		return new Rectangle(x,y,100,100);
 	}
 	
 	

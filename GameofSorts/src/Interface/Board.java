@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.Image;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -48,7 +49,11 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
 	
+<<<<<<< HEAD
 
+=======
+	LinkedList linkedList;
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
 	
 	private int cont;
 	
@@ -71,6 +76,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		time.start();
 		nx = 0;
 		nx2 = 1266;
+		
+		linkedList = new LinkedList();
+		for(int i = 0; i < dragonsArray.getLength(); i++) {
+			Dragon dtemp = dragonsArray.get(i).getData();
+			linkedList.add(dtemp);
+		}
 	}
 
 	
@@ -83,37 +94,13 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 //		numero de dragones en la oleada, el parametro se ingresa con base en el nivel del juego
 //		como la primera oleada es de 10 (ya NO de 100 dragones)y se aumenta en un 20%
 //		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
+<<<<<<< HEAD
+=======
 		WaveXML oleada=new WaveXML(10);
+>>>>>>> cdea7a8bc35a8e8bc3ce889d95f7ed2fcccbb824
 		
+		WaveXML oleada=new WaveXML(10);
 		setDragonsArray(oleada.getdragonsArray());
-		
-//		DragonFactoryMethod factory = new DragonFactory();
-//		//Crea al dragon padre
-//		d = factory.createDragon(1, 3, "Comandant", null, 3,1400,250);
-//		//Crea los capitanes
-//		d2 = factory.createDragon(2, 2, "Captain", d,3,1500, 250-50);
-//		d3 = factory.createDragon(2, 2, "Captain", d,3,1500, 250+50);
-//		d4 = factory.createDragon(2, 2, "Captain", d,3,1600, 250-100);
-//		d5 = factory.createDragon(2, 2, "Captain", d,3,1600, 250+0);
-//		//Crea los de infanteria
-//		d6 = factory.createDragon(3, 1, "Infantry", d,3,1600, 250+100);
-//		d7 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-150);
-//		d8 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250-50);
-//		d9 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+50);
-//		d10 = factory.createDragon(3, 1, "Infantry", d,3,1700, 250+150);
-		
-//		dragonsArray = new SimpleLinkedList<>();
-//		dragonsArray.addLast(d);
-//		dragonsArray.addLast(d2);
-//		dragonsArray.addLast(d3);
-//		dragonsArray.addLast(d4);
-//		dragonsArray.addLast(d5);
-//		dragonsArray.addLast(d6);
-//		dragonsArray.addLast(d7);
-//		dragonsArray.addLast(d8);
-//		dragonsArray.addLast(d9);
-//		dragonsArray.addLast(d10);
-
 	}
 	
 	public static SimpleLinkedList<Dragon> getdragonsArray() {
@@ -130,7 +117,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//llama a los metodos que permiten que el jugador y dragones se puedan mover. Y repinta cada Graphic
-		colison();
+		try {
+			colison();
+		} catch (ParserConfigurationException | TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		for (int i=0; i < fireballs.getLength(); i++) {
 			FireBall fb = fireballs.get(i).getData();
@@ -148,14 +140,33 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		repaint();
 	}
 
-	public void colison() {
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
+	public void colison() throws ParserConfigurationException, TransformerException {
+
+		for(int i = 0; i < linkedList.size(); i++) {
+			Dragon dtemp = (Dragon) linkedList.get(i);
+			Rectangle d1 = dtemp.getBounds();
+
 			for(int j=0; j < fireballs.getLength(); j++) {
 				FireBall ftemp = fireballs.get(j).getData();
-				if(dtemp.getDragonHitBox().collidesWith(ftemp.getFireHitBox())) {
+				Rectangle f1 = ftemp.getBounds();
+
+
+				if(linkedList.size()-1==0) {
+					WaveXML oleada=new WaveXML(12);
+					setDragonsArray(oleada.getdragonsArray());
+				}
+
+
+				if(d1.intersects(f1) && dtemp.isAlive()) {
 					if(dtemp.getResistance() == cont) {
+<<<<<<< HEAD
 						dragonsArray.deleteByElement(dtemp);
+=======
+						System.out.println(linkedList.size());
+						dtemp.alive = false;
+						linkedList.remove(dtemp);
+						BoardInfo.layoutActual();
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
 						ftemp.visible = false;
 						cont = 1;
 					}else {
@@ -174,7 +185,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		}
 
 	}
-	
+
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -199,11 +210,28 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 
 		//pinta dragones si es que estan vivos
+<<<<<<< HEAD
 		for (int i=0; i < dragonsArray.getLength(); i++) {
 			Dragon dragonList =  dragonsArray.get(i).getData();
 			g2d.drawImage(dragonList.getImage(), dragonList.getX(), dragonList.getY(), null);
 			
+=======
+		LinkedList linkedList = new LinkedList();
+		for(int i = 0; i < dragonsArray.getLength(); i++) {
+			Dragon dtemp = dragonsArray.get(i).getData();
+			linkedList.add(dtemp);
+			if (dtemp.alive){
+			g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
+			}
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git
 		}
+		/*
+		for (int i=0; i < dragonsArray.getLength(); i++) {
+			Dragon dragonList =  dragonsArray.get(i).getData();
+			//if (dragonList.alive){
+				g2d.drawImage(dragonList.getImage(), dragonList.getX(), dragonList.getY(), null);
+			//}
+		}*/
 		
 		//pinta las bolas de fuego del jugador
 		for (int i=0; i < fireballs.getLength(); i++) {
