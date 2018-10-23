@@ -49,11 +49,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<Dragon> dragonsArray;
 	static SimpleLinkedList<FireBall> fireballs;
 	
-	LinkedList linkedList;
+	LinkedList<Dragon> linkedList;
 	
 	private int cont;
+	private int w;
 	
-	public Board() throws ParserConfigurationException, TransformerException{ // ++++++++++++++++++++++++++
+	public Board() throws ParserConfigurationException, TransformerException{
 		p = new Player(); //jugador
 		createWave();
 		cont = 1;
@@ -75,11 +76,13 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		
 		linkedList = new LinkedList();
 		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
-			linkedList.add(dtemp);
+			Dragon dtempx = dragonsArray.get(i).getData();
+			linkedList.add(dtempx);
 		}
+		
 	}
 
+	
 	
 	/**
 	 * Creates the wave
@@ -90,14 +93,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 //		numero de dragones en la oleada, el parametro se ingresa con base en el nivel del juego
 //		como la primera oleada es de 10 (ya NO de 100 dragones)y se aumenta en un 20%
 //		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
-<<<<<<< HEAD
-=======
-		WaveXML oleada=new WaveXML(10);
->>>>>>> cdea7a8bc35a8e8bc3ce889d95f7ed2fcccbb824
 		
-		WaveXML oleada=new WaveXML(10);
+		int caso = 10;
+		WaveXML oleada = new WaveXML(10);
 		setDragonsArray(oleada.getdragonsArray());
 	}
+	
 	
 	public static SimpleLinkedList<Dragon> getdragonsArray() {
 		return dragonsArray;
@@ -136,47 +137,39 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		repaint();
 	}
 
-	public void colison() throws ParserConfigurationException, TransformerException {
+	public void colison() throws ParserConfigurationException, TransformerException { 
+		
+		for(int i = 0; i < linkedList.size(); i++) { 
+			Dragon dtemp = (Dragon) linkedList.get(i); 
+			Rectangle d1 = dtemp.getBounds(); 
+			for(int j=0; j < fireballs.getLength(); j++) { 
+				FireBall ftemp = fireballs.get(j).getData(); 
+				Rectangle f1 = ftemp.getBounds(); 
+				
+				if(linkedList.size()-1==0) { 
+					for(int x = 0; x < dragonsArray.getLength(); x++) {
+						Dragon dtempx = dragonsArray.get(x).getData();
+						linkedList.add(dtempx);
+					}
+					createWave();
+				} 
 
-		for(int i = 0; i < linkedList.size(); i++) {
-			Dragon dtemp = (Dragon) linkedList.get(i);
-			Rectangle d1 = dtemp.getBounds();
-
-			for(int j=0; j < fireballs.getLength(); j++) {
-				FireBall ftemp = fireballs.get(j).getData();
-				Rectangle f1 = ftemp.getBounds();
-
-
-				if(linkedList.size()-1==0) {
-					WaveXML oleada=new WaveXML(12);
-					setDragonsArray(oleada.getdragonsArray());
-				}
-
-
-				if(d1.intersects(f1) && dtemp.isAlive()) {
-					if(dtemp.getResistance() == cont) {
-						System.out.println(linkedList.size());
-						dtemp.alive = false;
-						linkedList.remove(dtemp);
-						BoardInfo.layoutActual();
-						ftemp.visible = false;
-						cont = 1;
-					}else {
+				if(d1.intersects(f1) && dtemp.isAlive()) { 
+					if(dtemp.getResistance() == cont) { 
+						System.out.println(linkedList.size()); 
+						dtemp.alive = false; 
+						linkedList.remove(dtemp); 
+						BoardInfo.layoutActual(); 
+						ftemp.visible = false; 
+						cont = 1; 
+					}else { 
 						ftemp.visible = false;
 						cont++;
 					}
 				}
 			}
-		}	
-		
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp2 = dragonsArray.get(i).getData();
-			if(dtemp2.getDragonHitBox().collidesWith(p.getHitbox())) {
-				System.out.println("Se pegó pa");
-			}
-		}
-
-	}
+		}	 
+	} 
 
 	public void paint(Graphics g) {
 		super.paint(g);

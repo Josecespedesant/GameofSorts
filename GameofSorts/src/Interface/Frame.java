@@ -23,6 +23,7 @@ public class Frame {
 	public static void Start() throws Exception {
 		frame.dispose();
 		
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame = new JFrame("Game of Sorts");
 		frame.getContentPane().add(new Board(), BorderLayout.CENTER);
 		frame.getContentPane().add(new BoardInfo(), BorderLayout.EAST);
