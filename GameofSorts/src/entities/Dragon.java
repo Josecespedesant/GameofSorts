@@ -47,6 +47,22 @@ public class Dragon {
 	 * @param range
 	 */
 	public Dragon(int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
+//	public Dragon(int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
+//		setName();
+//		this.reloadingTime = reloadingTime;
+//		this.resistance = resistance;
+//		this.range = range;
+//		this.father = father;
+//		setAge();
+//		this.speed = speed;
+//		x = startX;
+//		y = startY;
+//		ImageIcon dg = new ImageIcon("dragon.gif");
+//		img = dg.getImage();
+//		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
+//	}
+	
+	public Dragon(int resistance, String range, int speed) {
 		setName();
 		this.reloadingTime = reloadingTime;
 		this.resistance = resistance;
@@ -288,6 +304,7 @@ public class Dragon {
 		elementoDragon.setAttribute("Rango", this.range);
 		elementoDragon.setAttribute("Velocidad", Integer.toString(this.speed));
 		
+<<<<<<< HEAD
 		
 //		hay un error al cargar estos datos
 //		elementoDragon.setAttribute("Padre", this.father.getName());
@@ -305,5 +322,8 @@ public class Dragon {
 //		return nuevoDragon;
 //	}
 //	-------------------------------------------------------------
+=======
+		
+>>>>>>> 055a4c483b3361a6f08ec5ee73dc529540ed4229
 
 }
