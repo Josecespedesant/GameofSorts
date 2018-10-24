@@ -10,6 +10,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import linkedlist.SimpleLinkedList;
 import tools.HitBox;
 
 /**
@@ -34,6 +35,8 @@ public class Dragon {
 	public int x, dx, y, dy;
 	public boolean alive = true;
 	Image img;
+	static SimpleLinkedList<FireBallDragon> fireballsD;
+
 
 	/**
 	 * Constructor for the dragon.
@@ -55,6 +58,7 @@ public class Dragon {
 		y = startY;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
+		fireballsD = new SimpleLinkedList<FireBallDragon>();
 		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
@@ -63,6 +67,14 @@ public class Dragon {
 		return new Rectangle(x,y,100,100);
 	}
 	
+	public void fire(int x1, int y1) {
+		FireBallDragon fireD = new FireBallDragon(x1, y1);
+		fireballsD.addLast(fireD);
+	}
+	
+	public static SimpleLinkedList<FireBallDragon> getFireballsDragon() {
+		return fireballsD;
+	}
 	
 	/**
 	 * Sets the name of the dragon randomly
@@ -267,17 +279,31 @@ public class Dragon {
 	}
 	
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	metodo para serializar los datos del dragon y convertirlo a xml
 	public Node serializar(Document doc) {
 		Element elementoDragon = doc.createElement("Dragon");
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("edad", Integer.toString(this.age));
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
-		elementoDragon.setAttribute("nombre", this.name);
+		elementoDragon.setAttribute("Nombre", this.name);
+		elementoDragon.setAttribute("Edad", Integer.toString(this.age));
+		elementoDragon.setAttribute("Resistencia", Integer.toString(this.resistance));
+		elementoDragon.setAttribute("Rango", this.range);
+		elementoDragon.setAttribute("Velocidad", Integer.toString(this.speed));
+		
+		
+//		hay un error al cargar estos datos
+//		elementoDragon.setAttribute("Padre", this.father.getName());
+//		elementoDragon.setAttribute("Posicion X", Integer.toString(this.x));
+//		elementoDragon.setAttribute("Posicion Y", Integer.toString(this.y));
+//		elementoDragon.setAttribute("Tiempo de recarga", Integer.toString(this.reloadingTime));
 		
 		return elementoDragon;
 	}
+	
+//	Instancia los dragones apartir de un xml
+//	public static Dragon instanciarDesdeXML(Node elementoDragon) {
+//		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Tiempo de recarga")),Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),null,Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")),Integer.parseInt(((Element) elementoDragon).getAttribute("Posicion X")),Integer.parseInt(((Element) elementoDragon).getAttribute("Posicion Y")));
+////		nuevoDragon.name = ((Element)elementoDragon).getAttribute("nombre");
+//		return nuevoDragon;
+//	}
 //	-------------------------------------------------------------
+
 }

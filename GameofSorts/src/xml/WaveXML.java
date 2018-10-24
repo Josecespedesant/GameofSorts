@@ -40,15 +40,13 @@ public class WaveXML {
 		DragonFactoryMethod factory = new DragonFactory();
 		int y=0;
 		int x=0;
-		for(int i=0;i<waveSize;i++) {
+		for(int i=0; i < waveSize; i++) {
 			if(i<1) {
 				dragones[i]=factory.createDragon(1, 3, "Comandant", null, 3,1400,400);
 				d = dragones[i];
 			}else if(i>=1 && i<5) {
-				
 				dragones[i]=factory.createDragon(2, 2, "Captain", d,3,1500, 320+y);
 				y+=50;
-				
 			}else if(i>=5 && i<10) {
 				dragones[i]=factory.createDragon(3, 1, "Infantry", d,3,1600+x, 0+y);
 				y+=100;
@@ -71,8 +69,7 @@ public class WaveXML {
 			
 		
 		dragonsArray = new SimpleLinkedList<>();
-		
-		
+	
 		for(Dragon dragon : this.dragones) {
 			linkedList.add(dragon);
 		}

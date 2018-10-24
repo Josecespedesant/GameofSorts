@@ -133,7 +133,6 @@ public class Player {
 				}
 		}
 		if(key == KeyEvent.VK_SPACE) {
-			System.out.println("FIRE");
 			fire();
 		}
 	}
