@@ -29,8 +29,8 @@ public class Dragon {
 	private Dragon father;
 	private HitBox dragonHitBox;
 	private int speed;
-	public static int numeroPadre;
-	public static int numeroDragon;
+//	public static int numeroPadre;
+//	public static int numeroDragon;
 	public int x, dx, y, dy;
 	public boolean alive = true;
 	Image img;
@@ -293,9 +293,18 @@ public class Dragon {
 
 //	Instancia los dragones apartir de un xml
 	public static Dragon instanciarXML(Node elementoDragon) {
+		
 		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")));
 		return nuevoDragon;
 	}
+	
 //	-------------------------------------------------------------
+	
+////	Instancia los dragones apartir de un xml
+//	public static Dragon instanciarXML(Node elementoDragon) {
+//		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")));
+//		return nuevoDragon;
+//	}
+////	-------------------------------------------------------------
 
 }

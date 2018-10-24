@@ -193,4 +193,21 @@ public class WaveXML {
 	public static SimpleLinkedList<Dragon> getdragonsArray() {
 		return dragonsArray;
 	}
+	
+//	Instancia los dragones apartir de un xml
+	public static Dragon instanciarXML(Node elementoDragon) {
+		
+		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")));
+		return nuevoDragon;
+	}
+	
+//	-------------------------------------------------------------
+	
+	public Dragon instanciarXML(Document doc) {
+		Dragon oleada;
+		oleada = instanciarXML(serializarOleada(doc));
+		
+		return oleada;
+		
+	}
 }
