@@ -291,20 +291,4 @@ public class Dragon {
 		return elementoDragon;
 	}
 
-//	Instancia los dragones apartir de un xml
-	public static Dragon instanciarXML(Node elementoDragon) {
-		
-		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")));
-		return nuevoDragon;
-	}
-	
-//	-------------------------------------------------------------
-	
-////	Instancia los dragones apartir de un xml
-//	public static Dragon instanciarXML(Node elementoDragon) {
-//		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")));
-//		return nuevoDragon;
-//	}
-////	-------------------------------------------------------------
-
 }

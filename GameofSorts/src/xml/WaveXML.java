@@ -200,14 +200,14 @@ public class WaveXML {
 		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")));
 		return nuevoDragon;
 	}
-	
-//	-------------------------------------------------------------
-	
-	public Dragon instanciarXML(Document doc) {
-		Dragon oleada;
-		oleada = instanciarXML(serializarOleada(doc));
 		
-		return oleada;
+//	Instancia los dragones apartir de un xml
+	public Dragon instanciarXML(Document doc) {
+		
+		Dragon dragon;
+		dragon = instanciarXML(serializarOleada(doc));
+		
+		return dragon;
 		
 	}
 }
