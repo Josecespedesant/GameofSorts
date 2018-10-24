@@ -29,8 +29,8 @@ public class Dragon {
 	private Dragon father;
 	private HitBox dragonHitBox;
 	private int speed;
-//	public static int numeroPadre;
-//	public static int numeroDragon;
+	public static int numeroPadre;
+	public static int numeroDragon;
 	public int x, dx, y, dy;
 	public boolean alive = true;
 	Image img;
