@@ -46,7 +46,6 @@ public class Dragon {
 	 * @param resistance
 	 * @param range
 	 */
-	public Dragon(int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
 //	public Dragon(int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
 //		setName();
 //		this.reloadingTime = reloadingTime;
@@ -64,14 +63,10 @@ public class Dragon {
 	
 	public Dragon(int resistance, String range, int speed) {
 		setName();
-		this.reloadingTime = reloadingTime;
 		this.resistance = resistance;
 		this.range = range;
-		this.father = father;
 		setAge();
 		this.speed = speed;
-		x = startX;
-		y = startY;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
 		fireballsD = new SimpleLinkedList<FireBallDragon>();
@@ -294,9 +289,9 @@ public class Dragon {
 		this.dragonHitBox = dragonHitBox;
 	}
 	
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//	metodo para serializar los datos del dragon y convertirlo a xml
-	public Node serializar(Document doc) {
+	 //	metodo para serializar los datos del dragon y convertirlo a xml
+
+
 	public Node serializarDragon(Document doc) {
 		Element elementoDragon = doc.createElement("Dragon");
 		elementoDragon.setAttribute("Nombre", this.name);
@@ -304,29 +299,8 @@ public class Dragon {
 		elementoDragon.setAttribute("Resistencia", Integer.toString(this.resistance));
 		elementoDragon.setAttribute("Rango", this.range);
 		elementoDragon.setAttribute("Velocidad", Integer.toString(this.speed));
-		
-<<<<<<< HEAD
-		
-//		hay un error al cargar estos datos
-//		elementoDragon.setAttribute("Padre", this.father.getName());
-//		elementoDragon.setAttribute("Posicion X", Integer.toString(this.x));
-//		elementoDragon.setAttribute("Posicion Y", Integer.toString(this.y));
-//		elementoDragon.setAttribute("Tiempo de recarga", Integer.toString(this.reloadingTime));
-		
+
 		return elementoDragon;
 	}
 	
-//	Instancia los dragones apartir de un xml
-//	public static Dragon instanciarDesdeXML(Node elementoDragon) {
-//		Dragon nuevoDragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Tiempo de recarga")),Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),null,Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")),Integer.parseInt(((Element) elementoDragon).getAttribute("Posicion X")),Integer.parseInt(((Element) elementoDragon).getAttribute("Posicion Y")));
-////		nuevoDragon.name = ((Element)elementoDragon).getAttribute("nombre");
-//		return nuevoDragon;
-//	}
-//	-------------------------------------------------------------
-=======
-		
-		return elementoDragon;
-	}
->>>>>>> 055a4c483b3361a6f08ec5ee73dc529540ed4229
-
 }
