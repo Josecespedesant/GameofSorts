@@ -297,6 +297,7 @@ public class Dragon {
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	metodo para serializar los datos del dragon y convertirlo a xml
 	public Node serializar(Document doc) {
+	public Node serializarDragon(Document doc) {
 		Element elementoDragon = doc.createElement("Dragon");
 		elementoDragon.setAttribute("Nombre", this.name);
 		elementoDragon.setAttribute("Edad", Integer.toString(this.age));
@@ -324,6 +325,8 @@ public class Dragon {
 //	-------------------------------------------------------------
 =======
 		
+		return elementoDragon;
+	}
 >>>>>>> 055a4c483b3361a6f08ec5ee73dc529540ed4229
 
 }
