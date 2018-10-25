@@ -160,6 +160,9 @@ public class WaveXML {
 		Assert.assertNotNull(oleadaSerializada);
 		
 		doc.appendChild(oleadaSerializada);
+//		++++++++++++++++++++++++++++++++++
+//		instanciarXML(doc);
+//		----------------------------------
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(doc);
