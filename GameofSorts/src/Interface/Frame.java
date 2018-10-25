@@ -29,8 +29,8 @@ public class Frame {
 		frame.getContentPane().add(new BoardInfo(), BorderLayout.EAST);
 		frame.setSize(1366, 768);
 		frame.setVisible(true);
-		
-		
 	}
+	
+	
 	
 }
