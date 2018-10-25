@@ -1,7 +1,6 @@
 package Interface;
 
 import java.awt.*;
-import java.awt.Image;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -120,6 +119,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		//llama a los metodos que permiten que el jugador y dragones se puedan mover. Y repinta cada Graphic
 		try {
 			colison();
+			colisionDragones();
 		} catch (ParserConfigurationException | TransformerException e) {
 			e.printStackTrace();
 		}
@@ -174,21 +174,46 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						BoardInfo.layoutActual();
 						ftemp.visible = false;
 						cont = 1;
+					}else if(cont>3) {
+						cont = 1;
 					}else {
 						System.out.println("cont = "+cont);
 						System.out.println("resistencia = "+dtemp.getResistance()); 
 						ftemp.visible = false;
 						cont++;
 					}
-				
-				
-				if(linkedList.size()==0) {
-					number +=number * 20 / 100;
-					createWave(number);
+
+					if(linkedList.size()==0) {
+						number +=number * 20 / 100;
+						createWave(number);
+					}
+				}
+			}	
+		}
+	}
+	
+	public void colisionDragones() {
+		Rectangle p1 = p.getBounds();
+		for(int i=0; i<linkedList.size();i++) {
+			Dragon dtemp = (Dragon) linkedList.getFirst();
+			fireballsD = dtemp.getFireballsDragon();
+		}
+		for(int i = 0; i < fireballsD.getLength(); i++) {
+			FireBallDragon ftemp = fireballsD.get(i).getData();
+			Rectangle f1 = ftemp.getBounds();
+			
+			if(f1.intersects(p1)) {
+				ftemp.visible = false;
+				System.out.println("ALV PERRO");
+				if(p.getLives()==0) {
+					System.out.println("SE MURIO :c");
+					p.alive = false;
+				}else {
+					p.lives = p.lives-1;
 				}
 			}
-		}	
-	}}
+		}
+	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -211,8 +236,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		}
 
 		//pinta al grifo
-		g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
-
+		if(p.isAlive()) {
+			g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
+		}
+		
 		//pinta dragones si es que estan vivos
 		LinkedList linkedList = new LinkedList();
 		for(int i = 0; i < dragonsArray.getLength(); i++) {

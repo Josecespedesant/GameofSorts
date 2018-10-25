@@ -1,6 +1,7 @@
 package entities;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -21,7 +22,8 @@ public class Player {
 	public int allow = 1;
 	Image img ;
 	private HitBox hitbox;
-
+	public  int lives;
+	public boolean alive;
 	FireBall fire = new FireBall(x, y);
 	static SimpleLinkedList<FireBall> fireballs;
 	
@@ -34,11 +36,18 @@ public class Player {
 		y = 350;
 		nx = 0;
 		nx2 = 1266;
+		lives = 3;
+		alive = true;
 		fireballs = new SimpleLinkedList<FireBall>();
 		ImageIcon image = new ImageIcon("griphFinal.gif");
 		img = image.getImage();
 		hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
 	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,100,100);
+	}
+	
 	
 	public static SimpleLinkedList<FireBall> getFireballs() {
 		return fireballs;
@@ -81,6 +90,14 @@ public class Player {
 	 */
 	public Image getImage() {
 		return img;
+	}
+	
+	public int getLives() {
+		return lives;
+	}
+	
+	public boolean isAlive() {
+		return alive;
 	}
 	
 	/**
