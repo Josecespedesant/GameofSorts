@@ -5,20 +5,20 @@ import java.awt.*;
 import javax.swing.ImageIcon;
 public class FireBall {
 	int x, y;
-	Image img;
+	static Image img;
 	public boolean visible = true;
 	private HitBox fireHitBox;
+	public String fuego, fuegoD;
+	
 	
 	public FireBall(int startX, int startY) {
 		x = startX;
 		y = startY;
 		ImageIcon fireball = new ImageIcon("fuego.gif");
 		img = fireball.getImage();
-		visible = true;
-
+		visible = true;		
 		this.fireHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
-	
 
 	public Rectangle getBounds() {
 		return new Rectangle(x,y,75,75);
@@ -31,8 +31,6 @@ public class FireBall {
 		}
 		fireHitBox.move(x);
 	}
-	
-	
 
 	public HitBox getFireHitBox() {
 		return fireHitBox;

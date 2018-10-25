@@ -10,6 +10,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import linkedlist.SimpleLinkedList;
 import tools.HitBox;
 
 /**
@@ -34,6 +35,8 @@ public class Dragon {
 	public int x, dx, y, dy;
 	public boolean alive = true;
 	Image img;
+	static SimpleLinkedList<FireBallDragon> fireballsD;
+
 
 	/**
 	 * Constructor for the dragon.
@@ -66,6 +69,7 @@ public class Dragon {
 		this.speed = speed;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
+		fireballsD = new SimpleLinkedList<FireBallDragon>();
 		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
@@ -74,6 +78,14 @@ public class Dragon {
 		return new Rectangle(x,y,100,100);
 	}
 	
+	public void fire(int x1, int y1) {
+		FireBallDragon fireD = new FireBallDragon(x1, y1);
+		fireballsD.addLast(fireD);
+	}
+	
+	public static SimpleLinkedList<FireBallDragon> getFireballsDragon() {
+		return fireballsD;
+	}
 	
 	/**
 	 * Sets the name of the dragon randomly
@@ -277,8 +289,9 @@ public class Dragon {
 		this.dragonHitBox = dragonHitBox;
 	}
 	
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//	metodo para serializar los datos del dragon y convertirlo a xml
+	 //	metodo para serializar los datos del dragon y convertirlo a xml
+
+
 	public Node serializarDragon(Document doc) {
 		Element elementoDragon = doc.createElement("Dragon");
 		elementoDragon.setAttribute("Nombre", this.name);
@@ -286,9 +299,8 @@ public class Dragon {
 		elementoDragon.setAttribute("Resistencia", Integer.toString(this.resistance));
 		elementoDragon.setAttribute("Rango", this.range);
 		elementoDragon.setAttribute("Velocidad", Integer.toString(this.speed));
-		
-		
+
 		return elementoDragon;
 	}
-
+	
 }
