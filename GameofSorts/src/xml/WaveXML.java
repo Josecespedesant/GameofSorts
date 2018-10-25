@@ -825,5 +825,6 @@
 		dragon = instanciarXML(serializarOleada(doc)); 
 		return dragon; 
 	} 
+	
 
 } 

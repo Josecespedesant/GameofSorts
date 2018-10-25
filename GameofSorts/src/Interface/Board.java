@@ -176,7 +176,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						cont = 1;
 					}else {
 						System.out.println("cont = "+cont);
-						System.out.println("resistencia = "+dtemp.getResistance());  // SOLO SE PUEDE MATAR UN DRAGRON A LA VEZ
+						System.out.println("resistencia = "+dtemp.getResistance()); 
 						ftemp.visible = false;
 						cont++;
 					}
