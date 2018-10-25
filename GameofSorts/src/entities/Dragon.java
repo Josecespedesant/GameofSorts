@@ -39,27 +39,11 @@ public class Dragon {
 
 
 	/**
-	 * Constructor for the dragon.
-	 * @param name
-	 * @param reloadingTime
-	 * @param age
+	 * Constructor for the dragon
+	 * @param speed
 	 * @param resistance
 	 * @param range
 	 */
-//	public Dragon(int reloadingTime, int resistance, String range, Dragon father ,int speed, int startX, int startY) {
-//		setName();
-//		this.reloadingTime = reloadingTime;
-//		this.resistance = resistance;
-//		this.range = range;
-//		this.father = father;
-//		setAge();
-//		this.speed = speed;
-//		x = startX;
-//		y = startY;
-//		ImageIcon dg = new ImageIcon("dragon.gif");
-//		img = dg.getImage();
-//		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
-//	}
 	
 	public Dragon(int resistance, String range, int speed) {
 		setName();
@@ -290,8 +274,6 @@ public class Dragon {
 	}
 	
 	 //	metodo para serializar los datos del dragon y convertirlo a xml
-
-
 	public Node serializarDragon(Document doc) {
 		Element elementoDragon = doc.createElement("Dragon");
 		elementoDragon.setAttribute("Nombre", this.name);
