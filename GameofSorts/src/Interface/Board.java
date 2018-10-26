@@ -230,9 +230,22 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			nx =0;
 			nx2 = 1266;
 		}
-
-		if(p.getX() == 0) {
-			p.dx = 0;
+		
+		//Validaciones que hace que el jugador no se salga de la pantalla
+		if(p.getX() < 0) {
+			p.x = 0;
+		}
+		
+		if(p.getX() > 1050) {
+			p.x = 1050;
+		}
+		
+		if(p.getY() < 0) {
+			p.y = 0;
+		}
+		
+		if(p.getY() > 638) {
+			p.y = 638;
 		}
 
 		//pinta al grifo
