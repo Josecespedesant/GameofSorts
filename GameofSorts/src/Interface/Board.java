@@ -161,6 +161,15 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		for(int i = 0; i < linkedList.size(); i++) {
 			Dragon dtemp = (Dragon) linkedList.get(i);
 			Rectangle d1 = dtemp.getBounds();
+			
+			if(d1.intersects(p.getBounds())) {
+				if(p.getLives()==0) {
+					System.out.println("SE MURIO :c");
+					p.alive = false;
+				}else {
+					p.lives = p.lives-1;
+				}
+			}
 
 			for(int j=0; j < fireballs.getLength(); j++) {
 				FireBall ftemp = fireballs.get(j).getData();
@@ -260,6 +269,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			linkedList.add(dtemp);
 			if (dtemp.alive){
 				g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
+			}
+			
+			if(p.getLives() == 0) {
+				p.alive = false;
+			}else if(dtemp.getX() == 0) {
+				p.lives -=1;
 			}
 		}
 
