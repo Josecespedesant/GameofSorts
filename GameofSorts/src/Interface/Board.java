@@ -227,7 +227,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-
+		
 		//movimiento de la imagen del fondo
 		nx--;
 		nx2--;
@@ -271,10 +271,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
 			}
 			
+			//Permite saber si el dragon llegó hasta el lado izquierdo de la pantalla y le quita vidas al jugador
 			if(p.getLives() == 0) {
 				p.alive = false;
 			}else if(dtemp.getX() == 0) {
 				p.lives -=1;
+				dtemp.alive = false;
 			}
 		}
 
