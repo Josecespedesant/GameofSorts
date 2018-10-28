@@ -16,7 +16,7 @@ public class Frame {
 		
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.getContentPane().add(new BoardInicio(), BorderLayout.CENTER);
-		frame.setSize(1366, 768);
+		frame.setSize(1366, 500);
 		frame.setVisible(true);
 		frame.setResizable(false);
 	}
@@ -24,10 +24,21 @@ public class Frame {
 	public static void Start() throws Exception {
 		frame.dispose();
 		
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame = new JFrame("Game of Sorts");
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(new Board(), BorderLayout.CENTER);
 		frame.getContentPane().add(new BoardInfo(), BorderLayout.EAST);
+		frame.setSize(1366, 768);
+		frame.setVisible(true);
+		frame.setResizable(false);
+	}
+	
+	public static void end() throws ParserConfigurationException, TransformerException {
+		frame.dispose();
+	
+		frame = new JFrame("Game of Sorts");
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new BoardFinal(), BorderLayout.CENTER);
 		frame.setSize(1366, 768);
 		frame.setVisible(true);
 		frame.setResizable(false);

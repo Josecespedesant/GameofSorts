@@ -22,8 +22,8 @@ public class Player {
 	public int allow = 1;
 	Image img ;
 	private HitBox hitbox;
-	public  int lives;
-	public boolean alive;
+	public  int lifes;
+	public boolean alife;
 	FireBall fire = new FireBall(x, y);
 	static SimpleLinkedList<FireBall> fireballs;
 
@@ -36,8 +36,8 @@ public class Player {
 		y = 350;
 		nx = 0;
 		nx2 = 1266;
-		lives = 3;
-		alive = true;
+		lifes = 3;
+		alife = true;
 		fireballs = new SimpleLinkedList<FireBall>();
 		ImageIcon image = new ImageIcon("griphFinal.gif");
 		img = image.getImage();
@@ -92,12 +92,12 @@ public class Player {
 		return img;
 	}
 
-	public int getLives() {
-		return lives;
+	public int getlifes() {
+		return lifes;
 	}
 
-	public boolean isAlive() {
-		return alive;
+	public boolean isAliVe() {
+		return alife;
 	}
 
 	/**
