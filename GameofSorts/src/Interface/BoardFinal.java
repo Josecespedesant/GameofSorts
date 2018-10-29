@@ -20,12 +20,12 @@ public class BoardFinal extends JPanel implements ActionListener{
 	JLabel gameStart;
 	JButton startB;
 
-	
+
 	public BoardFinal() {
 		this.setBackground(Color.BLACK);
 		ImageIcon g = new ImageIcon("end.gif"); 
 		img = g.getImage();
-				
+
 		time = new Timer(5, this);
 		time.start();
 	}
@@ -35,12 +35,12 @@ public class BoardFinal extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		repaint();
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(img, 500, 250, null);
-		
- 	}
+
+	}
 }

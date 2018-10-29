@@ -57,6 +57,25 @@ public class Dragon {
 		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
+	/**
+	 * Constructor for the dragon
+	 * @param name
+	 * @param resistance
+	 * @param range
+	 * @param speed
+	 */
+	public Dragon(String name, int resistance, String range, int speed) {
+		this.name = name;
+		this.resistance = resistance;
+		this.range = range;
+		setAge();
+		this.speed = speed;
+		ImageIcon dg = new ImageIcon("dragon.gif");
+		img = dg.getImage();
+		fireballsD = new SimpleLinkedList<FireBallDragon>();
+		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
+	}
+	
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x,y,100,100);
