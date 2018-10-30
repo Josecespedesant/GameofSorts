@@ -47,6 +47,7 @@ public class Dragon {
 	
 	public Dragon(int resistance, String range, int speed) {
 		setName();
+		this.father = null;
 		this.resistance = resistance;
 		this.range = range;
 		setAge();
@@ -70,6 +71,7 @@ public class Dragon {
 		this.range = range;
 		setAge();
 		this.speed = speed;
+		this.father = null;
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
 		fireballsD = new SimpleLinkedList<FireBallDragon>();

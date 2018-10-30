@@ -167,8 +167,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			if(d1.intersects(p.getBounds())) {
 				if(p.getlifes()==0) {
 					p.alife = false;
-					Frame.end();
-					return;
 				}else {
 					p.lifes = p.lifes-1;
 				}
@@ -217,8 +215,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				ftemp.visible = false;
 				if(p.getlifes()==0) {
 					p.alife = false;
-					Frame.end();
-					return;
 				}else {
 					p.lifes = p.lifes-1;
 				}

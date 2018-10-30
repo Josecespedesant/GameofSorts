@@ -14,6 +14,7 @@ public class Frame {
 	public static void main(String[] args)  {
 		frame = new JFrame("Game of Sorts");
 		
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.getContentPane().add(new BoardInicio(), BorderLayout.CENTER);
 		frame.setSize(1366, 500);

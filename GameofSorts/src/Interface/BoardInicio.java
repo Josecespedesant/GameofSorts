@@ -54,10 +54,9 @@ public class BoardInicio extends JPanel implements ActionListener{
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 
-		g2d.drawImage(img, 0, 0, null);
+		//g2d.drawImage(img, 0, 0, null);
 		this.add(startB);
-
-		//g2d.drawImage(img, 0, 0, null); pinta imagen pero hay que cambiarla
+		
 	}
 
 }
