@@ -78,8 +78,16 @@ public class BTree<Key extends Comparable<Key>, Value>  {
         if (key == null) throw new IllegalArgumentException("argument to get() is null");
         return search(root, key, height);
     }
+    
+    public Node getRoot() {
+		return root;
+	}
 
-    private Value search(Node x, Key key, int ht) {
+	public void setRoot(Node root) {
+		this.root = root;
+	}
+
+	private Value search(Node x, Key key, int ht) {
         Entry[] children = x.children;
 
         // external node

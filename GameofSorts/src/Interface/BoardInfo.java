@@ -78,10 +78,10 @@ public class BoardInfo extends JPanel{
 		
 		for(int i=0; i<dragonsArray.size(); i++) {
 			nombres.add(dragonsArray.get(i).getName());
-		}
+		} 
 		
-		int x=15;
-		int y=500;
+		int x=50;
+		int y=370;
 		super.paintComponent(g);
 		BTree<Integer, String> arbolB = new BTree<Integer, String>();
 		
@@ -90,13 +90,28 @@ public class BoardInfo extends JPanel{
 		for(int i = 0; i < nombres.size(); i++) {
 			arbolB.put(i, nombres.get(i));
 			
-			g.drawString(nombres.get(i), x+15, y);
 			
-			if(i!=nombres.size()-1) {
-			drawArrowLine(g, x+50, y, x+50, y+15, 5, 5);
+			int xcent = 50;
+			int ycent = 370;
+			
+			if(i<=nombres.size()/2) {
+				g.drawString(nombres.get(i), x, y);
+				y+=20;
+				x-=17;
+				if(i == nombres.size()/2) {
+					x = xcent+35;
+					y = ycent+20;
+				}
+			}else {
+				g.drawString(nombres.get(i), x, y);
+				x+=15;
+				y+=20;
 			}
 			
-			y+=20;
+			
+			
+			
+			
 			
 			
 		}

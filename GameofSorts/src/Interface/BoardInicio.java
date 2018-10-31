@@ -9,11 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.*;
 import javax.swing.Timer;
-<<<<<<< HEAD
-//import javax.xml.parsers.ParserConfigurationException;
-//import javax.xml.transform.TransformerException;
-=======
->>>>>>> a5428980ac7e8ec550bd8ca82c05a7fb1b52a50b
+
 
 public class BoardInicio extends JPanel implements ActionListener{
 	Image img;
@@ -32,6 +28,7 @@ public class BoardInicio extends JPanel implements ActionListener{
 
 		startB = new JButton("Start Game");
 		startB.addActionListener(this);
+		this.add(startB);
 
 		time = new Timer(5, this);
 		time.start();
@@ -55,11 +52,7 @@ public class BoardInicio extends JPanel implements ActionListener{
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 
-<<<<<<< HEAD
-//		g2d.drawImage(img, 0, 0, null);
-=======
 		g2d.drawImage(img, 0, 0, null);
->>>>>>> a5428980ac7e8ec550bd8ca82c05a7fb1b52a50b
 		this.add(startB);
 		
 	}
