@@ -21,4 +21,5 @@ public class SelectionSort {
             oleada[i] = temp; 
         } 
     } 
+	
 } 

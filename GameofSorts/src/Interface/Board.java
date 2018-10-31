@@ -51,7 +51,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<FireBallDragon> fireballsD;
 	static int number;
 
-	LinkedList linkedList;
+	static LinkedList linkedList;
 
 	private int cont;
 
@@ -97,8 +97,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	}
 
 
-	public static SimpleLinkedList<Dragon> getdragonsArray() {
-		return dragonsArray;
+	public static LinkedList<Dragon> getDragonsList() {
+		return linkedList;
 	}
 
 

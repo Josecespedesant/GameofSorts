@@ -3,7 +3,7 @@ package linkedlist;
 
 /**
  * Node class declaration.
- * @author Jose Antonio Cespedes Downing
+ * @author José Antonio
  */
 public class Node<T> {
 	

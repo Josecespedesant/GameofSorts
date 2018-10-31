@@ -49,4 +49,13 @@ public class ArbolB {
 			
 		}
 	}
+	
+	public static void main(String[] args) {
+		ArbolB b = new ArbolB();
+		
+		b.add(1);
+		b.add(2);
+		b.add(5);
+		b.add(4);
+	}
 }
