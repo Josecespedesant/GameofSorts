@@ -50,6 +50,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<FireBall> fireballs;
 	static SimpleLinkedList<FireBallDragon> fireballsD;
 	static int number;
+	static int cd;
 
 	LinkedList linkedList;
 
@@ -57,7 +58,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 
 	public Board() throws ParserConfigurationException, TransformerException{ // ++++++++++++++++++++++++++
 		p = new Player(); //jugador
-		number = 10;
+		number = 35;
 		createWave(number);
 		cont = 1;		
 		fireballs = p.getFireballs();
@@ -194,6 +195,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 					}
 					if(linkedList.size()==0) {
 						number +=number * 20 / 100;
+						
+//						contador para saber cual es la ultima oleada 
+						cd++;
+						
 						createWave(number);
 					}
 				}
@@ -273,14 +278,22 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		if(p.isAliVe()) {
 			g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 		}
-
-		//pinta dragones si es que estan vivos
+		
+		
+//		si elimina a todos los dragones aparece una imagen de que es el ganador
+		if(cd==8) {
+			ImageIcon lifes = new ImageIcon("Winner.png"); 
+			vidas = lifes.getImage();
+			g2d.drawImage(vidas, 600, 150, null);
+		}
+		
+		
+//		pinta dragones si es que estan vivos			
 		for(int i = 0; i < dragonsArray.getLength(); i++) {
 			Dragon dtemp = dragonsArray.get(i).getData();
 			if (dtemp.alive){
 				g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
-			}
-
+			}						
 			if(p.getlifes() == 0) {
 				p.alife = false;
 				try {

@@ -11,7 +11,7 @@ import org.xml.sax.SAXException;
 
 public class Frame {
 	static JFrame frame, frame1;
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws Exception  {
 		frame = new JFrame("Game of Sorts");
 		
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
@@ -20,6 +20,7 @@ public class Frame {
 		frame.setSize(1366, 500);
 		frame.setVisible(true);
 		frame.setResizable(false);
+	
 	}
 	
 	public static void Start() throws Exception {
