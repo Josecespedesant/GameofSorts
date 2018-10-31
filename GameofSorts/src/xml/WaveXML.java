@@ -67,7 +67,6 @@ import entities.Dragon;
  				y+=100;
  				if(x>=6)
  					x=100;
-
  			}else if(i>=10 && i<12) {
  				dragones[i]=factory.createDragon(1, "Infantry",3);
  				dragones[i].setReloadingTime(3);
@@ -98,6 +97,44 @@ import entities.Dragon;
  				dragones[i].setX(2000);
  				dragones[i].setY(-1600+y);
  				y+=250;
+ 			}else if(i>=20 && i<24) {
+ 				dragones[i]=factory.createDragon(1, "Infantry",2);
+ 				dragones[i].setReloadingTime(4);
+ 				dragones[i].setFather(d);
+ 				dragones[i].setX(2100);
+ 				dragones[i].setY(-2400+y);
+ 				y+=185;
+ 			}else if(i>=24 && i<29) {
+ 				if(i==24) {
+ 					y=145;
+ 				}
+ 				dragones[i]=factory.createDragon(1, "Captain",4);
+ 				dragones[i].setReloadingTime(1);
+ 				dragones[i].setFather(d);  
+ 				dragones[i].setX(2200)   ;
+ 				dragones[i].setY(y);
+ 				y+=120;  
+ 			}else if(i>=29 && i<34) {
+ 				if(i==29) {
+ 					y=150;
+ 				}
+ 				dragones[i]=factory.createDragon(1, "Infantry",2);
+ 				dragones[i].setReloadingTime(3);
+ 				dragones[i].setFather(d);
+ 				dragones[i].setX(2300);
+ 				dragones[i].setY(y);
+ 				y+=120;
+ 			}
+ 			else if(i>=34 && i<35) {
+ 				if(i==34) {
+ 					y=400;
+ 				}
+ 				dragones[i]=factory.createDragon(1, "Infantry",2);
+ 				dragones[i].setReloadingTime(3);
+ 				dragones[i].setFather(d);
+ 				dragones[i].setX(2600);
+ 				dragones[i].setY(y);
+ 				y+=120;
  			}
  		}
 
