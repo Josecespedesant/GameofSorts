@@ -1,4 +1,4 @@
-package manager;
+package xmlmanager;
 
 import org.jdom2.Document;
 import org.jdom2.JDOMException;

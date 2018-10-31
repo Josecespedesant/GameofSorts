@@ -1,4 +1,4 @@
-package manager;
+package xmlmanager;
 
 import entities.Dragon;
 import org.jdom2.Document;

@@ -40,7 +40,6 @@ public class Dragon {
 
 	/**
 	 * Constructor for the dragon
-	 * @param speed
 	 * @param resistance
 	 * @param rank
 	 */
@@ -221,10 +220,10 @@ public class Dragon {
 	 */
 	public void setAge() {
 		if(getFather() == null) {
-			int num = ThreadLocalRandom.current().nextInt(900, 1000 + 1);
+			int num = ThreadLocalRandom.current().nextInt(500, 1000 + 1);
 			this.age = num;
 		}else {
-			int num = ThreadLocalRandom.current().nextInt(1, 890 + 1);
+			int num = ThreadLocalRandom.current().nextInt(1, 490 + 1);
 			this.age = num;
 		}
 	}

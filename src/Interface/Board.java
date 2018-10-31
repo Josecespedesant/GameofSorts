@@ -15,7 +15,6 @@ import entities.FireBall;
 import entities.FireBallDragon;
 import entities.Player;
 import linkedlist.SimpleLinkedList;
-import xml.WaveXML;
 
 
 public class Board extends JPanel implements ActionListener, MouseListener {
@@ -72,9 +71,12 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		//		como la primera oleada es de 10 (ya NO de 100 dragones)y se aumenta en un 20%
 		//		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
 		this.number = number;
+
+		/*
 		WaveXML oleada=new WaveXML(number);
 		linkedList = oleada.getLista();
 		setDragonsArray(oleada.getdragonsArray());
+		*/
 	}
 
 
