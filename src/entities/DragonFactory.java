@@ -14,8 +14,8 @@ public class DragonFactory implements DragonFactoryMethod{
 //	}
 	
 	@Override
-	public  Dragon createDragon(int resistance, String range,int speed) {
-		return new Dragon(resistance,  range, speed);
+	public  Dragon createDragon(int resistance, String rank) {
+		return new Dragon(resistance,  rank);
 	}
 
 }

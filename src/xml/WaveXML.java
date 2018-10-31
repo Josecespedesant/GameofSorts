@@ -43,7 +43,7 @@ import entities.Dragon;
 
  		for(int i=0;i<waveSize;i++) {
  			if(i<1) {
- 				dragones[i]=factory.createDragon(3, "Comandant", 3);
+ 				dragones[i]=factory.createDragon(3, "Comandant");
  				d = dragones[i];
  				dragones[i].setReloadingTime(1);
  				dragones[i].setFather(null);
@@ -51,7 +51,7 @@ import entities.Dragon;
  				dragones[i].setY(400);
 
  			}else if(i>=1 && i<5) {
- 				dragones[i]=factory.createDragon(2, "Captain",3);
+ 				dragones[i]=factory.createDragon(2, "Captain");
  				dragones[i].setReloadingTime(2);
  				dragones[i].setFather(d);
  				dragones[i].setX(1500);
@@ -59,7 +59,7 @@ import entities.Dragon;
  				y+=50;
 
  			}else if(i>=5 && i<10) {
- 				dragones[i]=factory.createDragon(1, "Infantry",3);
+ 				dragones[i]=factory.createDragon(1, "Infantry");
  				dragones[i].setReloadingTime(3);
  				dragones[i].setFather(d);
  				dragones[i].setX(1600+x);
@@ -68,7 +68,7 @@ import entities.Dragon;
  				if(x>=6)
  					x=100;
  			}else if(i>=10 && i<12) {
- 				dragones[i]=factory.createDragon(1, "Infantry",3);
+ 				dragones[i]=factory.createDragon(1, "Infantry");
  				dragones[i].setReloadingTime(3);
  				dragones[i].setFather(d);
  				dragones[i].setX(1700);
@@ -76,7 +76,7 @@ import entities.Dragon;
  				y+=100;
 
  			}else if(i>=12 && i<14) {
- 				dragones[i]=factory.createDragon(2, "Captain",3);
+ 				dragones[i]=factory.createDragon(2, "Captain");
  				dragones[i].setReloadingTime(2);
  				dragones[i].setFather(d);
  				dragones[i].setX(1800);
@@ -84,21 +84,21 @@ import entities.Dragon;
  				y+=200;
 
  			}else if(i>=14 && i<17) {
- 				dragones[i]=factory.createDragon(1, "Infantry",3);
+ 				dragones[i]=factory.createDragon(1, "Infantry");
  				dragones[i].setReloadingTime(3);
  				dragones[i].setFather(d);
  				dragones[i].setX(1900);
  				dragones[i].setY(-1050+y);
  				y+=150;
  			}else if(i>=17 && i<20) {
- 				dragones[i]=factory.createDragon(2, "Captain",3);
+ 				dragones[i]=factory.createDragon(2, "Captain");
  				dragones[i].setReloadingTime(2);
  				dragones[i].setFather(d);
  				dragones[i].setX(2000);
  				dragones[i].setY(-1600+y);
  				y+=250;
  			}else if(i>=20 && i<24) {
- 				dragones[i]=factory.createDragon(1, "Infantry",2);
+ 				dragones[i]=factory.createDragon(1, "Infantry");
  				dragones[i].setReloadingTime(4);
  				dragones[i].setFather(d);
  				dragones[i].setX(2100);
@@ -108,7 +108,7 @@ import entities.Dragon;
  				if(i==24) {
  					y=145;
  				}
- 				dragones[i]=factory.createDragon(1, "Captain",4);
+ 				dragones[i]=factory.createDragon(1, "Captain");
  				dragones[i].setReloadingTime(1);
  				dragones[i].setFather(d);  
  				dragones[i].setX(2200)   ;
@@ -118,7 +118,7 @@ import entities.Dragon;
  				if(i==29) {
  					y=150;
  				}
- 				dragones[i]=factory.createDragon(1, "Infantry",2);
+ 				dragones[i]=factory.createDragon(1, "Infantry");
  				dragones[i].setReloadingTime(3);
  				dragones[i].setFather(d);
  				dragones[i].setX(2300);
@@ -129,7 +129,7 @@ import entities.Dragon;
  				if(i==34) {
  					y=400;
  				}
- 				dragones[i]=factory.createDragon(1, "Infantry",2);
+ 				dragones[i]=factory.createDragon(1, "Infantry");
  				dragones[i].setReloadingTime(3);
  				dragones[i].setFather(d);
  				dragones[i].setX(2600);
@@ -196,7 +196,7 @@ import entities.Dragon;
  	
 // 	instancia un dragon apartir de las etiquetas del xml
  	public static Dragon parsearDragon(Node elementoDragon) {
-		Dragon dragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"),Integer.parseInt(((Element) elementoDragon).getAttribute("Velocidad")));
+		Dragon dragon = new Dragon(Integer.parseInt(((Element) elementoDragon).getAttribute("Resistencia")),((Element) elementoDragon).getAttribute("Rango"));
 		return dragon;
 	}
 	

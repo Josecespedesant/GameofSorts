@@ -26,10 +26,10 @@ public class InsertionSort {
     	SimpleLinkedList<Dragon> l = new SimpleLinkedList<Dragon>();
     	InsertionSort s = new InsertionSort();
     	
-    	Dragon d1 = new Dragon(3, "Commandant", 50);
-    	Dragon d2 = new Dragon(2, "Soldier", 100);
-    	Dragon d3 = new Dragon(4, "Domingo 7", 150);
-    	Dragon d4 = new Dragon(1, "Hola", 200);
+    	Dragon d1 = new Dragon(3, "Commandant");
+    	Dragon d2 = new Dragon(2, "Soldier");
+    	Dragon d3 = new Dragon(4, "Domingo 7");
+    	Dragon d4 = new Dragon(1, "Hola");
     	
     	l.addLast(d1);
     	l.addLast(d2);
