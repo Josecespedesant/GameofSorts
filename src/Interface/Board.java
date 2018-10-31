@@ -2,40 +2,20 @@ package Interface;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
 
 import javax.swing.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
-import org.junit.Assert;
-import org.junit.Before;
 //import org.junit.Assert;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 import entities.Dragon;
-import entities.DragonFactory;
-import entities.DragonFactoryMethod;
 import entities.FireBall;
 import entities.FireBallDragon;
 import entities.Player;
 import linkedlist.SimpleLinkedList;
 import xml.WaveXML;
-
-import java.io.File;
-import java.io.IOException;
 
 
 public class Board extends JPanel implements ActionListener, MouseListener {
@@ -308,9 +288,9 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			Dragon dtemp = dragonsArray.get(i).getData();
 			
 			if(dtemp.alive) {
-				if(dtemp.getRange()=="Comandant") {
+				if(dtemp.getRank()=="Comandant") {
 					g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
-				}else if(dtemp.getRange()=="Captain") {
+				}else if(dtemp.getRank()=="Captain") {
 				ImageIcon lifes = new ImageIcon("dragonCapitan.gif"); 
 				Image capitan = lifes.getImage();
 				g2d.drawImage(capitan, dtemp.getX(), dtemp.getY(), null);
@@ -370,7 +350,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						"Name: "+dragonList.getName()+"<br/>"+
 						"Resistance: "+dragonList.getResistance()+"<br/>"+
 						"Speed: "+dragonList.getSpeed()+"<br/>"+
-						"Range: "+dragonList.getRange()+"<br/>"+
+						"Range: "+dragonList.getRank()+"<br/>"+
 						"Reloding time:"+dragonList.getReloadingTime()+"</html>");
 				BoardInfo.cambiarL();
 
