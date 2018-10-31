@@ -58,6 +58,7 @@ public class Dragon {
 		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
 	
+	
 	/**
 	 * Constructor for the dragon
 	 * @param name

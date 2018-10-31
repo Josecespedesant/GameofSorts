@@ -1,7 +1,5 @@
 package Interface;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -11,8 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.*;
 import javax.swing.Timer;
+<<<<<<< HEAD
 //import javax.xml.parsers.ParserConfigurationException;
 //import javax.xml.transform.TransformerException;
+=======
+>>>>>>> a5428980ac7e8ec550bd8ca82c05a7fb1b52a50b
 
 public class BoardInicio extends JPanel implements ActionListener{
 	Image img;
@@ -46,7 +47,7 @@ public class BoardInicio extends JPanel implements ActionListener{
 				e1.printStackTrace();
 			}
 		}
-		repaint();
+		//repaint();
 	}
 
 	@Override
@@ -54,7 +55,11 @@ public class BoardInicio extends JPanel implements ActionListener{
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 
+<<<<<<< HEAD
 //		g2d.drawImage(img, 0, 0, null);
+=======
+		g2d.drawImage(img, 0, 0, null);
+>>>>>>> a5428980ac7e8ec550bd8ca82c05a7fb1b52a50b
 		this.add(startB);
 		
 	}
