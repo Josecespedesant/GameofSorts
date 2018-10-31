@@ -1,15 +1,20 @@
 package Interface;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-
+import java.awt.Graphics;
+import java.awt.Point;
+import java.util.Collections;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import arboles.BTree;
+import arboles.Node;
 import entities.Dragon;
-import linkedlist.SimpleLinkedList;
 
 public class BoardInfo extends JPanel{
 	JButton b1;
@@ -17,10 +22,19 @@ public class BoardInfo extends JPanel{
 	static JLabel labelActual;
 	JLabel labelDragon, labelB, labelArbol;
 	static JLabel labelStats;
-	static SimpleLinkedList<Dragon> dragonsArray;
+	static LinkedList<Dragon> dragonsArray;
 	static int cont = 1;
+	static LinkedList<String> nombres;
+	
 
 	public BoardInfo() {
+		dragonsArray = Board.getDragonsList();
+		nombres = new LinkedList<String>();
+		
+		for(int i=0; i<dragonsArray.size(); i++) {
+			nombres.add(dragonsArray.get(i).getName());
+		}
+		
 		this.setPreferredSize(new Dimension(200, 768));
 		this.setLabels();
 		this.add(labelLayOut);
@@ -29,11 +43,11 @@ public class BoardInfo extends JPanel{
 		this.add(labelStats);
 		this.add(labelB);
 		this.add(labelArbol);
-		dragonsArray = Board.getdragonsArray();
 	}
 	
 	public void setLabels() {
 		//Label del Layout
+		
 		labelLayOut = new JLabel("Layout Actual");
 		labelActual = new JLabel();
 		layoutActual();
@@ -58,7 +72,69 @@ public class BoardInfo extends JPanel{
 		labelB.setFont(new Font("Serif", Font.BOLD, 20));
 		labelArbol.setFont(new Font("Serif", Font.PLAIN, 12));
 	}
+	
+	public void paintComponent(Graphics g) {
+		nombres = new LinkedList<String>();
+		
+		for(int i=0; i<dragonsArray.size(); i++) {
+			nombres.add(dragonsArray.get(i).getName());
+		}
+		
+		int x=15;
+		int y=500;
+		super.paintComponent(g);
+		BTree<Integer, String> arbolB = new BTree<Integer, String>();
+		
+		Collections.sort(nombres);
+		
+		for(int i = 0; i < nombres.size(); i++) {
+			arbolB.put(i, nombres.get(i));
+			
+			g.drawString(nombres.get(i), x+15, y);
+			
+			if(i!=nombres.size()-1) {
+			drawArrowLine(g, x+50, y, x+50, y+15, 5, 5);
+			}
+			
+			y+=20;
+			
+			
+		}
+		
+		repaint();
+		
+	}
+	
+	/**
+     * Dibuja la flecha
+     * @param g
+     * @param srcX
+     * @param srcY
+     * @param destX
+     * @param destY
+     * @param width
+     * @param height
+     */
+    private void drawArrowLine(Graphics g, int srcX, int srcY, int destX, int destY, int width, int height) {
+        int distX = destX - srcX, distY = destY - srcY;
+        double D = Math.sqrt(distX*distX + distY*distY);
+        double xm = D - width, xn = xm, ym = height, yn = -height, x;
+        double sin = distY / D, cos = distX / D;
 
+        x = xm*cos - ym*sin + srcX;
+        ym = xm*sin + ym*cos + srcY;
+        xm = x;
+
+        x = xn*cos - yn*sin + srcX;
+        yn = xn*sin + yn*cos + srcY;
+        xn = x;
+
+        int[] xpoints = {destX, (int) xm, (int) xn};
+        int[] ypoints = {destY, (int) ym, (int) yn};
+
+        g.drawLine(srcX, srcY, destX, destY);
+    }
+	
 	public static void cambiarL() {
 		labelStats.setText(Board.getMensaje());
 	}
