@@ -22,11 +22,11 @@ public class Player {
 	public int allow = 1;
 	Image img ;
 	private HitBox hitbox;
-	public  int lives;
-	public boolean alive;
+	public  int lifes;
+	public boolean alife;
 	FireBall fire = new FireBall(x, y);
 	static SimpleLinkedList<FireBall> fireballs;
-	
+
 	/**
 	 * Constructor of the class Player.
 	 */
@@ -36,23 +36,23 @@ public class Player {
 		y = 350;
 		nx = 0;
 		nx2 = 1266;
-		lives = 3;
-		alive = true;
+		lifes = 3;
+		alife = true;
 		fireballs = new SimpleLinkedList<FireBall>();
 		ImageIcon image = new ImageIcon("griphFinal.gif");
 		img = image.getImage();
 		hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
 	}
-	
+
 	public Rectangle getBounds() {
 		return new Rectangle(x,y,100,100);
 	}
-	
-	
+
+
 	public static SimpleLinkedList<FireBall> getFireballs() {
 		return fireballs;
 	}
-	
+
 	public void fire() {
 		FireBall fire = new FireBall(x, y);
 		fireballs.addLast(fire);
@@ -83,7 +83,7 @@ public class Player {
 	public int getY() {
 		return y;
 	}
-	
+
 	/**
 	 * Returns the image of the player
 	 * @return griph
@@ -91,15 +91,15 @@ public class Player {
 	public Image getImage() {
 		return img;
 	}
-	
-	public int getLives() {
-		return lives;
+
+	public int getlifes() {
+		return lifes;
 	}
-	
-	public boolean isAlive() {
-		return alive;
+
+	public boolean isAliVe() {
+		return alife;
 	}
-	
+
 	/**
 	 * Management of the key events when they're pressed.
 	 * @param e
@@ -107,53 +107,51 @@ public class Player {
 	public void KeyPressed(KeyEvent e) {
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
-		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) { 
-			if(x<0) {
+
+
+		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) {
+			if(x-100 < 10) {
 				dx = 0;
-				x = 0;
-			} else if(x>0) {
+				x = 10;
+			}else {
 				dx = -3;
 			}
-			
 		}
+
 		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
-			if(x<900) {
-				dx = +3;
-			}else if(x>900 && x<1000) {
-				dx = +2;
-			}
-			else if(x>1030) {
+			if(x+20 >1060) {
 				dx = 0;
-				x = 1030;
+				x = 1050;
+			}else {
+				dx = 3;
 			}
-				
 			
+			System.out.println(x);
+
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
-			if(y>100) {
-			dy = -3;
-			}else if(y<100 && y>0) {
-				dy = -2;
-			}else if(y<=0) {
+			if(y < 10) {
 				dy = 0;
-				y = 0;
+				y = 10;
+			}else {
+				dy = -3;
 			}
+
 		}
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
-			if(y<538) {
-				dy = +3;
-				}else if(y<638 && y>538) {
-					dy = +2;
-				}else if(y>=638) {
-					dy = 0;
-					y = 638;
-				}
+			if(y > 638) {
+				dy = 0;
+				y = 638;
+			}else {
+				dy = 3;
+			}
 		}
+		
 		if(key == KeyEvent.VK_SPACE) {
 			fire();
 		}
 	}
-	
+
 	/**
 	 * Management of the key events when they're released.
 	 * @param e
@@ -167,12 +165,12 @@ public class Player {
 			dx = -1;
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_W)
 			dy = 0;
-			dx = -1;
+		dx = -1;
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S)
 			dy = 0;
-			dx = -1;
+		dx = -1;
 	}
-	
+
 	public HitBox getHitbox() {
 		return hitbox;
 	}

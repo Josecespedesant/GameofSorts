@@ -41,7 +41,7 @@ import java.io.IOException;
 public class Board extends JPanel implements ActionListener, MouseListener {
 	Player p;
 	//	Dragon d, d2, d3, d4, d5, d6, d7, d8, d9, d10;
-	Image img;
+	Image img, vidas;
 	Timer time;
 	int nx, nx2;
 	//	int relodingTime, resistance, speed;
@@ -59,8 +59,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		p = new Player(); //jugador
 		number = 10;
 		createWave(number);
-		cont = 1;
-		
+		cont = 1;		
 		fireballs = p.getFireballs();
 
 		addKeyListener(new AL());
@@ -70,6 +69,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		// imagen fondo
 		ImageIcon g = new ImageIcon("fondo.png"); 
 		img = g.getImage();
+
+
 
 		time = new Timer(5, this);
 		time.start();
@@ -93,13 +94,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		WaveXML oleada=new WaveXML(number);
 		linkedList = oleada.getLista();
 		setDragonsArray(oleada.getdragonsArray());
-		
-		
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
-			System.out.print(dtemp.getX()+"caca"+dtemp.getY());
-			dtemp.fire(dtemp.getX(), dtemp.getY());
-		}
 	}
 
 
@@ -122,6 +116,9 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			colisionDragones();
 		} catch (ParserConfigurationException | TransformerException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		for (int i=0; i < fireballs.getLength(); i++) {
@@ -132,27 +129,32 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				fireballs.deleteByElement(fb);
 			}
 		}
-	
+
 		for(int i=0; i<linkedList.size();i++) {
 			Dragon dtemp = (Dragon) linkedList.getFirst();
 			fireballsD = dtemp.getFireballsDragon();
 		}
-		
+
 		for (int i=0; i < fireballsD.getLength(); i++) {
 			FireBallDragon fb = fireballsD.get(i).getData();
+			fb.setVisible();
 			if(fb.getVisible()) {
 				fb.move();
 			} else {
 				fireballsD.deleteByElement(fb);
 			}
 		}
-		
-		
+
 		p.move();
+
 		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList = dragonsArray.get(i).getData();
-			dragonList.move();
+			Dragon dtemp = dragonsArray.get(i).getData();
+			dtemp.move();
+			if (dtemp.getX()==900 && dtemp.alive){
+				dtemp.fire(dtemp.getX(), dtemp.getY());
+			}
 		}
+
 		repaint();
 	}
 
@@ -161,6 +163,14 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		for(int i = 0; i < linkedList.size(); i++) {
 			Dragon dtemp = (Dragon) linkedList.get(i);
 			Rectangle d1 = dtemp.getBounds();
+
+			if(d1.intersects(p.getBounds())) {
+				if(p.getlifes()==0) {
+					p.alife = false;
+				}else {
+					p.lifes = p.lifes-1;
+				}
+			}
 
 			for(int j=0; j < fireballs.getLength(); j++) {
 				FireBall ftemp = fireballs.get(j).getData();
@@ -182,7 +192,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						ftemp.visible = false;
 						cont++;
 					}
-
 					if(linkedList.size()==0) {
 						number +=number * 20 / 100;
 						createWave(number);
@@ -191,8 +200,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			}	
 		}
 	}
-	
-	public void colisionDragones() {
+
+	public void colisionDragones() throws Exception {
 		Rectangle p1 = p.getBounds();
 		for(int i=0; i<linkedList.size();i++) {
 			Dragon dtemp = (Dragon) linkedList.getFirst();
@@ -201,15 +210,13 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		for(int i = 0; i < fireballsD.getLength(); i++) {
 			FireBallDragon ftemp = fireballsD.get(i).getData();
 			Rectangle f1 = ftemp.getBounds();
-			
+
 			if(f1.intersects(p1)) {
 				ftemp.visible = false;
-				System.out.println("ALV PERRO");
-				if(p.getLives()==0) {
-					System.out.println("SE MURIO :c");
-					p.alive = false;
+				if(p.getlifes()==0) {
+					p.alife = false;
 				}else {
-					p.lives = p.lives-1;
+					p.lifes = p.lifes-1;
 				}
 			}
 		}
@@ -231,22 +238,58 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			nx2 = 1266;
 		}
 
-		if(p.getX() == 0) {
-			p.dx = 0;
+		if(p.lifes==3) {
+			ImageIcon lifes = new ImageIcon("vidas3.png"); 
+			vidas = lifes.getImage();
+			g2d.drawImage(vidas, 0, 0, null);
+		}else if(p.lifes==2) {
+			ImageIcon lifes = new ImageIcon("vidas2.png"); 
+			vidas = lifes.getImage();
+			g2d.drawImage(vidas, 0, 0, null);
+		}else if(p.lifes==1) {
+			ImageIcon lifes = new ImageIcon("vidas1.png"); 
+			vidas = lifes.getImage();
+			g2d.drawImage(vidas, 0, 0, null);
+		}
+
+		//Validaciones que hace que el jugador no se salga de la pantalla
+		if(p.getX() < 0) {
+			p.x = 0;
+		}
+
+		if(p.getX() > 1050) {
+			p.x = 1050;
+		}
+
+		if(p.getY() < 0) {
+			p.y = 0;
+		}
+
+		if(p.getY() > 638) {
+			p.y = 638;
 		}
 
 		//pinta al grifo
-		if(p.isAlive()) {
+		if(p.isAliVe()) {
 			g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 		}
-		
+
 		//pinta dragones si es que estan vivos
-		LinkedList linkedList = new LinkedList();
 		for(int i = 0; i < dragonsArray.getLength(); i++) {
 			Dragon dtemp = dragonsArray.get(i).getData();
-			linkedList.add(dtemp);
 			if (dtemp.alive){
 				g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
+			}
+
+			if(p.getlifes() == 0) {
+				p.alife = false;
+				try {
+					Frame.end();
+				} catch (ParserConfigurationException | TransformerException e) {
+					e.printStackTrace();
+				} return;
+			}else if(dtemp.getX() == 0) {
+				p.lifes -=1;
 			}
 		}
 
@@ -255,7 +298,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			FireBall fb = fireballs.get(i).getData();
 			g2d.drawImage(fb.getImage(), fb.getX(), fb.getY(), null);
 		}
-		
+
 		//pinta bolas de fuego de los dragones
 		for (int i=0; i < fireballsD.getLength(); i++) {
 			FireBallDragon fb = fireballsD.get(i).getData();

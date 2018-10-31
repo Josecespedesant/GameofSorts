@@ -16,26 +16,26 @@ import javax.xml.transform.TransformerException;
 
 public class BoardInicio extends JPanel implements ActionListener{
 	Image img;
+	Image button;
 	Timer time;
 	JLabel gameStart;
 	JButton startB;
 
-	
+
 	public BoardInicio() {
-		this.setBackground(Color.BLACK);
-		ImageIcon g = new ImageIcon("start.gif"); 
+		ImageIcon g = new ImageIcon("start.jpg"); 
 		img = g.getImage();
-		
-		startB = new JButton("Start");
-		gameStart = new JLabel("Start Game");
+
+		//ImageIcon buttonStart = new ImageIcon("startButton.png"); 
+		//button = buttonStart.getImage();
+
+		startB = new JButton("Start Game");
 		startB.addActionListener(this);
-		this.add(gameStart);
-		this.add(startB);
-		
+
 		time = new Timer(5, this);
 		time.start();
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==startB) {
@@ -45,17 +45,18 @@ public class BoardInicio extends JPanel implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-        }
-		//repaint();
+		}
+		repaint();
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 
+		//g2d.drawImage(img, 0, 0, null);
+		this.add(startB);
 		
-		//g2d.drawImage(img, 0, 0, null); pinta imagen pero hay que cambiarla
 	}
 
 }
