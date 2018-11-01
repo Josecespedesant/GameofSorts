@@ -11,6 +11,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.jdom2.Document;
 import org.jdom2.JDOMException;
+import org.jdom2.output.XMLOutputter;
 import xmlmanager.Conversion;
 import xmlmanager.Parse;
 
@@ -19,30 +20,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Consigue oleada creada por el serviddor
+ * Encargada de pedirle al servidor que ordene una oleada con un método diferente de ordenamiento.
  *
  * @author David Azofeifa H.
  */
-public class RequestNuevaOleada {
+public class RequestNuevoOrdenamiento {
 
-    private final String obtenerOleadaUrl = "http://localhost:8080/Generar";
+    private final String obtenerOleadaUrl = "http://localhost:8080/Ordenamiento";
 
     /**
-     * Envia al servidor numero de dragones deseados en nueva oleada, devuelva oleada creada.
+     * Envia al servidor oleada y tipo de ordenamiento que se quiera aplicar, devuelve oleada ordenada.
      *
-     * @param numDragones
+     * @param oleadaPorOdenar
+     * @param tipoOrdenamiento
      * @return
      * @throws IOException
      */
-    public Dragon[] getNuevaOleada(int numDragones) throws IOException {
-        Dragon[] nuevaOleada = new Dragon[0];
+    public Dragon[] getNuevoOrdenamiento(Dragon[] oleadaPorOdenar, String tipoOrdenamiento) throws IOException {
+        Dragon[] oleadaOrdenada = new Dragon[0];
 
         HttpClient httpclient = HttpClients.createDefault();
         HttpPost httppost = new HttpPost(obtenerOleadaUrl);
 
         // Request parameters and other properties.
         List<NameValuePair> params = new ArrayList<NameValuePair>(2);
-        params.add(new BasicNameValuePair("NumDragones", "" + numDragones));
+
+        Document doc = Parse.escribirXML(oleadaPorOdenar, tipoOrdenamiento);
+        String oleadaxml = new XMLOutputter().outputString(doc);
+
+        params.add(new BasicNameValuePair("oleada",
+                "" + oleadaxml));
         httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
         //Execute and get the response.
@@ -58,25 +65,18 @@ public class RequestNuevaOleada {
                 while ((bufferedStrChunk = bufferedReader.readLine()) != null) {
                     stringBuilder.append(bufferedStrChunk);
                 }
-                PrintWriter out = new PrintWriter("nuevaOleada.xml");
+                PrintWriter out = new PrintWriter("oleadaOrdenada.xml");
                 out.println(stringBuilder.toString());
                 out.close();
             }
             try {
-                Document doc = Conversion.getXMLFromDisk("nuevaOleada.xml");
-                nuevaOleada = Parse.leerXML(doc);
+                Document docOleadaOrdenada = Conversion.getXMLFromDisk("oleadaOrdenada.xml");
+                oleadaOrdenada = Parse.leerXML(docOleadaOrdenada);
             } catch (JDOMException e) {
                 e.printStackTrace();
             }
         }
-        return nuevaOleada;
+        return oleadaOrdenada;
     }
 
-    public static void main(String[] args) throws IOException, JDOMException {
-        RequestNuevaOleada test = new RequestNuevaOleada();
-        Dragon[] oleada = test.getNuevaOleada(4);
-        for (Dragon dragon: oleada) {
-            System.out.println(dragon.getName());
-        }
-    }
 }
