@@ -56,6 +56,8 @@ public class RequestNuevoOrdenamiento {
         HttpResponse response = httpclient.execute(httppost);
         HttpEntity entity = response.getEntity();
 
+        System.out.println("Se realizo pedido de reordenar ola con " + tipoOrdenamiento + " sort.");
+
         if (entity != null) {
             try (InputStream instream = entity.getContent()) {
                 InputStreamReader inputStreamReader = new InputStreamReader(instream);
@@ -76,6 +78,7 @@ public class RequestNuevoOrdenamiento {
                 e.printStackTrace();
             }
         }
+        System.out.println("Se recibio oleada");
         return oleadaOrdenada;
     }
 

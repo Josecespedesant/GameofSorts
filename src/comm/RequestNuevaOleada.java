@@ -45,6 +45,8 @@ public class RequestNuevaOleada {
         params.add(new BasicNameValuePair("NumDragones", "" + numDragones));
         httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
+        System.out.println("Se realizo pedido de nueva oleada con " + numDragones + " dragones.");
+
         //Execute and get the response.
         HttpResponse response = httpclient.execute(httppost);
         HttpEntity entity = response.getEntity();
@@ -69,6 +71,7 @@ public class RequestNuevaOleada {
                 e.printStackTrace();
             }
         }
+        System.out.println("Nueva oleada recibida con " + nuevaOleada.length + "dragones");
         return nuevaOleada;
     }
 

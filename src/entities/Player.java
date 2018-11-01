@@ -1,11 +1,13 @@
 package entities;
 
-import java.awt.Image;
+import  java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import com.studiohartman.jamepad.ControllerManager;
+import com.studiohartman.jamepad.ControllerState;
 import linkedlist.SimpleLinkedList;
 import tools.HitBox;
 
@@ -27,21 +29,24 @@ public class Player {
 	FireBall fire = new FireBall(x, y);
 	static SimpleLinkedList<FireBall> fireballs;
 
+    ControllerManager controllers = new ControllerManager();
+
 	/**
 	 * Constructor of the class Player.
 	 */
 
 	public Player() {
-		x = 10;
-		y = 350;
-		nx = 0;
-		nx2 = 1266;
-		lifes = 3;
-		alife = true;
-		fireballs = new SimpleLinkedList<FireBall>();
+		this.x = 10;
+		this.y = 350;
+		this.nx = 0;
+		this.nx2 = 1266;
+		this.lifes = 3;
+		this.alife = true;
+		this.fireballs = new SimpleLinkedList<FireBall>();
 		ImageIcon image = new ImageIcon("griphFinal.gif");
-		img = image.getImage();
-		hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
+		this.img = image.getImage();
+		this.hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
+        this.controllers.initSDLGamepad();
 	}
 
 	public Rectangle getBounds() {
@@ -105,11 +110,14 @@ public class Player {
 	 * @param e
 	 */
 	public void KeyPressed(KeyEvent e) {
+
+        ControllerState estadoActual = this.controllers.getState(0);
+
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 
 
-		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) {
+		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A || estadoActual.dpadLeft) {
 			if(x-100 < 10) {
 				dx = 0;
 				x = 10;
@@ -118,7 +126,7 @@ public class Player {
 			}
 		}
 
-		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
+		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D || estadoActual.dpadRight) {
 			if(x+20 >1060) {
 				dx = 0;
 				x = 1050;
@@ -128,7 +136,7 @@ public class Player {
 			
 
 		}
-		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
+		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W || estadoActual.dpadUp) {
 			if(y < 10) {
 				dy = 0;
 				y = 10;
@@ -137,7 +145,7 @@ public class Player {
 			}
 
 		}
-		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
+		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S || estadoActual.dpadDown) {
 			if(y > 638) {
 				dy = 0;
 				y = 638;
@@ -146,7 +154,7 @@ public class Player {
 			}
 		}
 		
-		if(key == KeyEvent.VK_SPACE) {
+		if(key == KeyEvent.VK_SPACE || estadoActual.a) {
 			fire();
 		}
 	}
@@ -156,16 +164,19 @@ public class Player {
 	 * @param e
 	 */
 	public void KeyReleased(KeyEvent e) {
+
+        ControllerState estadoActual = this.controllers.getState(0);
+
 		//movimiento cuando una tecla se deja de presioanar
 		int key = e.getKeyCode();
-		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) 
+		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A || !estadoActual.dpadLeft)
 			dx = -1;
-		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D)
+		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D || !estadoActual.dpadRight)
 			dx = -1;
-		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_W)
+		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_W || !estadoActual.dpadUp)
 			dy = 0;
 		dx = -1;
-		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S)
+		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S || !estadoActual.dpadDown)
 			dy = 0;
 		dx = -1;
 	}

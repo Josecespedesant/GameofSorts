@@ -433,7 +433,9 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	}
 
 	private class AL extends KeyAdapter{
+
 		//llama a los metodos para que las teclas se puedan usar
+
 		public void keyReleased(KeyEvent e) {
 			p.KeyReleased(e);
 		}
@@ -459,8 +461,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						"Range: "+dragonList.getRank()+"<br/>"+
 						"Reloding time:"+dragonList.getReloadingTime()+"</html>");
 				BoardInfo.cambiarL();
-
-
 			} 
 		}
 	}
