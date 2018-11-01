@@ -2,11 +2,15 @@ package Interface;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.LinkedList;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import comm.RequestNuevaOleada;
+import comm.RequestNuevoOrdenamiento;
 
 //import org.junit.Assert;
 
@@ -31,14 +35,37 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static int number;
 	static int cd;
 
-	static LinkedList linkedList;
-
+	static LinkedList<Dragon> linkedList;
+	
+	
 	private int cont;
 
-	public Board() throws ParserConfigurationException, TransformerException{ 
+	public Board() throws ParserConfigurationException, TransformerException, IOException{ 
 		p = new Player(); //jugador
-		number = 35;
-		createWave(number);
+		
+		RequestNuevaOleada rno = new RequestNuevaOleada();
+		
+		linkedList = new LinkedList<Dragon>();
+		
+		number = 10;
+		
+		Dragon[] dr = rno.getNuevaOleada(number);
+		
+		for(int k = 0; k<dr.length;k++) {
+			linkedList.addLast(dr[k]);
+		}
+		
+		int x = 1500;
+		int y = 100;
+		for(Dragon d: linkedList) {
+			
+			d.x = x;
+			d.y = y;
+			
+			x+=100;
+			y+=100;
+		}
+		
 		cont = 1;		
 		fireballs = p.getFireballs();
 
@@ -57,28 +84,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		nx = 0;
 		nx2 = 1266;
 
-		//linkedList = new LinkedList();
-	}
-
-
-	/**
-	 * Creates the wave
-	 * @throws ParserConfigurationException 
-	 * @throws TransformerException 
-	 */
-	public void createWave(int number) throws ParserConfigurationException, TransformerException{
-		//		numero de dragones en la oleada, el parametro se ingresa con base en el nivel del juego
-		//		como la primera oleada es de 10 (ya NO de 100 dragones)y se aumenta en un 20%
-		//		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
-		this.number = number;
-
-		
-
-		/*
-		WaveXML oleada=new WaveXML(number);
-		linkedList = oleada.getLista();
-		setDragonsArray(oleada.getdragonsArray());
-		*/
 	}
 
 
@@ -131,8 +136,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 
 		p.move();
 
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
+		for (int i=0; i < linkedList.size(); i++) {
+			Dragon dtemp = linkedList.get(i);
 			dtemp.move();
 			if (dtemp.getX()==900 && dtemp.alive){
 				dtemp.fire(dtemp.getX(), dtemp.getY());
@@ -143,7 +148,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	}
 	
 
-	public void colison() throws ParserConfigurationException, TransformerException {
+	public void colison() throws ParserConfigurationException, TransformerException, IOException {
 
 		for(int i = 0; i < linkedList.size(); i++) {
 			Dragon dtemp = (Dragon) linkedList.get(i);
@@ -169,22 +174,37 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						dtemp.alive = false;
 						linkedList.remove(dtemp);
 						System.out.println(linkedList.size()+ "                      CACA");
-					/*	for(int f = 0; f < linkedList.size(); f++) {
+						for(int f = 0; f < linkedList.size(); f++) {
 							Dragon dtemp1 = (Dragon) linkedList.get(f);
 							//Inserte Lista Ordenada
-							LinkedList DnuevaLista = new LinkedList();
-									for(int k = 0; k < listaOrdenada; k++) {
-										Dragon DnuevaLista = (Dragon) listaOrdenada.get(k);
-										DNuevaLista.setX(dtemo1.getX());
-										DNuevaListas.setY(dtemp1.getY());
+							RequestNuevoOrdenamiento rno = new RequestNuevoOrdenamiento();
+							
+							Dragon[] temparrlist = new Dragon[linkedList.size()];
+							int index = 0;
+							for(Dragon dragon: linkedList) {
+								temparrlist[index] = dragon;
+								index++;
+							}
+							Dragon[] dnarry = rno.getNuevoOrdenamiento(temparrlist, "selection");
+							
+
+							LinkedList<Dragon> DNuevaLista = new LinkedList<Dragon>();
+							for(int q = 0; q<dnarry.length; q++) {
+								DNuevaLista.addLast(dnarry[q]);
+							}
+							
+									for(int k = 0; k < DNuevaLista.size(); k++) {
+										Dragon DnuevaLista = (Dragon) DNuevaLista.get(k);
+										DNuevaLista.get(k).setX(dtemp1.getX());
+										DNuevaLista.get(k).setY(dtemp1.getY());
 										
-										}
-						}*/
-						
+									}
+						}
+						if(linkedList.size()!=0) {
 							Dragon dcambio = (Dragon) linkedList.getFirst();
 							dcambio.setX(dtemp.getX());
 							dcambio.setY(dtemp.getY());
-								
+						}
 						BoardInfo.layoutActual();
 						ftemp.visible = false;
 						cont = 1;
@@ -195,14 +215,31 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						cont++;
 					}
 					if(linkedList.size()==0) {
+						
 						number +=number * 20 / 100;
 //						contador para saber cual es la ultima oleada 
-						cd++;
-						createWave(number);
+						//cd++;
+						RequestNuevaOleada rno = new RequestNuevaOleada();
+						Dragon[] dr = rno.getNuevaOleada(number);
+						
+						for(int k = 0; k<dr.length;k++) {
+							linkedList.addLast(dr[k]);
+						}
+						
+						int x = 1600;
+						int y = 100;
+						for(Dragon d: linkedList) {
+							d.x = x;
+							d.y = y;
+							
+							x+=100;
+							y+=100;
+						}
 					}
 				}
 			}	
 		}
+		
 	}
 
 	public void colisionDragones() throws Exception {
@@ -288,8 +325,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		
 		
 //		pinta dragones si es que estan vivos			
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
+		for(int i = 0; i < linkedList.size(); i++) {
+			Dragon dtemp = linkedList.get(i);
 			
 			if(dtemp.alive) {
 				if(dtemp.getRank()=="Comandant") {
@@ -347,8 +384,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList = dragonsArray.get(i).getData();
+		for (int i=0; i < linkedList.size(); i++) {
+			Dragon dragonList = linkedList.get(i);
 			if(e.getX() >= dragonList.getX() && e.getX() <= dragonList.getX()+dragonList.getImage().getWidth(null) && e.getY() >=dragonList.getY() && e.getY() <= dragonList.getY()+dragonList.getImage().getWidth(null)) {
 				mensaje=("<html>Age: "+dragonList.getAge()+"<br/>"+
 						"Name: "+dragonList.getName()+"<br/>"+

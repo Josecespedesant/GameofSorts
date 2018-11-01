@@ -126,7 +126,6 @@ public class Player {
 				dx = 3;
 			}
 			
-			System.out.println(x);
 
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
