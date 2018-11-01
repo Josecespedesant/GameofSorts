@@ -72,6 +72,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		//		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
 		this.number = number;
 
+		
+
 		/*
 		WaveXML oleada=new WaveXML(number);
 		linkedList = oleada.getLista();
