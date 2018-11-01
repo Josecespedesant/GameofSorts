@@ -46,6 +46,7 @@ public class Player {
 		ImageIcon image = new ImageIcon("griphFinal.gif");
 		this.img = image.getImage();
 		this.hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
+
         this.controllers.initSDLGamepad();
 	}
 
@@ -111,13 +112,11 @@ public class Player {
 	 */
 	public void KeyPressed(KeyEvent e) {
 
-        ControllerState estadoActual = this.controllers.getState(0);
-
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 
 
-		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A || estadoActual.dpadLeft) {
+		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) {
 			if(x-100 < 10) {
 				dx = 0;
 				x = 10;
@@ -126,7 +125,7 @@ public class Player {
 			}
 		}
 
-		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D || estadoActual.dpadRight) {
+		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D) {
 			if(x+20 >1060) {
 				dx = 0;
 				x = 1050;
@@ -136,7 +135,7 @@ public class Player {
 			
 
 		}
-		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W || estadoActual.dpadUp) {
+		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
 			if(y < 10) {
 				dy = 0;
 				y = 10;
@@ -145,7 +144,7 @@ public class Player {
 			}
 
 		}
-		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S || estadoActual.dpadDown) {
+		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_S) {
 			if(y > 638) {
 				dy = 0;
 				y = 638;
@@ -154,7 +153,7 @@ public class Player {
 			}
 		}
 		
-		if(key == KeyEvent.VK_SPACE || estadoActual.a) {
+		if(key == KeyEvent.VK_SPACE) {
 			fire();
 		}
 	}
@@ -165,21 +164,77 @@ public class Player {
 	 */
 	public void KeyReleased(KeyEvent e) {
 
-        ControllerState estadoActual = this.controllers.getState(0);
-
 		//movimiento cuando una tecla se deja de presioanar
 		int key = e.getKeyCode();
-		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A || !estadoActual.dpadLeft)
+		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A)
 			dx = -1;
-		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D || !estadoActual.dpadRight)
+		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D)
 			dx = -1;
-		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_W || !estadoActual.dpadUp)
+		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_W)
 			dy = 0;
-		dx = -1;
-		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S || !estadoActual.dpadDown)
+		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S)
 			dy = 0;
-		dx = -1;
 	}
+
+	public void buttonPressed() {
+
+        ControllerState estadoActual = controllers.getState(0);
+
+        if (estadoActual != null) {
+
+            if (estadoActual.dpadLeft || estadoActual.dpadRight) {
+                if(estadoActual.dpadLeft) {
+                    if(x-20 < 10) {
+                        this.dx = 0;
+                        this.x = 10;
+                    } else {
+                        this.dx = -3;
+                    }
+                }
+
+                if(estadoActual.dpadRight) {
+                    if(x+20 > 1060) {
+                        this.dx = 0;
+                        this.x = 1050;
+                    } else {
+                        this.dx = 3;
+                    }
+                }
+            }
+            else {
+                this.dx = -1;
+            }
+
+            if (estadoActual.dpadUp || estadoActual.dpadDown) {
+                if(estadoActual.dpadUp) {
+                    if(y < 10) {
+                        this.dy = 0;
+                        this.y = 10;
+                    } else {
+                        this.dy = -3;
+                    }
+                }
+
+                if(estadoActual.dpadDown) {
+                    if(y > 638) {
+                        this.dy = 0;
+                        this.y = 638;
+                    }else {
+                        this.dy = 3;
+                    }
+                }
+            }
+            else {
+                this.dy = 0;
+            }
+
+            if(estadoActual.aJustPressed) {
+                fire();
+            }
+        }
+        System.out.println(this.dx);
+    }
+
 
 	public HitBox getHitbox() {
 		return hitbox;

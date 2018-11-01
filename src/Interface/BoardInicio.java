@@ -1,5 +1,8 @@
 package Interface;
 
+import com.studiohartman.jamepad.ControllerManager;
+import com.studiohartman.jamepad.ControllerState;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -11,12 +14,13 @@ import javax.swing.*;
 import javax.swing.Timer;
 
 public class BoardInicio extends JPanel implements ActionListener{
-	Image img;
-	Image button;
-	Timer time;
-	JLabel gameStart;
-	JButton startB;
-	
+	private Image img;
+	private Image button;
+	private Timer time;
+	private JLabel gameStart;
+	private JButton startB;
+    private ControllerManager controllers = new ControllerManager();
+
 
 
 	public BoardInicio() {
@@ -32,6 +36,8 @@ public class BoardInicio extends JPanel implements ActionListener{
 
 		time = new Timer(5, this);
 		time.start();
+
+        this.controllers.initSDLGamepad();
 	}
 
 	@Override
@@ -54,7 +60,23 @@ public class BoardInicio extends JPanel implements ActionListener{
 
 		g2d.drawImage(img, 0, 0, null);
 		this.add(startB);
+
+        this.buttonPressed();
+
+        repaint();
 		
 	}
+
+	public void buttonPressed() {
+        ControllerState estadoActual = controllers.getState(0);
+
+        if (estadoActual.a) {
+            try {
+                Frame.Start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

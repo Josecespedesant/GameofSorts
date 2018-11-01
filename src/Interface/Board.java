@@ -135,6 +135,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		}
 
 		p.move();
+        p.buttonPressed();
 
 		for (int i=0; i < linkedList.size(); i++) {
 			Dragon dtemp = linkedList.get(i);
@@ -173,7 +174,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						//Aqui se tiene que llamar al metodo donde se acomodan los dragones
 						dtemp.alive = false;
 						linkedList.remove(dtemp);
-						System.out.println(linkedList.size()+ "                      CACA");
+						System.out.println(linkedList.size());
 						for(int f = 0; f < linkedList.size(); f++) {
 							Dragon dtemp1 = (Dragon) linkedList.get(f);
 							//Inserte Lista Ordenada
@@ -365,11 +366,13 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			FireBallDragon fb = fireballsD.get(i).getData();
 			g2d.drawImage(fb.getImage(), fb.getX(), fb.getY(), null);
 		}
+
 	}
 
 	private class AL extends KeyAdapter{
 
 		//llama a los metodos para que las teclas se puedan usar
+
 
 		public void keyReleased(KeyEvent e) {
 			p.KeyReleased(e);
@@ -378,6 +381,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		public void keyPressed(KeyEvent e) {
 			p.KeyPressed(e);
 		}
+
 	}
 
 	public static String getMensaje() {
