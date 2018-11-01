@@ -149,7 +149,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				if(p.getlifes()==0) {
 					p.alife = false;
 				}else {
-				//	p.lifes = p.lifes-1;
+					p.lifes = p.lifes-1;
 				}
 			}
 
@@ -216,7 +216,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				if(p.getlifes()==0) {
 					p.alife = false;
 				}else {
-				//	p.lifes = p.lifes-1;
+					p.lifes = p.lifes-1;
 				}
 			}
 		}
@@ -305,11 +305,11 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				p.alife = false;
 				try {
 					Frame.end();
-				} catch (ParserConfigurationException | TransformerException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				} return;
 			}else if(dtemp.getX() == 0) {
-				//p.lifes -=1;
+				p.lifes -=1;
 			}
 		}
 

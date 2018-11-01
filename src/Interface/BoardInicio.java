@@ -10,13 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.*;
 import javax.swing.Timer;
 
-
 public class BoardInicio extends JPanel implements ActionListener{
 	Image img;
 	Image button;
 	Timer time;
 	JLabel gameStart;
 	JButton startB;
+	
 
 
 	public BoardInicio() {
