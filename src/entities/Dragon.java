@@ -100,8 +100,8 @@ public class Dragon {
 				"Saphira", "Slathborg", "Thorn", "Eldrax", "Balerion", "Chrysophylax", "Ancalagon", "Aithusa",
 				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna",
 				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless",
-				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl","Hearkon", "Aatrox", "Rek'Sai", "Vel'Koz",
-				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath"};
+				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcoatl","Hearkon", "Aatrox", "Rek Sai", "Vel Koz",
+				"Kai Sa", "Teemo", "Dartharjae", "Cho Gath"};
 
 		int num = (int) (Math.random() * names.length-1);
 		setName(names[num]);
