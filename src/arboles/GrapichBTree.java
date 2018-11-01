@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 import Interface.BoardInfo;
 
-public class GrapichBTree extends ArbolB{
+public class GrapichBTree{
 	static Node[] tab = new Node[100];
 	static int i = 0;
 	JFrame frame = null;

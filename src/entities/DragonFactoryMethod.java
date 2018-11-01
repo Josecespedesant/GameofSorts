@@ -10,5 +10,5 @@ package entities;
 //}
 
 public interface DragonFactoryMethod {
-	public Dragon createDragon(int resistance, String range,int speed);
+	public Dragon createDragon(int resistance, String rank);
 }

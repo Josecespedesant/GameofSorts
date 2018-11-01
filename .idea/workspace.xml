@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35264e05-e536-4a71-83a0-3709b3ff715d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/end.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intro.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/PlayMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sort/Pila.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sort/SelectionSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sort/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DragonWave.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DragonWave.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/BoardInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/BoardInicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arboles/GrapichBTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arboles/GrapichBTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arboles/Mian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arboles/Mian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/DragonFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/DragonFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/DragonFactoryMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/DragonFactoryMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xml/WaveXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xml/WaveXML.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,24 +35,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="21" />
+          <entry key="java" value="25" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="21" />
+          <entry key="JAVA" value="25" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2006" />
+          <entry key="java" value="2008" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2006" />
+          <entry key="JAVA" value="2008" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -75,13 +85,47 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xmlmanager/Conversion.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Interface/Frame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Interface/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="411">
+              <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/entities/DragonFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+              <folding>
+                <element signature="e#484#485#0" expanded="true" />
+                <element signature="e#527#528#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,13 +161,13 @@
       <list>
         <option value="$PROJECT_DIR$/src/manager/Conversion.java" />
         <option value="$PROJECT_DIR$/src/manager/Parse.java" />
-        <option value="$PROJECT_DIR$/src/Interface/Board.java" />
-        <option value="$PROJECT_DIR$/src/entities/DragonFactory.java" />
         <option value="$PROJECT_DIR$/src/comm/RequestData.java" />
         <option value="$PROJECT_DIR$/src/entities/Dragon.java" />
         <option value="$PROJECT_DIR$/src/comm/RequestNuevoOrdenamiento.java" />
         <option value="$PROJECT_DIR$/src/comm/RequestNuevaOleada.java" />
         <option value="$PROJECT_DIR$/src/sort/SelectionSort.java" />
+        <option value="$PROJECT_DIR$/src/Interface/Board.java" />
+        <option value="$PROJECT_DIR$/src/entities/DragonFactory.java" />
       </list>
     </option>
   </component>
@@ -191,7 +235,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541034663059" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541034883738" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/httpmime-4.5.6.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -280,12 +324,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541020042205</updated>
-      <workItem from="1541020047297" duration="13091000" />
+      <workItem from="1541020047297" duration="13355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13091000" />
+    <option name="totallyTimeSpent" value="13355000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -342,13 +386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sort/InsertionSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/comm.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -365,38 +402,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/DragonFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
-            <element signature="e#2038#2039#0" expanded="true" />
-            <element signature="e#2118#2119#0" expanded="true" />
-            <element signature="e#2158#2159#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Interface/BoardFinal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -478,6 +487,41 @@
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sort/InsertionSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/DragonFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+          <folding>
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
           </folding>
         </state>
       </provider>
