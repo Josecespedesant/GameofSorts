@@ -58,7 +58,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 
 	public Board() throws ParserConfigurationException, TransformerException{ // ++++++++++++++++++++++++++
 		p = new Player(); //jugador
-		number = 35;
+		number = 10;
 		createWave(number);
 		cont = 1;		
 		fireballs = p.getFireballs();
