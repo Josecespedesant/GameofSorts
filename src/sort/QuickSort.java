@@ -13,7 +13,7 @@ public class QuickSort {
  { 
      int pivot = oleada[high].getAge();  
      int i = (low-1); // indice del menor elemento 
-     for (int j=low; j<high; j++) 
+     for (int j=low; j < high; j++)
      { 
          // Si el elemento actual es menor que o
          // igual al pivote

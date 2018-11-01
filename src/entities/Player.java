@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import com.studiohartman.jamepad.ControllerManager;
+import com.studiohartman.jamepad.ControllerState;
 import linkedlist.SimpleLinkedList;
 import tools.HitBox;
 
@@ -105,11 +107,18 @@ public class Player {
 	 * @param e
 	 */
 	public void KeyPressed(KeyEvent e) {
+
+        ControllerManager controllers = new ControllerManager();
+        controllers.initSDLGamepad();
+
+        ControllerState estadoActual = controllers.getState(0);
+
+
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 
 
-		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) {
+		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A || estadoActual.dpadLeft) {
 			if(x-100 < 10) {
 				dx = 0;
 				x = 10;
