@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/entities/Dragon.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/linkedlist/SimpleLinkedList.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/sort/QuickSort.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/sort/SelectionSort.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/xml/WaveXML.java" charset="windows-1252" />
+  </component>
+</project>
