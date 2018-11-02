@@ -19,7 +19,6 @@ public class Parse {
      * @param ordenamiento, tipo de ordenamiento implementado sobre oleada
      */
     public static Document escribirXML(Dragon[] oleada, String ordenamiento) {
-        System.out.println("start");
         Element oleadaElement = new Element("oleada");
 
         Document doc = new Document();

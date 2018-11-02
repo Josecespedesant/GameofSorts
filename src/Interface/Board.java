@@ -149,6 +149,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		}
 
 		p.move();
+        p.buttonPressed();
 
 		for (int i=0; i < linkedList.size(); i++) {
 			Dragon dtemp = linkedList.get(i);
@@ -437,11 +438,13 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			FireBallDragon fb = fireballsD.get(i).getData();
 			g2d.drawImage(fb.getImage(), fb.getX(), fb.getY(), null);
 		}
+
 	}
 
 	private class AL extends KeyAdapter{
 
 		//llama a los metodos para que las teclas se puedan usar
+
 
 		public void keyReleased(KeyEvent e) {
 			p.KeyReleased(e);
@@ -450,6 +453,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		public void keyPressed(KeyEvent e) {
 			p.KeyPressed(e);
 		}
+
 	}
 
 	public static String getMensaje() {
