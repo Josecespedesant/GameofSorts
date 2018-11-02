@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class RequestNuevaOleada {
 
-    private final String obtenerOleadaUrl = "http://192.168.0.15:8080/Generar";
+    private final String obtenerOleadaUrl = "http://192.168.100.4:8080/Generar";
 
     /**
      * Envia al servidor numero de dragones deseados en nueva oleada, devuelva oleada creada.

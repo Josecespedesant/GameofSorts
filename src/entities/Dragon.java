@@ -74,7 +74,7 @@ public class Dragon {
 
 
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,100,100);
+		return new Rectangle(x,y,80,80);
 	}
 
 	public void fire(int x1, int y1) {
@@ -206,11 +206,11 @@ public class Dragon {
 	 * Sets the age of the dragon in a way two dragons doesn't have the same age.
 	 */
 	public void setAge() {
-		if(getFather() == null) {
-			int num = ThreadLocalRandom.current().nextInt(500, 1000 + 1);
+		if(getFather() == "") {
+			int num = ThreadLocalRandom.current().nextInt(900, 1000 + 1);
 			this.age = num;
 		}else {
-			int num = ThreadLocalRandom.current().nextInt(1, 890 + 1);
+			int num = ThreadLocalRandom.current().nextInt(1, 800 + 1);
 			this.age = num;
 		}
 	}

@@ -51,7 +51,7 @@ public class Player {
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,100,100);
+		return new Rectangle(x,y,40,40);
 	}
 
 

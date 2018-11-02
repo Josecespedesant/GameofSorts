@@ -155,24 +155,19 @@ public class BoardInfo extends JPanel{
 	}
 	
 	public static void layoutActual() {		
-		switch (cont) {
-		case 1: labelActual.setText("Desorden");
-		cont++;
+		 
+		switch (Board.method) {
+		case "": labelActual.setText("Desorden");
 		break;
-		case 2:  labelActual.setText("Selection sort");
-		cont++;
+		case "selection":  labelActual.setText("Selection sort");
 		break;
-		case 3:  labelActual.setText("Insertion sort");
-		cont++;
+		case "insertion":  labelActual.setText("Insertion sort");
 		break;
-		case 4:  labelActual.setText("Quick Sort");
-		cont++;
+		case "quick":  labelActual.setText("Quick Sort");
 		break;
-		case 5:  labelActual.setText("Arbol binario");
-		cont++;
+		case "binario":  labelActual.setText("Arbol binario");
 		break;
-		case 6:  labelActual.setText("Árbol AVL");
-		cont=1;
+		case "avl":  labelActual.setText("Árbol AVL");
 		break;
 		}
 	}

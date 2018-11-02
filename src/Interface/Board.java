@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Random;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,7 +35,9 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<FireBallDragon> fireballsD;
 	static int number;
 	static int round = 0;
-
+	
+	static String method = "";
+		
 	static LinkedList<Dragon> linkedList;
 
 
@@ -44,15 +47,29 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		p = new Player(); //jugador
 
 		RequestNuevaOleada rno = new RequestNuevaOleada();
-
+		
+		
+		
+		
 		linkedList = new LinkedList<Dragon>();
 
 		number = 10;
 
 		Dragon[] dr = rno.getNuevaOleada(number);
-
+		
+		System.out.println("Se pidió una nueva oleada.");
+		
+		Dragon father = dr[0]; 
+		father.setFather("");
+		father.setAge();
+		
 		for(int k = 0; k<dr.length;k++) {
 			linkedList.addLast(dr[k]);
+		}
+		
+		for(int j = 1; j<linkedList.size(); j++) {
+			dr[j].setFather(father.getName());
+			dr[j].setAge();
 		}
 
 		int x = 0;
@@ -78,7 +95,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				y+=100;
 			}
 		}
-
+		System.out.println("Se asignaron las posiciones de los dragones.");
 		cont = 1;
 		fireballs = p.getFireballs();
 
@@ -171,8 +188,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			if(d1.intersects(p.getBounds())) {
 				if(p.getlifes()==0) {
 					p.alife = false;
+					System.out.println("El jugador ha muerto.");
 				}else {
 					p.lifes = p.lifes-1;
+					System.out.println("Una vida menos para el jugador.");
 				}
 			}
 
@@ -192,13 +211,29 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 							//Inserte Lista Ordenada
 							RequestNuevoOrdenamiento rno = new RequestNuevoOrdenamiento();
 
+							Random rand = new Random();
+							int  n = rand.nextInt(3) + 1;
+							
+							switch(n) {
+							case 1:method = "quick";
+								break;
+							case 2:method = "insertion";
+								break;
+							case 3:method = "selection";
+								break;
+							}
+							
+							
+
 							Dragon[] temparrlist = new Dragon[linkedList.size()];
 							int index = 0;
 							for(Dragon dragon: linkedList) {
 								temparrlist[index] = dragon;
 								index++;
 							}
-							Dragon[] dnarry = rno.getNuevoOrdenamiento(temparrlist, "selection");
+							
+							
+							Dragon[] dnarry = rno.getNuevoOrdenamiento(temparrlist, method);
 
 
 							LinkedList<Dragon> DNuevaLista = new LinkedList<Dragon>();
@@ -228,17 +263,26 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						cont++;
 					}
 					if(linkedList.size()==0) {
-
+						System.out.println("Oleada actual acabada.");
 						number +=number * 20 / 100;
 //						contador para saber cual es la ultima oleada
 						//cd++;
 						RequestNuevaOleada rno = new RequestNuevaOleada();
 						Dragon[] dr = rno.getNuevaOleada(number);
+						System.out.println("Nueva oleada pedida.");
+						Dragon father = dr[0]; 
+						father.setFather("");
+						father.setAge();
 
 						round++; 
 
 						for(int k = 0; k<dr.length;k++) {
 							linkedList.addLast(dr[k]);
+						}
+						
+						for(int t = 1; t<linkedList.size(); t++) {
+							dr[t].setFather(father.getName());
+							dr[t].setAge();
 						}
 
 						int x = 0;
@@ -305,7 +349,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				}
 			}
 		}
-
 	}
 
 	public void colisionDragones() throws Exception {
@@ -322,8 +365,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				ftemp.visible = false;
 				if(p.getlifes()==0) {
 					p.alife = false;
+					System.out.println("El jugador ha muerto.");
 				}else {
 					p.lifes = p.lifes-1;
+					System.out.println("El jugador ha perdido una vida.");
 				}
 			}
 		}
@@ -387,6 +432,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		if(round==7) {
 			try {
 				Frame.win();
+				System.out.println("El jugador ha ganado.");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -486,7 +532,9 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						"Resistance: "+dragonList.getResistance()+"<br/>"+
 						"Speed: "+dragonList.getSpeed()+"<br/>"+
 						"Range: "+dragonList.getRank()+"<br/>"+
+						"Father: "+dragonList.getFather()+"<br/>"+
 						"Reloding time:"+dragonList.getReloadingTime()+"</html>");
+						
 				BoardInfo.cambiarL();
 			}
 		}
