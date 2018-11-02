@@ -58,7 +58,7 @@ public class BoardInfo extends JPanel{
 		
 		//Label del stats del dragon
 		labelDragon = new JLabel("Dragon Stats");
-		labelStats = new JLabel("<html>Age:<br/>Name:<br/>Resistance:<br/>Speed:<br/>Range:<br/>Reloding Time:</html>");
+		labelStats = new JLabel("<html>Age:<br/>Name:<br/>Resistance:<br/>Speed:<br/>Range:<br/>Father:</html>");
 		labelDragon.setOpaque(true);
 		labelStats.setOpaque(true);
 		labelDragon.setFont(new Font("Serif", Font.BOLD, 25));

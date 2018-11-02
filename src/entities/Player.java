@@ -115,7 +115,6 @@ public class Player {
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 
-
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) {
 			if(x-100 < 10) {
 				dx = 0;
@@ -132,7 +131,7 @@ public class Player {
 			}else {
 				dx = 3;
 			}
-			
+
 
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
@@ -152,10 +151,6 @@ public class Player {
 				dy = 3;
 			}
 		}
-		
-		if(key == KeyEvent.VK_SPACE) {
-			fire();
-		}
 	}
 
 	/**
@@ -174,6 +169,10 @@ public class Player {
 			dy = 0;
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S)
 			dy = 0;
+
+		if(key == KeyEvent.VK_SPACE) {
+			fire();
+		}
 	}
 
 	public void buttonPressed() {
@@ -232,7 +231,6 @@ public class Player {
                 fire();
             }
         }
-        System.out.println(this.dx);
     }
 
 
