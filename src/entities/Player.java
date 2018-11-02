@@ -116,7 +116,7 @@ public class Player {
 		int key = e.getKeyCode();
 
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) {
-			if(x-100 < 10) {
+			if(x-20 < 10) {
 				dx = 0;
 				x = 10;
 			}else {
@@ -179,8 +179,8 @@ public class Player {
 
         ControllerState estadoActual = controllers.getState(0);
 
-        if (estadoActual != null) {
-
+        if (estadoActual.dpadRight || estadoActual.dpadLeft || estadoActual.dpadUp ||
+                estadoActual.dpadDown || estadoActual.a) {
             if (estadoActual.dpadLeft || estadoActual.dpadRight) {
                 if(estadoActual.dpadLeft) {
                     if(x-20 < 10) {

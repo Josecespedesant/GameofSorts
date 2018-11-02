@@ -174,7 +174,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						//Aqui se tiene que llamar al metodo donde se acomodan los dragones
 						dtemp.alive = false;
 						linkedList.remove(dtemp);
-						System.out.println(linkedList.size());
 						for(int f = 0; f < linkedList.size(); f++) {
 							Dragon dtemp1 = (Dragon) linkedList.get(f);
 							//Inserte Lista Ordenada
@@ -336,7 +335,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			Dragon dtemp = linkedList.get(i);
 
 			if(dtemp.alive) {
-				System.out.println(dtemp.getRank());
 				if(dtemp.getRank()=="comandante") {
 					g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
 				}else if(dtemp.getRank()=="Captain") {
