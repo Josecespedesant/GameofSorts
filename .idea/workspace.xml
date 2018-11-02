@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35264e05-e536-4a71-83a0-3709b3ff715d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DragonWave.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pruebaGET.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interface/BoardWin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/win.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuevaOleada.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuevaOleada.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nuevaOleada.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oleadaOrdenada.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oleadaOrdenada.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interface/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/comm/RequestNuevaOleada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comm/RequestNuevaOleada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/comm/RequestNuevoOrdenamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comm/RequestNuevoOrdenamiento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,25 +29,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="40" />
+          <entry key="java" value="43" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="40" />
+          <entry key="JAVA" value="43" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3370" />
+          <entry key="java" value="3396" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3370" />
+          <entry key="JAVA" value="3396" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -65,11 +58,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/entities/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-684">
-              <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+            <state relative-caret-position="102">
+              <caret line="180" column="39" selection-start-line="180" selection-start-column="39" selection-end-line="180" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1169#1170#0" expanded="true" />
@@ -95,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Interface/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-891">
-              <caret line="340" column="86" selection-start-line="340" selection-start-column="86" selection-end-line="340" selection-end-column="86" />
+            <state relative-caret-position="-544">
+              <caret line="336" column="29" selection-start-line="336" selection-start-column="29" selection-end-line="336" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1789#1790#0" expanded="true" />
@@ -113,6 +106,18 @@
                 <element signature="e#8844#8845#0" expanded="true" />
                 <element signature="e#8886#8887#0" expanded="true" />
                 <element signature="e#8907#8908#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/comm/RequestNuevaOleada.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="421">
+              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -188,16 +193,16 @@
         <option value="$PROJECT_DIR$/src/comm/RequestData.java" />
         <option value="$PROJECT_DIR$/src/sort/SelectionSort.java" />
         <option value="$PROJECT_DIR$/src/entities/DragonFactory.java" />
-        <option value="$PROJECT_DIR$/src/comm/RequestNuevoOrdenamiento.java" />
         <option value="$PROJECT_DIR$/src/sort/QuickSort.java" />
-        <option value="$PROJECT_DIR$/src/comm/RequestNuevaOleada.java" />
         <option value="$PROJECT_DIR$/src/Interface/BoardInicio.java" />
-        <option value="$PROJECT_DIR$/src/entities/Player.java" />
         <option value="$PROJECT_DIR$/src/entities/Dragon.java" />
         <option value="$PROJECT_DIR$/src/xmlmanager/Conversion.java" />
         <option value="$PROJECT_DIR$/src/xmlmanager/Parse.java" />
         <option value="$PROJECT_DIR$/src/Interface/BoardInfo.java" />
+        <option value="$PROJECT_DIR$/src/comm/RequestNuevaOleada.java" />
+        <option value="$PROJECT_DIR$/src/comm/RequestNuevoOrdenamiento.java" />
         <option value="$PROJECT_DIR$/src/Interface/Board.java" />
+        <option value="$PROJECT_DIR$/src/entities/Player.java" />
       </list>
     </option>
   </component>
@@ -277,7 +282,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541130231591" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541131946595" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/Jamepad.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -372,12 +377,12 @@
       <workItem from="1541020047297" duration="17168000" />
       <workItem from="1541043402126" duration="3582000" />
       <workItem from="1541086721768" duration="7296000" />
-      <workItem from="1541127113380" duration="2972000" />
+      <workItem from="1541127113380" duration="4730000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31018000" />
+    <option name="totallyTimeSpent" value="32776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -463,26 +468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/comm/RequestNuevaOleada.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/comm/RequestNuevoOrdenamiento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sort/QuickSort.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -494,34 +479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-684">
-          <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1169#1170#0" expanded="true" />
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1270#1271#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-            <element signature="e#1607#1608#0" expanded="true" />
-            <element signature="e#1622#1623#0" expanded="true" />
-            <element signature="e#1710#1711#0" expanded="true" />
-            <element signature="e#1725#1726#0" expanded="true" />
-            <element signature="e#1817#1818#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-            <element signature="e#1860#1861#0" expanded="true" />
-            <element signature="e#1879#1880#0" expanded="true" />
-            <element signature="e#1908#1909#0" expanded="true" />
-            <element signature="e#1927#1928#0" expanded="true" />
-            <element signature="e#4747#4748#0" expanded="true" />
-            <element signature="e#4767#4768#0" expanded="true" />
-            <element signature="e#4809#4810#0" expanded="true" />
-            <element signature="e#4836#4837#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -562,10 +519,37 @@
     <entry file="file://$PROJECT_DIR$/nuevaOleada.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/comm/RequestNuevoOrdenamiento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-201">
+          <caret line="38" column="51" lean-forward="true" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/comm/RequestNuevaOleada.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/FireBall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Interface/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-891">
-          <caret line="340" column="86" selection-start-line="340" selection-start-column="86" selection-end-line="340" selection-end-column="86" />
+        <state relative-caret-position="-544">
+          <caret line="336" column="29" selection-start-line="336" selection-start-column="29" selection-end-line="336" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1789#1790#0" expanded="true" />
@@ -579,6 +563,34 @@
             <element signature="e#8844#8845#0" expanded="true" />
             <element signature="e#8886#8887#0" expanded="true" />
             <element signature="e#8907#8908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="180" column="39" selection-start-line="180" selection-start-column="39" selection-end-line="180" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1169#1170#0" expanded="true" />
+            <element signature="e#1209#1210#0" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1293#1294#0" expanded="true" />
+            <element signature="e#1607#1608#0" expanded="true" />
+            <element signature="e#1622#1623#0" expanded="true" />
+            <element signature="e#1710#1711#0" expanded="true" />
+            <element signature="e#1725#1726#0" expanded="true" />
+            <element signature="e#1817#1818#0" expanded="true" />
+            <element signature="e#1834#1835#0" expanded="true" />
+            <element signature="e#1860#1861#0" expanded="true" />
+            <element signature="e#1879#1880#0" expanded="true" />
+            <element signature="e#1908#1909#0" expanded="true" />
+            <element signature="e#1927#1928#0" expanded="true" />
+            <element signature="e#4747#4748#0" expanded="true" />
+            <element signature="e#4767#4768#0" expanded="true" />
+            <element signature="e#4809#4810#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
           </folding>
         </state>
       </provider>
