@@ -13,7 +13,7 @@ import org.jdom2.Text;
 public class Parse {
 
     /**
-     * Toma la informaciÃ³n de la oleada
+     * Toma la información de la oleada
      *
      * @param oleada, array de instancias dragon que representan oleada
      * @param ordenamiento, tipo de ordenamiento implementado sobre oleada
