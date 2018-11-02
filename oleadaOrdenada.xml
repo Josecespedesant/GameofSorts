@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?><oleada><Dragon dragonId="1"><nombre>Dartharjae</nombre><edad>661</edad><velocidadRecarga>0</velocidadRecarga><resistencia>2</resistencia><rank>capitan</rank></Dragon><ordenamiento>selection</ordenamiento></oleada>
-=======
-<?xml version="1.0" encoding="UTF-8"?><oleada><Dragon dragonId="1"><nombre>Alduin</nombre><edad>647</edad><velocidadRecarga>0</velocidadRecarga><resistencia>3</resistencia><rank>capitan</rank></Dragon><Dragon dragonId="2"><nombre>Shyvanna</nombre><edad>559</edad><velocidadRecarga>0</velocidadRecarga><resistencia>2</resistencia><rank>capitan</rank></Dragon><Dragon dragonId="3"><nombre>Toothless</nombre><edad>643</edad><velocidadRecarga>0</velocidadRecarga><resistencia>3</resistencia><rank>capitan</rank></Dragon><ordenamiento>selection</ordenamiento></oleada>
->>>>>>> branch 'master' of https://github.com/Josecespedesant/GameofSorts.git

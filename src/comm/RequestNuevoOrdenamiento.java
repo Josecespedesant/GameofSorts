@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class RequestNuevoOrdenamiento {
 
-    private final String obtenerOleadaUrl = "http://192.168.100.6:8080/Ordenamiento";
+    private final String obtenerOleadaUrl = "http://192.168.0.15:8080/Ordenamiento";
 
     /**
      * Envia al servidor oleada y tipo de ordenamiento que se quiera aplicar, devuelve oleada ordenada.

@@ -33,7 +33,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<FireBall> fireballs;
 	static SimpleLinkedList<FireBallDragon> fireballsD;
 	static int number;
-	static int cd;
+	static int round = 0;
 
 	static LinkedList<Dragon> linkedList;
 	
@@ -235,6 +235,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						RequestNuevaOleada rno = new RequestNuevaOleada();
 						Dragon[] dr = rno.getNuevaOleada(number);
 						
+						round++; 
+						
 						for(int k = 0; k<dr.length;k++) {
 							linkedList.addLast(dr[k]);
 						}
@@ -382,10 +384,13 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		
 		
 //		si elimina a todos los dragones aparece una imagen de que es el ganador
-		if(cd==8) {
-			ImageIcon lifes = new ImageIcon("Winner.png"); 
-			vidas = lifes.getImage();
-			g2d.drawImage(vidas, 600, 150, null);
+		if(round==7) {
+			try {
+				Frame.win();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		
@@ -394,16 +399,18 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			Dragon dtemp = linkedList.get(i);
 			
 			if(dtemp.alive) {
-				if(dtemp.getRank()=="Comandant") {
+				System.out.println(dtemp.getRank());
+				if(dtemp.getRank()=="comandante") {
 					g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
-				}else if(dtemp.getRank()=="Captain") {
-				ImageIcon lifes = new ImageIcon("dragonCapitan.gif"); 
-				Image capitan = lifes.getImage();
-				g2d.drawImage(capitan, dtemp.getX(), dtemp.getY(), null);
-			}else {
-				ImageIcon lifes = new ImageIcon("dragonInfantry.gif"); 
-				Image infantry = lifes.getImage();
-				g2d.drawImage(infantry, dtemp.getX(), dtemp.getY(), null);
+				}else if(dtemp.getRank()=="capitan") {
+					ImageIcon lifes = new ImageIcon("dragonCapitan.gif"); 
+					Image capitan = lifes.getImage();
+					g2d.drawImage(capitan, dtemp.getX(), dtemp.getY(), null);
+				}
+				else {
+					ImageIcon lifes = new ImageIcon("dragonInfantry.gif"); 
+					Image infantry = lifes.getImage();
+					g2d.drawImage(infantry, dtemp.getX(), dtemp.getY(), null);
 			}
 							
 			}
