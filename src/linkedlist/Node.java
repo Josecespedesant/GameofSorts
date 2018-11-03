@@ -31,7 +31,7 @@ public class Node<T> {
 	 * @param next
 	 * @param prev
 	 */
-	public Node(T value, Node<T> next, Node<T> prev) {
+	public Node(T value, Node<T> next) {
 		this.value = value;
 		this.next = next;
 	}
