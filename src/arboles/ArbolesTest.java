@@ -16,11 +16,16 @@ public class ArbolesTest {
 	ArbolBinario BinArb;
 	Dragon Padre;
 	Dragon dragon;
+	Node[] nodos;
 	
 	
 	@Before
 	public void Before() {
 		avl=new ArbolAVL();
+		nodos=new Node[3];
+		nodo=nodos[0];
+		nodoR=nodos[1];
+		nodoL=nodos[2];
 	}
 	
 	@Test
@@ -57,6 +62,11 @@ public class ArbolesTest {
 		BinArb.insertarNodo(dragon, Padre);
 		assertFalse(BinArb.estaVacio());
 
+	}
+	
+	public void DrawingBTreeTest () {
+		DrawingBTree dBt=new DrawingBTree(nodos, 3);
+		assert(dBt.copiatab.length==nodos.length);
 	}
 	
 	
