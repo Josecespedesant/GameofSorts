@@ -51,6 +51,19 @@ public class Frame {
 		p = new PlayMusic("end.wav");
 	}
 	
+	public static void win() throws Exception{
+		frame.dispose();
+		
+		frame = new JFrame("Game of Sorts");
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new BoardWin(), BorderLayout.CENTER);
+		frame.setSize(480, 360);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		
+		p.stop();
+		p = new PlayMusic("win.wav"); 
+	}
 	
 	
 }

@@ -27,9 +27,9 @@ public class Dragon {
 	private int age;
 	private int resistance;
 	private String rank;
-	private Dragon father;
+	private String father;
 	private HitBox dragonHitBox;
-	private int speed;
+	private final int speed = -1;
 	public static int numeroPadre;
 	public static int numeroDragon;
 	public int x, dx, y, dy;
@@ -45,18 +45,15 @@ public class Dragon {
 	 */
 
 	public Dragon(int resistance, String rank) {
-		setName();
-		this.father = null;
+		this.setName();
 		this.resistance = resistance;
 		this.rank = rank;
-		setAge();
-		this.speed = speed;
+		this.setAge();
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
 		fireballsD = new SimpleLinkedList<FireBallDragon>();
 		this.dragonHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
 	}
-
 
 	/**
 	 * Constructor for the dragon
@@ -68,9 +65,7 @@ public class Dragon {
 		this.name = name;
 		this.resistance = resistance;
 		this.rank = rank;
-		setAge();
-		this.speed = speed;
-		this.father = null;
+		this.setAge();
 		ImageIcon dg = new ImageIcon("dragon.gif");
 		img = dg.getImage();
 		fireballsD = new SimpleLinkedList<FireBallDragon>();
@@ -79,7 +74,7 @@ public class Dragon {
 
 
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,100,100);
+		return new Rectangle(x,y,80,80);
 	}
 
 	public void fire(int x1, int y1) {
@@ -100,8 +95,8 @@ public class Dragon {
 				"Saphira", "Slathborg", "Thorn", "Eldrax", "Balerion", "Chrysophylax", "Ancalagon", "Aithusa",
 				"Shen Long", "Spyro", "Mushu", "Alduin", "Alexstrasza", "Kalameet", "Aquamentus", "Shyvanna",
 				"Yomigami", "Charizard", "Yoshi", "Aurelion Sol", "Jabberwocky", "Leviathan", "Ryujin", "Toothless",
-				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcóatl","Hearkon", "Aatrox", "Rek'Sai", "Vel'Koz",
-				"Kai'Sa", "Teemo", "Dartharjae", "Cho'Gath"};
+				"Hyorinmaru", "Paarthurnax", "Deathwing", "Quetzalcoatl","Hearkon", "Aatrox", "Rek'Sai", "VelKoz",
+				"KaiSa", "Teemo", "Dartharjae", "ChoGath"};
 
 		int num = (int) (Math.random() * names.length-1);
 		setName(names[num]);
@@ -168,14 +163,6 @@ public class Dragon {
 	}
 
 	/**
-	 * Sets the speed of the dragon
-	 * @param speed
-	 */
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
-	/**
 	 * Returns the speed of the dragon.
 	 * @return speed
 	 */
@@ -219,11 +206,11 @@ public class Dragon {
 	 * Sets the age of the dragon in a way two dragons doesn't have the same age.
 	 */
 	public void setAge() {
-		if(getFather() == null) {
-			int num = ThreadLocalRandom.current().nextInt(500, 1000 + 1);
+		if(getFather() == "") {
+			int num = ThreadLocalRandom.current().nextInt(900, 1000 + 1);
 			this.age = num;
 		}else {
-			int num = ThreadLocalRandom.current().nextInt(1, 490 + 1);
+			int num = ThreadLocalRandom.current().nextInt(1, 800 + 1);
 			this.age = num;
 		}
 	}
@@ -268,7 +255,7 @@ public class Dragon {
 	 * Returns the father of the dragon.
 	 * @return father
 	 */
-	public Dragon getFather() {
+	public String getFather() {
 		return father;
 	}
 
@@ -276,7 +263,7 @@ public class Dragon {
 	 * Sets the father of the dragon
 	 * @param father
 	 */
-	public void setFather(Dragon father) {
+	public void setFather(String father) {
 		this.father = father;
 	}
 
@@ -296,7 +283,7 @@ public class Dragon {
 		this.dragonHitBox = dragonHitBox;
 	}
 
-	 //	metodo para serializar los datos del dragon y convertirlo a xml
+	//	metodo para serializar los datos del dragon y convertirlo a xml
 	public Node serializarDragon(Document doc) {
 		Element elementoDragon = doc.createElement("Dragon");
 		elementoDragon.setAttribute("Nombre", this.name);

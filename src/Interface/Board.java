@@ -2,11 +2,16 @@ package Interface;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Random;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import comm.RequestNuevaOleada;
+import comm.RequestNuevoOrdenamiento;
 
 //import org.junit.Assert;
 
@@ -29,17 +34,69 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	static SimpleLinkedList<FireBall> fireballs;
 	static SimpleLinkedList<FireBallDragon> fireballsD;
 	static int number;
-	static int cd;
+	static int round = 0;
+	
+	static String method = "";
+		
+	static LinkedList<Dragon> linkedList;
 
-	static LinkedList linkedList;
 
 	private int cont;
 
-	public Board() throws ParserConfigurationException, TransformerException{ 
+	public Board() throws ParserConfigurationException, TransformerException, IOException{
 		p = new Player(); //jugador
+
+		RequestNuevaOleada rno = new RequestNuevaOleada();
+		
+		
+		
+		
+		linkedList = new LinkedList<Dragon>();
+
 		number = 10;
-		createWave(number);
-		cont = 1;		
+
+		Dragon[] dr = rno.getNuevaOleada(number);
+		
+		System.out.println("Se pidió una nueva oleada.");
+		
+		Dragon father = dr[0]; 
+		father.setFather("");
+		father.setAge();
+		
+		for(int k = 0; k<dr.length;k++) {
+			linkedList.addLast(dr[k]);
+		}
+		
+		for(int j = 1; j<linkedList.size(); j++) {
+			dr[j].setFather(father.getName());
+			dr[j].setAge();
+		}
+
+		int x = 0;
+		int y = 0;
+		for(int z = 0; z<linkedList.size();z++) {
+			Dragon d = linkedList.get(z);
+			if(z<1) {
+				d.setX(1400);
+				d.setY(400);
+			}else if(z>=1 && z<5) {
+				d.setX(1500);
+				d.setY(320+y);
+				y+=50;
+			}else if(z>=5 && z<10) {
+				d.setX(1600+x);
+				d.setY(y);
+				y+=100;
+				if(x>=6)
+					x=100;
+			}else if(z>=10 && z<12) {
+				d.setX(1700);
+				d.setY(-350+y);
+				y+=100;
+			}
+		}
+		System.out.println("Se asignaron las posiciones de los dragones.");
+		cont = 1;
 		fireballs = p.getFireballs();
 
 		addKeyListener(new AL());
@@ -47,7 +104,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		addMouseListener(this);
 
 		// imagen fondo
-		ImageIcon g = new ImageIcon("fondo.png"); 
+		ImageIcon g = new ImageIcon("fondo.png");
 		img = g.getImage();
 
 
@@ -57,28 +114,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		nx = 0;
 		nx2 = 1266;
 
-		//linkedList = new LinkedList();
-	}
-
-
-	/**
-	 * Creates the wave
-	 * @throws ParserConfigurationException 
-	 * @throws TransformerException 
-	 */
-	public void createWave(int number) throws ParserConfigurationException, TransformerException{
-		//		numero de dragones en la oleada, el parametro se ingresa con base en el nivel del juego
-		//		como la primera oleada es de 10 (ya NO de 100 dragones)y se aumenta en un 20%
-		//		al redondear los valores que se deben ingresar son  10 - 12 - 14 - 17 - 20
-		this.number = number;
-
-		
-
-		/*
-		WaveXML oleada=new WaveXML(number);
-		linkedList = oleada.getLista();
-		setDragonsArray(oleada.getdragonsArray());
-		*/
 	}
 
 
@@ -130,9 +165,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		}
 
 		p.move();
+		p.buttonPressed();
 
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
+		for (int i=0; i < linkedList.size(); i++) {
+			Dragon dtemp = linkedList.get(i);
 			dtemp.move();
 			if (dtemp.getX()==900 && dtemp.alive){
 				dtemp.fire(dtemp.getX(), dtemp.getY());
@@ -141,9 +177,9 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 
 		repaint();
 	}
-	
 
-	public void colison() throws ParserConfigurationException, TransformerException {
+
+	public void colison() throws ParserConfigurationException, TransformerException, IOException {
 
 		for(int i = 0; i < linkedList.size(); i++) {
 			Dragon dtemp = (Dragon) linkedList.get(i);
@@ -152,8 +188,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			if(d1.intersects(p.getBounds())) {
 				if(p.getlifes()==0) {
 					p.alife = false;
+					System.out.println("El jugador ha muerto.");
 				}else {
 					p.lifes = p.lifes-1;
+					System.out.println("Una vida menos para el jugador.");
 				}
 			}
 
@@ -162,29 +200,59 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				Rectangle f1 = ftemp.getBounds();
 
 				if(d1.intersects(f1) && dtemp.isAlive()) {
-					
-					
+
+
 					if(dtemp.getResistance() == cont) {
 						//Aqui se tiene que llamar al metodo donde se acomodan los dragones
 						dtemp.alive = false;
 						linkedList.remove(dtemp);
-						System.out.println(linkedList.size()+ "                      CACA");
-					/*	for(int f = 0; f < linkedList.size(); f++) {
+						for(int f = 0; f < linkedList.size(); f++) {
 							Dragon dtemp1 = (Dragon) linkedList.get(f);
 							//Inserte Lista Ordenada
-							LinkedList DnuevaLista = new LinkedList();
-									for(int k = 0; k < listaOrdenada; k++) {
-										Dragon DnuevaLista = (Dragon) listaOrdenada.get(k);
-										DNuevaLista.setX(dtemo1.getX());
-										DNuevaListas.setY(dtemp1.getY());
-										
-										}
-						}*/
-						
+							RequestNuevoOrdenamiento rno = new RequestNuevoOrdenamiento();
+
+							Random rand = new Random();
+							int  n = rand.nextInt(3) + 1;
+							
+							switch(n) {
+							case 1:method = "quick";
+								break;
+							case 2:method = "insertion";
+								break;
+							case 3:method = "selection";
+								break;
+							}
+							
+							
+
+							Dragon[] temparrlist = new Dragon[linkedList.size()];
+							int index = 0;
+							for(Dragon dragon: linkedList) {
+								temparrlist[index] = dragon;
+								index++;
+							}
+							
+							
+							Dragon[] dnarry = rno.getNuevoOrdenamiento(temparrlist, method);
+
+
+							LinkedList<Dragon> DNuevaLista = new LinkedList<Dragon>();
+							for(int q = 0; q<dnarry.length; q++) {
+								DNuevaLista.addLast(dnarry[q]);
+							}
+
+							for(int k = 0; k < DNuevaLista.size(); k++) {
+								Dragon DnuevaLista = (Dragon) DNuevaLista.get(k);
+								DNuevaLista.get(k).setX(dtemp1.getX());
+								DNuevaLista.get(k).setY(dtemp1.getY());
+
+							}
+						}
+						if(linkedList.size()!=0) {
 							Dragon dcambio = (Dragon) linkedList.getFirst();
 							dcambio.setX(dtemp.getX());
 							dcambio.setY(dtemp.getY());
-								
+						}
 						BoardInfo.layoutActual();
 						ftemp.visible = false;
 						cont = 1;
@@ -195,13 +263,91 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 						cont++;
 					}
 					if(linkedList.size()==0) {
+						System.out.println("Oleada actual acabada.");
 						number +=number * 20 / 100;
-//						contador para saber cual es la ultima oleada 
-						cd++;
-						createWave(number);
+//						contador para saber cual es la ultima oleada
+						//cd++;
+						RequestNuevaOleada rno = new RequestNuevaOleada();
+						Dragon[] dr = rno.getNuevaOleada(number);
+						System.out.println("Nueva oleada pedida.");
+						Dragon father = dr[0]; 
+						father.setFather("");
+						father.setAge();
+
+						round++; 
+
+						for(int k = 0; k<dr.length;k++) {
+							linkedList.addLast(dr[k]);
+						}
+						
+						for(int t = 1; t<linkedList.size(); t++) {
+							dr[t].setFather(father.getName());
+							dr[t].setAge();
+						}
+
+						int x = 0;
+						int y = 0;
+						for(int z = 0; z<linkedList.size();z++) {
+							Dragon d = linkedList.get(z);
+							if(z<1) {
+								d.setX(1400);
+								d.setY(400);
+							}else if(z>=1 && z<5) {
+								d.setX(1500);
+								d.setY(320+y);
+								y+=50;
+							}else if(z>=5 && z<10) {
+								d.setX(1600+x);
+								d.setY(y);
+								y+=100;
+								if(x>=6)
+									x=100;
+							}else if(z>=10 && z<12) {
+								d.setX(1700);
+								d.setY(-350+y);
+								y+=100;
+							}else if(z>=12 && z<14) {
+								d.setX(1800);
+								d.setY(-600+y);
+								y+=200;
+							}else if(z>=14 && z<17) {
+								d.setX(1900);
+								d.setY(-1050+y);
+								y+=150;
+							}else if(z>=17 && z<20) {
+								d.setX(2000);
+								d.setY(-1600+y);
+								y+=250;
+							}else if(z>=20 && z<24) {
+								d.setX(2100);
+								d.setY(-2400+y);
+								y+=185;
+							}else if(z>=24 && z<29) {
+								if(z == 24) {
+									y = 145;
+								}
+								d.setX(2200);
+								d.setY(y);
+								y+=120;
+							}else if(z>=29 && z<34) {
+								if(z==29) {
+									y=150;
+								}
+								d.setX(2300);
+								d.setY(y);
+								y+=120;
+							}else if(z>=34 && z<35) {
+								if(z==34) {
+									y = 400;
+								}
+								d.setX(2600);
+								d.setY(y);
+								y+=120;
+							}
+						}
 					}
 				}
-			}	
+			}
 		}
 	}
 
@@ -219,8 +365,10 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 				ftemp.visible = false;
 				if(p.getlifes()==0) {
 					p.alife = false;
+					System.out.println("El jugador ha muerto.");
 				}else {
 					p.lifes = p.lifes-1;
+					System.out.println("El jugador ha perdido una vida.");
 				}
 			}
 		}
@@ -243,15 +391,15 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		}
 
 		if(p.lifes==3) {
-			ImageIcon lifes = new ImageIcon("vidas3.png"); 
+			ImageIcon lifes = new ImageIcon("vidas3.png");
 			vidas = lifes.getImage();
 			g2d.drawImage(vidas, 0, 0, null);
 		}else if(p.lifes==2) {
-			ImageIcon lifes = new ImageIcon("vidas2.png"); 
+			ImageIcon lifes = new ImageIcon("vidas2.png");
 			vidas = lifes.getImage();
 			g2d.drawImage(vidas, 0, 0, null);
 		}else if(p.lifes==1) {
-			ImageIcon lifes = new ImageIcon("vidas1.png"); 
+			ImageIcon lifes = new ImageIcon("vidas1.png");
 			vidas = lifes.getImage();
 			g2d.drawImage(vidas, 0, 0, null);
 		}
@@ -277,34 +425,58 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		if(p.isAliVe()) {
 			g2d.drawImage(p.getImage(), p.getX(), p.getY(), null);
 		}
-		
-		
+
+
 //		si elimina a todos los dragones aparece una imagen de que es el ganador
-		if(cd==8) {
-			ImageIcon lifes = new ImageIcon("Winner.png"); 
-			vidas = lifes.getImage();
-			g2d.drawImage(vidas, 600, 150, null);
+
+		if(round==7) {
+			try {
+				Frame.win();
+				System.out.println("El jugador ha ganado.");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
-		
-//		pinta dragones si es que estan vivos			
-		for(int i = 0; i < dragonsArray.getLength(); i++) {
-			Dragon dtemp = dragonsArray.get(i).getData();
-			
-			if(dtemp.alive) {
-				if(dtemp.getRank()=="Comandant") {
-					g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
-				}else if(dtemp.getRank()=="Captain") {
-				ImageIcon lifes = new ImageIcon("dragonCapitan.gif"); 
-				Image capitan = lifes.getImage();
+
+
+//		pinta dragones si es que estan vivos
+		for(int i = 0; i < linkedList.size(); i++) {
+			Dragon dtemp = linkedList.get(i);
+
+			switch(dtemp.getRank()) {
+			case "comandante":
+				ImageIcon img1 = new ImageIcon("dragon.gif");
+				Image comandante = img1.getImage();
+				g2d.drawImage(comandante, dtemp.getX(), dtemp.getY(), null);
+				break;
+			case "capitan":
+				ImageIcon img2 = new ImageIcon("dragonCapitan.gif");
+				Image capitan = img2.getImage();
 				g2d.drawImage(capitan, dtemp.getX(), dtemp.getY(), null);
-			}else {
-				ImageIcon lifes = new ImageIcon("dragonInfantry.gif"); 
-				Image infantry = lifes.getImage();
+				break;
+			case "infanteria":
+				ImageIcon img3 = new ImageIcon("dragonInfantry.gif");
+				Image infantry = img3.getImage();
 				g2d.drawImage(infantry, dtemp.getX(), dtemp.getY(), null);
+				break;
 			}
-							
-			}
+			
+			/*
+			if(dtemp.alive) {
+				if(dtemp.getRank()=="comandante") {
+					//g2d.drawImage(dtemp.getImage(), dtemp.getX(), dtemp.getY(), null);
+				}else if(dtemp.getRank()=="Captain") {
+					ImageIcon lifes = new ImageIcon("dragonCapitan.gif");
+					Image capitan = lifes.getImage();
+					g2d.drawImage(capitan, dtemp.getX(), dtemp.getY(), null);
+				}else {
+					ImageIcon lifes = new ImageIcon("dragonInfantry.gif");
+					Image infantry = lifes.getImage();
+					g2d.drawImage(infantry, dtemp.getX(), dtemp.getY(), null);
+				}
+
+			}*/
 			if(p.getlifes() == 0) {
 				p.alife = false;
 				try {
@@ -328,10 +500,14 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 			FireBallDragon fb = fireballsD.get(i).getData();
 			g2d.drawImage(fb.getImage(), fb.getX(), fb.getY(), null);
 		}
+
 	}
 
 	private class AL extends KeyAdapter{
+
 		//llama a los metodos para que las teclas se puedan usar
+
+
 		public void keyReleased(KeyEvent e) {
 			p.KeyReleased(e);
 		}
@@ -339,6 +515,7 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 		public void keyPressed(KeyEvent e) {
 			p.KeyPressed(e);
 		}
+
 	}
 
 	public static String getMensaje() {
@@ -347,19 +524,19 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		for (int i=0; i < dragonsArray.getLength(); i++) {
-			Dragon dragonList = dragonsArray.get(i).getData();
+		for (int i=0; i < linkedList.size(); i++) {
+			Dragon dragonList = linkedList.get(i);
 			if(e.getX() >= dragonList.getX() && e.getX() <= dragonList.getX()+dragonList.getImage().getWidth(null) && e.getY() >=dragonList.getY() && e.getY() <= dragonList.getY()+dragonList.getImage().getWidth(null)) {
 				mensaje=("<html>Age: "+dragonList.getAge()+"<br/>"+
 						"Name: "+dragonList.getName()+"<br/>"+
 						"Resistance: "+dragonList.getResistance()+"<br/>"+
 						"Speed: "+dragonList.getSpeed()+"<br/>"+
 						"Range: "+dragonList.getRank()+"<br/>"+
+						"Father: "+dragonList.getFather()+"<br/>"+
 						"Reloding time:"+dragonList.getReloadingTime()+"</html>");
+						
 				BoardInfo.cambiarL();
-
-
-			} 
+			}
 		}
 	}
 

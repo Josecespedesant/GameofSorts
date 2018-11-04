@@ -13,13 +13,12 @@ import org.jdom2.Text;
 public class Parse {
 
     /**
-     * Toma la informaciÃ³n de la oleada
+     * Toma la información de la oleada
      *
      * @param oleada, array de instancias dragon que representan oleada
      * @param ordenamiento, tipo de ordenamiento implementado sobre oleada
      */
     public static Document escribirXML(Dragon[] oleada, String ordenamiento) {
-        System.out.println("start");
         Element oleadaElement = new Element("oleada");
 
         Document doc = new Document();
@@ -47,12 +46,15 @@ public class Parse {
             resistencia.addContent("" + oleada[i].getResistance());
             Element rank = new Element("rank");
             rank.addContent(oleada[i].getRank());
+            Element father = new Element("father");
+            father.addContent(oleada[i].getFather());
 
             tempDragon.addContent(nombre);
             tempDragon.addContent(edad);
             tempDragon.addContent(velocidadRecarga);
             tempDragon.addContent(resistencia);
             tempDragon.addContent(rank);
+            tempDragon.addContent(father);
 
             oleadaElement.addContent(tempDragon);
         }
@@ -85,11 +87,13 @@ public class Parse {
             int velocidadRecarga = Integer.parseInt(tempElement.getChildText("velocidadRecarga"));
             int resistencia = Integer.parseInt(tempElement.getChildText("resistencia"));
             String rank = tempElement.getChildText("rank");
+            String father = tempElement.getChildText("father");
 
             // TODO crear instancias con dragon factory
             oleada[index] = new Dragon(nombre, resistencia, rank);
             oleada[index].setAge(edad);
             oleada[index].setReloadingTime(velocidadRecarga);
+            oleada[index].setFather(father);
 
             index++;
         }

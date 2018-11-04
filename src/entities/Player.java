@@ -1,11 +1,13 @@
 package entities;
 
-import java.awt.Image;
+import  java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import com.studiohartman.jamepad.ControllerManager;
+import com.studiohartman.jamepad.ControllerState;
 import linkedlist.SimpleLinkedList;
 import tools.HitBox;
 
@@ -27,25 +29,29 @@ public class Player {
 	FireBall fire = new FireBall(x, y);
 	static SimpleLinkedList<FireBall> fireballs;
 
+    ControllerManager controllers = new ControllerManager();
+
 	/**
 	 * Constructor of the class Player.
 	 */
 
 	public Player() {
-		x = 10;
-		y = 350;
-		nx = 0;
-		nx2 = 1266;
-		lifes = 3;
-		alife = true;
-		fireballs = new SimpleLinkedList<FireBall>();
+		this.x = 10;
+		this.y = 350;
+		this.nx = 0;
+		this.nx2 = 1266;
+		this.lifes = 3;
+		this.alife = true;
+		this.fireballs = new SimpleLinkedList<FireBall>();
 		ImageIcon image = new ImageIcon("griphFinal.gif");
-		img = image.getImage();
-		hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
+		this.img = image.getImage();
+		this.hitbox = new HitBox(x, y, img.getWidth(null), img.getHeight(null));
+
+        this.controllers.initSDLGamepad();
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,100,100);
+		return new Rectangle(x,y,40,40);
 	}
 
 
@@ -105,12 +111,12 @@ public class Player {
 	 * @param e
 	 */
 	public void KeyPressed(KeyEvent e) {
+
 		//movimiento cuando una tecla es presioanda
 		int key = e.getKeyCode();
 
-
 		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) {
-			if(x-100 < 10) {
+			if(x-20 < 10) {
 				dx = 0;
 				x = 10;
 			}else {
@@ -125,8 +131,7 @@ public class Player {
 			}else {
 				dx = 3;
 			}
-			
-			System.out.println(x);
+
 
 		}
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_W) {
@@ -146,10 +151,6 @@ public class Player {
 				dy = 3;
 			}
 		}
-		
-		if(key == KeyEvent.VK_SPACE) {
-			fire();
-		}
 	}
 
 	/**
@@ -157,19 +158,81 @@ public class Player {
 	 * @param e
 	 */
 	public void KeyReleased(KeyEvent e) {
+
 		//movimiento cuando una tecla se deja de presioanar
 		int key = e.getKeyCode();
-		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A) 
+		if(key == KeyEvent.VK_LEFT||key == KeyEvent.VK_A)
 			dx = -1;
 		if(key == KeyEvent.VK_RIGHT||key == KeyEvent.VK_D)
 			dx = -1;
 		if(key == KeyEvent.VK_DOWN||key == KeyEvent.VK_W)
 			dy = 0;
-		dx = -1;
 		if(key == KeyEvent.VK_UP||key == KeyEvent.VK_S)
 			dy = 0;
-		dx = -1;
+
+		if(key == KeyEvent.VK_SPACE) {
+			fire();
+		}
 	}
+
+	public void buttonPressed() {
+
+        ControllerState estadoActual = controllers.getState(0);
+
+        if (estadoActual.dpadRight || estadoActual.dpadLeft || estadoActual.dpadUp ||
+                estadoActual.dpadDown || estadoActual.a) {
+            if (estadoActual.dpadLeft || estadoActual.dpadRight) {
+                if(estadoActual.dpadLeft) {
+                    if(x-20 < 10) {
+                        this.dx = 0;
+                        this.x = 10;
+                    } else {
+                        this.dx = -3;
+                    }
+                }
+
+                if(estadoActual.dpadRight) {
+                    if(x+20 > 1060) {
+                        this.dx = 0;
+                        this.x = 1050;
+                    } else {
+                        this.dx = 3;
+                    }
+                }
+            }
+            else {
+                this.dx = -1;
+            }
+
+            if (estadoActual.dpadUp || estadoActual.dpadDown) {
+                if(estadoActual.dpadUp) {
+                    if(y < 10) {
+                        this.dy = 0;
+                        this.y = 10;
+                    } else {
+                        this.dy = -3;
+                    }
+                }
+
+                if(estadoActual.dpadDown) {
+                    if(y > 638) {
+                        this.dy = 0;
+                        this.y = 638;
+                    }else {
+                        this.dy = 3;
+                    }
+                }
+            }
+            else {
+                this.dy = 0;
+            }
+
+            if(estadoActual.aJustPressed) {
+                fire();
+            }
+        }
+    }
+
 
 	public HitBox getHitbox() {
 		return hitbox;

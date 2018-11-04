@@ -3,7 +3,7 @@ package arboles;
 import entities.Dragon;
 
 public class ArbolBinario {
-NodoArbol root;
+	NodoArbol root;
 	
 	public ArbolBinario() {
 		root=null;
@@ -64,7 +64,8 @@ NodoArbol root;
 	 }
 	
 	public boolean estaVacio() {
-		return root==null;
+		boolean condicion=root==null;
+		return condicion;
 	}
 	
 //	public void inOrden(NodoArbol raiz) {

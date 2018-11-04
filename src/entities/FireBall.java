@@ -17,11 +17,11 @@ public class FireBall {
 		ImageIcon fireball = new ImageIcon("fuego.gif");
 		img = fireball.getImage();
 		visible = true;		
-		this.fireHitBox = new HitBox(this.x, this.y, img.getWidth(null), img.getHeight(null));
+		this.fireHitBox = new HitBox(this.x, this.y, img.getWidth(null)-10, img.getHeight(null)-10);
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,75,75);
+		return new Rectangle(x,y,50,50);
 	}
 	
 	public void move() {
