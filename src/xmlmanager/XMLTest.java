@@ -14,12 +14,12 @@ import org.junit.Test;
 public class XMLTest {
 	Parse parse=new Parse();
 	
-	
+//	comprueba que la excepcion sea lanzada
 	@Test (expected=FileNotFoundException.class)
 	public void LeerXMLTest() throws JDOMException, IOException{
 		Document doc=new Document();
 		SAXBuilder builder = new SAXBuilder();
-		doc=builder.build(new File("/GameofSorts/pruebaGET.xml"));
+		doc=builder.build(new File("/GameofSorts/pruebaArchivo.xml"));
 		Parse.leerXML(doc);
 	}
 
