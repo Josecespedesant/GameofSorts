@@ -22,5 +22,13 @@ public class XMLTest {
 		doc=builder.build(new File("/GameofSorts/pruebaArchivo.xml"));
 		Parse.leerXML(doc);
 	}
+	
+	@Test (expected=FileNotFoundException.class)
+	public void getXMLTest() throws JDOMException, IOException{
+		Document doc=new Document();
+		SAXBuilder builder = new SAXBuilder();
+		doc=builder.build(new File("/GameofSorts/pruebaArchivo.xml"));
+		assertNull(doc);
+	}
 
 }
