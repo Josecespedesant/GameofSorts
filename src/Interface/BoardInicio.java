@@ -31,7 +31,11 @@ public class BoardInicio extends JPanel implements ActionListener{
 		
 		startB = new JButton("Start Game");
 		startB.addActionListener(this);
+<<<<<<< HEAD
 		add(startB);
+=======
+		
+>>>>>>> a6075f361aef6f5ea19f842ccd697bc4b060313a
 		time = new Timer(5, this);
 		time.start();
 	}
