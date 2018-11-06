@@ -23,7 +23,7 @@ public class Frame {
 	}
 	
 	public static void Start() throws Exception {
-		frame.dispose();
+		//frame.dispose();
 		
 		
 		frame = new JFrame("Game of Sorts");

@@ -27,7 +27,8 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 	//	Dragon d, d2, d3, d4, d5, d6, d7, d8, d9, d10;
 	Image img, vidas;
 	Timer time;
-	int nx, nx2;
+	int nx;
+	int nx2;
 	//	int relodingTime, resistance, speed;
 	static String mensaje;
 	static SimpleLinkedList<Dragon> dragonsArray;
@@ -222,8 +223,6 @@ public class Board extends JPanel implements ActionListener, MouseListener {
 							case 3:method = "selection";
 								break;
 							}
-							
-							
 
 							Dragon[] temparrlist = new Dragon[linkedList.size()];
 							int index = 0;
